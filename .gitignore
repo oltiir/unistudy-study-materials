@@ -1,0 +1,20 @@
+# lecture videos exceed GitHub's 100 MB file limit; they stay Syncthing-only
+*.mp4
+*.mkv
+*.mov
+# local tooling / sync metadata
+.obsidian/
+.stfolder/
+.stignore
+.DS_Store
+# generated at deploy time by scripts/build.mjs
+manifest.json
+node_modules/
+# personal exports and class rosters/schedules
+bookmarks.html
+*.xlsx
+Mbrojtja e Projekteve/
+*Mbrojtja e Projekteve*.pdf
+*Rezultatet*.pdf
+*Piket*.pdf
+*Grupet e Projektit*.pdf

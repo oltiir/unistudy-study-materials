@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#14203a">
+<title>UniStudy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#eaeef4; --surface:#fff; --surface-2:#f5f8fb; --row-hover:#f0f4f9;
+    --ink:#14203a; --muted:#64748b; --faint:#94a3b8; --border:#dbe2ea;
+    --accent:#0891b2; --accent-d:#0e7490; --accent-bg:#e6f7fb;
+    --good:#15803d; --amber:#b45309; --bad:#b91c1c;
+    --shadow:0 1px 2px rgba(20,32,58,.06),0 8px 24px rgba(20,32,58,.06);
+    --display:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --canvas:#0f1522; --surface:#171f30; --surface-2:#1d2639; --row-hover:#212c42;
+    --ink:#e6ebf3; --muted:#9aa8bd; --faint:#66748b; --border:#2a3548;
+    --accent:#22b8d8; --accent-d:#5ad0ea; --accent-bg:#132c38;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--canvas);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;
+    padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) 80px max(14px,env(safe-area-inset-left))}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .wrap{max-width:980px;margin:0 auto}
+
+  .band{background:#14203a;color:#e6ebf3;border-radius:16px;padding:18px 20px;border-left:5px solid var(--accent);
+    display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+  .band h1{font-family:var(--display);font-size:22px;letter-spacing:-.01em}
+  .band h1 small{display:block;font:500 12px var(--body);color:#9aa8bd;margin-top:2px}
+  .band .stats{margin-left:auto;font:500 12px var(--mono);color:#9aa8bd;display:flex;gap:14px}
+  .band .ext{font:600 12px var(--body);color:#fff;background:rgba(255,255,255,.1);padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.15)}
+
+  .toolbar{position:sticky;top:0;z-index:5;background:var(--canvas);padding:12px 0 10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .search{flex:1 1 220px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0 12px;height:42px;box-shadow:var(--shadow)}
+  .search svg{flex:none;color:var(--faint)}
+  .search input{flex:1;border:0;outline:0;background:transparent;color:var(--ink);font:500 15px var(--body);min-width:0}
+  .search input::placeholder{color:var(--faint)}
+  .search .clear{border:0;background:var(--surface-2);color:var(--muted);width:24px;height:24px;border-radius:50%;font-size:14px;line-height:1}
+  .search .clear[hidden]{display:none}
+
+  .tabs,.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  .tabs::-webkit-scrollbar,.chips::-webkit-scrollbar{display:none}
+  .tabs{flex:1 1 100%}
+  .tab{flex:none;border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:8px 14px;font:600 13px var(--display);color:var(--muted)}
+  .tab[aria-selected=true]{background:var(--ink);color:var(--canvas);border-color:var(--ink)}
+  .chip{flex:none;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:5px 11px;font:500 12px var(--body);color:var(--muted)}
+  .chip[aria-pressed=true]{background:var(--accent-bg);border-color:var(--accent);color:var(--accent-d)}
+  .chips{flex:1 1 100%}
+
+  .subject{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);margin-top:14px;overflow:hidden}
+  .subject-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:14px 16px;cursor:pointer;user-select:none}
+  .subject.open .subject-head{border-bottom:1px solid var(--border)}
+  .subject-head:hover{background:var(--row-hover)}
+  .chev{flex:none;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:var(--muted);transition:transform .18s}
+  .subject.open .chev{transform:rotate(90deg)}
+  .subject-body{display:none}
+  .subject.open .subject-body{display:block}
+  .sembar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:14px;padding:12px 14px;background:var(--accent-bg);border:1px solid var(--accent);border-radius:14px}
+  .sembar .txt{flex:1 1 220px;font-size:13px;color:var(--accent-d)}
+  .sembar .txt b{display:block;font:600 14px var(--display);color:var(--ink)}
+  .sembar .txt small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+  .btn.ghost{background:transparent}
+  .subject-head h2{font-family:var(--display);font-size:17px;flex:1 1 160px;line-height:1.3;min-width:0}
+  .subject-head h2 small{display:block;font:500 12px var(--mono);color:var(--muted);margin-top:3px}
+  .subject-actions{display:flex;gap:6px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--surface-2);border-radius:9px;padding:7px 11px;font:600 12px var(--body);color:var(--ink);white-space:nowrap;min-height:34px}
+  .btn:hover{background:var(--row-hover)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent-d);border-color:var(--accent-d)}
+  .btn:disabled{opacity:.6;cursor:progress}
+  .btn svg{flex:none}
+
+  .section{padding:4px 0}
+  .section + .section{border-top:1px solid var(--border)}
+  .section h3{font:600 11px var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 16px 4px}
+  .row{display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 12px 8px 16px}
+  .row:hover{background:var(--row-hover)}
+  .icon{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;font:700 10px var(--mono);letter-spacing:.02em;color:#fff;text-transform:uppercase}
+  .row .meta{min-width:0}
+  .row .title{font-weight:500;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .sub{font:500 11.5px var(--mono);color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .sub mark,.row .title mark{background:#fde68a;color:#14203a;border-radius:3px;padding:0 1px}
+  .row .acts{display:flex;gap:6px}
+  .iconbtn{width:38px;height:38px;border-radius:9px;border:1px solid var(--border);background:var(--surface);display:grid;place-items:center;color:var(--muted)}
+  .iconbtn:hover{color:var(--accent-d);border-color:var(--accent);background:var(--accent-bg)}
+  .link-row{display:flex;gap:10px;align-items:center;padding:7px 16px;font-size:13px;color:var(--muted)}
+  .link-row a{color:var(--accent-d);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .link-row .kind{font:500 10px var(--mono);border:1px solid var(--border);border-radius:5px;padding:1px 5px;text-transform:uppercase;flex:none}
+
+  .empty{text-align:center;color:var(--muted);padding:50px 20px;font-size:14px}
+  .toast{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--canvas);padding:10px 16px;border-radius:12px;font:500 13px var(--body);box-shadow:var(--shadow);z-index:20;max-width:92vw;text-align:center}
+  .toast[hidden]{display:none}
+  .foot{margin-top:28px;text-align:center;color:var(--faint);font:500 11.5px var(--mono)}
+
+  @media (max-width:560px){
+    .band{padding:16px}
+    .band .stats{margin-left:0;flex-basis:100%}
+    .subject-head h2{flex-basis:calc(100% - 40px)}
+    .subject-actions{flex-basis:100%}
+    .row .title{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="band">
+    <h1>UniStudy <small id="subtitle">Materialet nga Moodle, sipas semestrit</small></h1>
+    <div class="stats" id="stats"></div>
+    <a class="ext" href="https://oltiir.github.io/exam-tracker/" target="_blank" rel="noopener">Exam tracker →</a>
+  </header>
+
+  <div class="toolbar">
+    <label class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Kërko lëndë, javë, skedar…" autocomplete="off" autocorrect="off" spellcheck="false">
+      <button class="clear" id="clear" hidden aria-label="Fshij">×</button>
+    </label>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="chips" id="chips"></div>
+  </div>
+  <div id="sembar"></div>
+
+  <main id="list"></main>
+  <p class="foot" id="foot"></p>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+(async () => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const el = (tag, attrs = {}, ...kids) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === 'class') n.className = v;
+      else if (k === 'html') n.innerHTML = v;
+      else if (k.startsWith('on')) n.addEventListener(k.slice(2), v);
+      else if (v !== null && v !== undefined && v !== false) n.setAttribute(k, v === true ? '' : v);
+    }
+    for (const k of kids.flat()) if (k != null) n.append(k);
+    return n;
+  };
+  const fmt = b => b < 1024 ? b + ' B' : b < 1048576 ? (b / 1024).toFixed(0) + ' KB' : (b / 1048576).toFixed(1) + ' MB';
+  const href = p => p.split('/').map(encodeURIComponent).join('/');
+  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const hl = (s, q) => {
+    if (!q) return esc(s);
+    const ns = norm(s); let out = '', i = 0, j;
+    while ((j = ns.indexOf(q, i)) !== -1) { out += esc(s.slice(i, j)) + '<mark>' + esc(s.slice(j, j + q.length)) + '</mark>'; i = j + q.length; }
+    return out + esc(s.slice(i));
+  };
+  const store = {
+    get(k, d) { try { return localStorage.getItem(k) ?? d; } catch { return d; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+  };
+
+  const TYPES = [
+    { key: 'all', label: 'Të gjitha', test: () => true },
+    { key: 'pdf', label: 'PDF', test: e => e === 'pdf' },
+    { key: 'doc', label: 'Word / PPT', test: e => /^(docx?|pptx?|odt|odp|rtf)$/.test(e) },
+    { key: 'sheet', label: 'Excel', test: e => /^(xlsx?|csv|ods)$/.test(e) },
+    { key: 'code', label: 'Kod', test: e => /^(java|sql|js|ts|py|c|cpp|h|cs|html|css|json|xml|ipynb|sh)$/.test(e) },
+    { key: 'img', label: 'Foto', test: e => /^(png|jpe?g|gif|webp|svg|heic)$/.test(e) },
+    { key: 'zip', label: 'Arkiva', test: e => /^(zip|rar|7z|tar|gz)$/.test(e) },
+  ];
+  const COLORS = { pdf: '#dc2626', docx: '#2563eb', doc: '#2563eb', pptx: '#ea580c', ppt: '#ea580c', xlsx: '#16a34a', xls: '#16a34a', csv: '#16a34a',
+    java: '#b45309', sql: '#7c3aed', js: '#ca8a04', py: '#0369a1', json: '#525252', html: '#e11d48', css: '#0891b2', png: '#0d9488', jpg: '#0d9488', jpeg: '#0d9488',
+    rar: '#6b7280', zip: '#6b7280', txt: '#64748b', md: '#64748b' };
+
+  const ICON_OPEN = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M21 3l-9 9"/><path d="M19 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/></svg>';
+  const ICON_DL = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg>';
+  const ICON_ZIP = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M12 11v6"/><path d="m9 14 3 3 3-3"/></svg>';
+  const ICON_CHEV = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>';
+  const ICON_FILES = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M12 11v6"/><path d="m9 14 3 3 3-3"/></svg>';
+  const ICON_MOODLE = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>';
+
+  const toastEl = $('#toast'); let toastTimer;
+  const toast = (msg, ms = 2800) => { toastEl.textContent = msg; toastEl.hidden = false; clearTimeout(toastTimer); if (ms) toastTimer = setTimeout(() => toastEl.hidden = true, ms); };
+
+  let manifest;
+  try {
+    const r = await fetch('manifest.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error(r.status);
+    manifest = await r.json();
+  } catch (e) {
+    $('#list').append(el('div', { class: 'empty' }, 'manifest.json mungon. Ekzekuto: node scripts/build.mjs'));
+    return;
+  }
+
+  const groups = manifest.groups;
+  $('#stats').append(el('span', {}, manifest.totalFiles + ' skedarë'), el('span', {}, fmt(manifest.totalBytes)));
+  $('#foot').textContent = 'Përditësuar ' + new Date(manifest.generated).toLocaleString('sq-AL', { dateStyle: 'medium', timeStyle: 'short' });
+
+  const openSet = new Set((() => { try { return JSON.parse(store.get('us.open', '[]')); } catch { return []; } })());
+  const saveOpen = () => store.set('us.open', JSON.stringify([...openSet]));
+  const state = {
+    group: groups.some(g => g.name === store.get('us.group')) ? store.get('us.group') : groups[0].name,
+    type: TYPES.some(t => t.key === store.get('us.type')) ? store.get('us.type') : 'all',
+    q: '',
+  };
+
+  // tabs
+  const tabs = $('#tabs');
+  for (const g of groups) {
+    tabs.append(el('button', { class: 'tab', role: 'tab', 'data-g': g.name, onclick: () => { state.group = g.name; store.set('us.group', g.name); render(); } }, g.name));
+  }
+  const chips = $('#chips');
+  for (const t of TYPES) {
+    chips.append(el('button', { class: 'chip', 'data-t': t.key, onclick: () => { state.type = t.key; store.set('us.type', t.key); render(); } }, t.label));
+  }
+
+  const q = $('#q'), clear = $('#clear');
+  let debounce;
+  q.addEventListener('input', () => { clearTimeout(debounce); debounce = setTimeout(() => { state.q = norm(q.value.trim()); clear.hidden = !q.value; render(); }, 120); });
+  clear.addEventListener('click', () => { q.value = ''; state.q = ''; clear.hidden = true; render(); q.focus(); });
+
+  // Builds a zip in the browser. On iPhone/iPad the share sheet opens so it can go straight to Files;
+  // elsewhere it is a normal download. Folder structure below stripPrefix is preserved inside the zip.
+  async function saveZip(files, stripPrefix, zipName, btn) {
+    if (!window.JSZip) return toast('JSZip nuk u ngarkua.');
+    const label = btn.innerHTML; btn.disabled = true;
+    try {
+      const zip = new JSZip();
+      let done = 0, bytes = 0;
+      for (const f of files) {
+        btn.textContent = `${done}/${files.length} · ${fmt(bytes)}`;
+        const r = await fetch(href(f.path));
+        if (!r.ok) throw new Error(f.name + ': ' + r.status);
+        const blob = await r.blob(); bytes += blob.size;
+        zip.file(stripPrefix ? f.path.slice(stripPrefix.length + 1) : f.path, blob);
+        done++;
+      }
+      btn.textContent = 'Kompresim…';
+      const out = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
+      const name = zipName.replace(/[\\/:*?"<>|]/g, '-') + '.zip';
+      const file = new File([out], name, { type: 'application/zip' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try { await navigator.share({ files: [file], title: name }); toast('Zgjidh “Ruaj në Files”, pastaj shtyp gjatë mbi .zip → Dekompreso', 6000); return; }
+        catch (e) { if (e.name === 'AbortError') return; /* fall through to download */ }
+      }
+      const url = URL.createObjectURL(out);
+      const a = el('a', { href: url, download: name });
+      document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      toast(`${files.length} skedarë, ${fmt(bytes)} — u shkarkua`);
+    } catch (e) {
+      console.error(e); toast('Gabim gjatë shkarkimit: ' + e.message, 5000);
+    } finally { btn.disabled = false; btn.innerHTML = label; }
+  }
+
+  function fileRow(f) {
+    const color = COLORS[f.ext] || '#64748b';
+    const url = href(f.path);
+    const showName = norm(f.title) !== norm(f.name.replace(/\.[^.]+$/, ''));
+    return el('div', { class: 'row' },
+      el('a', { class: 'icon', style: 'background:' + color, href: url, target: '_blank', rel: 'noopener' }, f.ext.slice(0, 4) || 'file'),
+      el('div', { class: 'meta' },
+        el('a', { class: 'title', href: url, target: '_blank', rel: 'noopener', html: hl(f.title, state.q) }),
+        el('div', { class: 'sub', html: (showName ? hl(f.name, state.q) + ' · ' : '') + fmt(f.size) })),
+      el('div', { class: 'acts' },
+        el('a', { class: 'iconbtn', href: url, target: '_blank', rel: 'noopener', title: 'Hap', 'aria-label': 'Hap', html: ICON_OPEN }),
+        el('a', { class: 'iconbtn', href: url, download: f.name, title: 'Shkarko', 'aria-label': 'Shkarko', html: ICON_DL })));
+  }
+
+  function render() {
+    for (const t of tabs.children) t.setAttribute('aria-selected', t.dataset.g === state.group);
+    for (const c of chips.children) c.setAttribute('aria-pressed', c.dataset.t === state.type);
+    const typeTest = TYPES.find(t => t.key === state.type).test;
+    const searching = state.q.length > 0;
+    // a search spans every semester; otherwise stay on the selected tab
+    const visibleGroups = searching ? groups : groups.filter(g => g.name === state.group);
+    const list = $('#list'); list.replaceChildren();
+    let shown = 0;
+
+    // semester bar: one zip of the whole semester, folders preserved → "Ruaj në Files" on iOS
+    const bar = $('#sembar'); bar.replaceChildren();
+    if (!searching) {
+      const g = groups.find(x => x.name === state.group);
+      const all = g.subjects.flatMap(x => x.files);
+      const openAll = g.subjects.every(x => openSet.has(x.path));
+      const semBtn = el('button', { class: 'btn primary', html: ICON_FILES + '<span>Ruaj në Files · ' + fmt(all.reduce((n, f) => n + f.size, 0)) + '</span>' });
+      semBtn.addEventListener('click', () => saveZip(all, '', g.name, semBtn));
+      bar.append(el('div', { class: 'sembar' },
+        el('div', { class: 'txt' }, el('b', {}, g.name + ' — ' + g.subjects.length + ' lëndë, ' + all.length + ' skedarë'),
+          el('small', {}, 'Një .zip me të gjitha dosjet. Në iPhone/iPad: Ruaj në Files → shtyp gjatë mbi .zip → Dekompreso.')),
+        el('button', { class: 'btn ghost', onclick: () => { for (const x of g.subjects) openAll ? openSet.delete(x.path) : openSet.add(x.path); saveOpen(); render(); } }, openAll ? 'Mbyll të gjitha' : 'Hap të gjitha'),
+        semBtn));
+    }
+
+    for (const g of visibleGroups) for (const s of g.subjects) {
+      const subjectHit = searching && (norm(s.name).includes(state.q) || norm(g.name).includes(state.q));
+      const files = s.files.filter(f => typeTest(f.ext) && (!searching || subjectHit || norm(f.title).includes(state.q) || norm(f.name).includes(state.q) || norm(f.section).includes(state.q)));
+      const links = state.type === 'all' ? s.links.filter(l => !searching || subjectHit || norm(l.title).includes(state.q) || norm(l.section).includes(state.q)) : [];
+      if (!files.length && !links.length) continue;
+      shown += files.length;
+
+      const zipBtn = el('button', { class: 'btn primary', html: ICON_ZIP + '<span>ZIP ' + (files.length === s.files.length ? 'të gjitha' : files.length) + ' · ' + fmt(files.reduce((n, f) => n + f.size, 0)) + '</span>' });
+      zipBtn.addEventListener('click', e => { e.stopPropagation(); saveZip(files, s.path, s.name, zipBtn); });
+      const isOpen = searching || openSet.has(s.path);
+      const head = el('div', { class: 'subject-head', role: 'button', 'aria-expanded': String(isOpen), onclick: () => { if (searching) return; openSet.has(s.path) ? openSet.delete(s.path) : openSet.add(s.path); saveOpen(); render(); } },
+        el('span', { class: 'chev', html: ICON_CHEV }),
+        el('h2', {}, (searching ? g.name + ' · ' : '') + s.name, el('small', {}, s.files.length + ' skedarë · ' + fmt(s.bytes) + (s.generation ? ' · ' + s.generation : ''))),
+        el('div', { class: 'subject-actions' },
+          s.moodle ? el('a', { class: 'btn', href: s.moodle, target: '_blank', rel: 'noopener', onclick: e => e.stopPropagation(), html: ICON_MOODLE + '<span>Moodle</span>' }) : null,
+          files.length ? zipBtn : null));
+      const body = el('div', { class: 'subject-body' });
+      const card = el('section', { class: 'subject' + (isOpen ? ' open' : '') }, head, body);
+
+      const bySection = new Map();
+      for (const f of files) { if (!bySection.has(f.section)) bySection.set(f.section, { files: [], links: [] }); bySection.get(f.section).files.push(f); }
+      for (const l of links) { if (!bySection.has(l.section)) bySection.set(l.section, { files: [], links: [] }); bySection.get(l.section).links.push(l); }
+      const ordered = [...bySection.keys()].sort((a, b) => s.sections.indexOf(a) - s.sections.indexOf(b));
+      const single = ordered.length === 1 && ordered[0] === 'Materiale';
+      for (const name of ordered) {
+        const { files: fs, links: ls } = bySection.get(name);
+        body.append(el('div', { class: 'section' },
+          single ? null : el('h3', { html: hl(name, state.q) }),
+          fs.map(fileRow),
+          ls.map(l => el('div', { class: 'link-row' }, el('span', { class: 'kind' }, l.kind), el('a', { href: l.url, target: '_blank', rel: 'noopener', html: hl(l.title, state.q) })))));
+      }
+      list.append(card);
+    }
+    if (!list.children.length) list.append(el('div', { class: 'empty' }, searching ? 'Asgjë për “' + q.value.trim() + '”.' : 'Asnjë skedar i këtij lloji këtu.'));
+    $('#subtitle').textContent = searching ? shown + ' rezultate në të gjitha semestrat' : 'Materialet nga Moodle, sipas semestrit';
+  }
+  render();
+})();
+</script>
+</body>
+</html>

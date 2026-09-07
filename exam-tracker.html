@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UBT Exam Tracker — September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#eaeef4; --surface:#ffffff; --surface-2:#f5f8fb;
+    --ink:#14203a; --muted:#64748b; --faint:#94a3b8; --border:#dbe2ea;
+    --water:#0891b2; --water-d:#0e7490;
+    --good:#15803d; --good-bg:#eafaf0; --good-line:#bbe6cb;
+    --bad:#b91c1c; --bad-bg:#fdecec;
+    --amber:#b45309; --amber-bg:#fff7ed;
+    --shadow:0 1px 2px rgba(20,32,58,.06),0 8px 24px rgba(20,32,58,.06);
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--canvas);color:var(--ink);font-family:var(--body);
+    line-height:1.5;-webkit-font-smoothing:antialiased;padding:22px 16px 60px}
+  .wrap{max-width:1000px;margin:0 auto}
+  a{color:inherit}
+
+  /* header band */
+  .band{background:var(--ink);border-radius:16px;padding:22px 24px;position:relative;overflow:hidden;
+    border-left:5px solid var(--water)}
+  .band::after{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;
+    background:radial-gradient(circle,rgba(8,145,178,.25),transparent 70%);pointer-events:none}
+  .band h1{font-family:var(--display);font-weight:700;font-size:clamp(22px,4vw,31px);color:#fff;letter-spacing:-.02em}
+  .band p{color:#aebdd4;font-size:13.5px;margin-top:3px}
+
+  /* hero grid */
+  .hero{display:grid;grid-template-columns:200px 1fr;gap:18px;margin-top:18px}
+  @media(max-width:680px){.hero{grid-template-columns:1fr}}
+
+  /* gauge */
+  .gauge-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;align-items:center}
+  .beaker{position:relative;width:96px;height:210px;border:2px solid var(--border);
+    border-radius:14px;background:var(--surface-2);overflow:hidden;margin-top:4px}
+  .water{position:absolute;left:0;right:0;bottom:0;height:50%;
+    background:linear-gradient(180deg,var(--water),var(--water-d));
+    transition:height .6s cubic-bezier(.4,0,.2,1),background .4s ease}
+  .water::before{content:"";position:absolute;top:-6px;left:0;right:0;height:12px;border-radius:50%;
+    background:inherit;opacity:.85}
+  .line{position:absolute;left:-2px;right:-2px;top:50%;border-top:2px dashed #334155;z-index:3}
+  .line span{position:absolute;right:2px;top:-16px;font:600 10px/1 var(--mono);color:#334155;
+    background:var(--surface);padding:1px 3px;border-radius:3px}
+  .gauge-val{font-family:var(--mono);font-weight:700;font-size:30px;margin-top:12px;letter-spacing:-.02em}
+  .gauge-delta{font:600 12px/1 var(--body);margin-top:2px}
+  .gauge-cap{font-size:10.5px;color:var(--faint);margin-top:8px;text-align:center;letter-spacing:.03em;text-transform:uppercase}
+
+  /* summary panel */
+  .panel{display:flex;flex-direction:column;gap:14px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  @media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:12px 13px;box-shadow:var(--shadow)}
+  .stat .n{font-family:var(--mono);font-weight:700;font-size:21px}
+  .stat .l{font-size:11px;color:var(--muted);margin-top:1px}
+
+  .progress-card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px 15px;box-shadow:var(--shadow)}
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+  .progress-top h3{font-family:var(--display);font-size:13.5px;font-weight:600}
+  .progress-top .c{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--muted)}
+  .segs{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+  .seg{height:12px;border-radius:5px;background:var(--surface-2);border:1px solid var(--border);transition:background .3s,border-color .3s}
+  .seg.on{background:linear-gradient(180deg,var(--good),#116b31);border-color:#116b31}
+
+  /* section head */
+  .shead{display:flex;align-items:center;gap:11px;margin:30px 0 4px}
+  .shead .num{width:27px;height:27px;border-radius:8px;background:var(--ink);color:#fff;
+    font-family:var(--display);font-weight:700;font-size:15px;display:grid;place-items:center;flex:none}
+  .shead h2{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:13px;margin:2px 0 16px 38px}
+  @media(max-width:520px){.sub{margin-left:0}}
+
+  /* exam cards */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);
+    overflow:hidden;transition:box-shadow .2s,border-color .2s}
+  .card.cleared{border-color:var(--good-line);background:linear-gradient(180deg,var(--good-bg),#fff 60%)}
+  .card-top{display:flex;align-items:flex-start;gap:11px;padding:14px 15px 10px}
+  .card-name{flex:1;min-width:0}
+  .card-name .t{font-family:var(--display);font-weight:600;font-size:14.5px;line-height:1.25}
+  .card-name .d{font:500 11.5px/1 var(--mono);color:var(--muted);margin-top:5px;letter-spacing:.02em}
+  .card-body{padding:0 15px 14px;display:flex;flex-direction:column;gap:11px}
+  .prep{display:flex;flex-wrap:wrap;gap:6px 14px;padding-top:11px;border-top:1px dashed var(--border)}
+  .grade-row{display:flex;align-items:center;gap:10px}
+  .grade-row label{font-size:12.5px;color:var(--muted);font-weight:500}
+  select.grade{font-family:var(--mono);font-weight:700;font-size:14px;padding:6px 8px;border:1px solid var(--border);
+    border-radius:9px;background:var(--surface-2);color:var(--ink);cursor:pointer;min-width:64px}
+  select.grade:focus-visible{outline:2px solid var(--water);outline-offset:1px}
+  .contrib{font:600 11px/1 var(--body);padding:4px 9px;border-radius:20px}
+  .contrib.up{color:var(--good);background:var(--good-bg)}
+  .contrib.down{color:var(--bad);background:var(--bad-bg)}
+  .contrib.none{color:var(--faint);background:var(--surface-2)}
+
+  /* custom checkboxes */
+  .chk{display:inline-flex;align-items:center;gap:7px;cursor:pointer;user-select:none;font-size:12.5px;color:var(--ink)}
+  .chk input{position:absolute;opacity:0;width:0;height:0}
+  .box{width:18px;height:18px;border:2px solid var(--faint);border-radius:5px;flex:none;
+    display:grid;place-items:center;transition:.15s;background:#fff}
+  .box svg{width:12px;height:12px;opacity:0;transform:scale(.6);transition:.15s}
+  .chk input:checked+.box{background:var(--good);border-color:var(--good)}
+  .chk input:checked+.box svg{opacity:1;transform:scale(1)}
+  .chk input:focus-visible+.box{outline:2px solid var(--water);outline-offset:2px}
+  .chk.done .box{width:22px;height:22px;border-radius:6px}
+  .chk.done input:checked+.box{background:var(--good)}
+  .chk.done .lbl{font-family:var(--display);font-weight:600;font-size:13px}
+
+  /* deferred + footer */
+  .deferred{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .deferred h3{font-family:var(--display);font-size:14px;font-weight:600;margin-bottom:4px}
+  .deferred p.note{color:var(--muted);font-size:12.5px;margin-bottom:11px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font:500 12px/1 var(--body);color:var(--muted);background:var(--surface-2);
+    border:1px solid var(--border);border-radius:8px;padding:7px 11px}
+  .chip b{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:11px}
+
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap}
+  .saved{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 3px var(--good-bg)}
+  .dot.off{background:var(--faint);box-shadow:0 0 0 3px var(--surface-2)}
+  button.reset{font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--muted);
+    background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:8px 14px;cursor:pointer;transition:.15s}
+  button.reset:hover{color:var(--bad);border-color:var(--bad)}
+  button.reset:focus-visible{outline:2px solid var(--water);outline-offset:1px}
+
+  .legend{font-size:11.5px;color:var(--faint);margin:9px 0 0 38px}
+  @media(max-width:520px){.legend{margin-left:0}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="band">
+    <h1>Exam Tracker &amp; GPA Planner</h1>
+    <p>Giorno · September 2026 session · six experience subjects, full clear</p>
+  </div>
+
+  <div class="hero">
+    <div class="gauge-card">
+      <div class="beaker">
+        <div class="water" id="water"></div>
+        <div class="line"><span>8.75</span></div>
+      </div>
+      <div class="gauge-val" id="avgVal">8.75</div>
+      <div class="gauge-delta" id="avgDelta">at the waterline</div>
+      <div class="gauge-cap">running average</div>
+    </div>
+
+    <div class="panel">
+      <div class="stats">
+        <div class="stat"><div class="n" id="stCleared">0</div><div class="l">cleared</div></div>
+        <div class="stat"><div class="n" id="stLogged">0</div><div class="l">grades logged</div></div>
+        <div class="stat"><div class="n">8.75</div><div class="l">start average</div></div>
+        <div class="stat"><div class="n">8.5–9.0</div><div class="l">target band</div></div>
+      </div>
+      <div class="progress-card">
+        <div class="progress-top">
+          <h3>September progress</h3>
+          <span class="c"><span id="progCount">0</span> / 6 cleared</span>
+        </div>
+        <div class="segs" id="segs"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><div class="num">1</div><h2>Your six exams</h2></div>
+  <p class="sub">Tick a subject <b>done</b> once you've sat it, then pick your grade — the waterline updates live. The three small boxes track prep: notes, past papers, mock run.</p>
+  <div class="grid" id="grid"></div>
+  <p class="legend">Prep boxes: notes reviewed · past papers · mock run &nbsp;|&nbsp; grade 5–10, passing is 6+</p>
+
+  <div class="shead"><div class="num">2</div><h2>Deferred to January / April</h2></div>
+  <p class="sub">The hard / from-zero subjects — not part of this session. Left here so nothing gets lost.</p>
+  <div class="deferred">
+    <div class="chips" id="deferredChips"></div>
+  </div>
+
+  <div class="foot">
+    <div class="saved"><span class="dot" id="saveDot"></span><span id="saveText">Saving your progress on this device</span></div>
+    <button class="reset" id="resetBtn">Reset tracker</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var BASE_SUM=105, BASE_N=12, BASE_AVG=8.75;
+  var G_MIN=8.30, G_MAX=9.20; // gauge scale
+
+  var exams=[
+    {id:"diskrete2", name:"Struktura Diskrete 2",                  date:"Fri 11 Sep"},
+    {id:"algoritme", name:"Algoritme dhe Struktura e të Dhënave",  date:"Fri 18 Sep"},
+    {id:"shkenca2",  name:"Shkenca Kompjuterike 2",                date:"Mon 21 Sep"},
+    {id:"hyrje",     name:"Hyrje në Algoritme",                    date:"Fri 25 Sep"},
+    {id:"db",        name:"Sistemet e Bazës së të Dhënave",        date:"Mon 28 Sep"},
+    {id:"diskrete1", name:"Struktura Diskrete 1",                  date:"Wed 30 Sep"}
+  ];
+  var deferred=[
+    ["Sistemet Operative","10 Sep"],["Big Data","15 Sep"],
+    ["Sistemet dhe Sinjalet","22 Sep"],["Dizajni dhe Zhvillimi i Webit","23 Sep"],
+    ["Matematikë 2","24 Sep"],["Matematikë 1","1 Oct"]
+  ];
+
+  var state={grades:{},done:{},prep:{}};
+  exams.forEach(function(e){ state.grades[e.id]=""; state.done[e.id]=false;
+    state.prep[e.id]={notes:false,papers:false,mock:false}; });
+
+  var STORE_KEY="ubt-exam-tracker-v1";
+  var hasStorage = (typeof window!=="undefined" && window.storage && typeof window.storage.get==="function");
+
+  var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
+  function computeAvg(){
+    var sum=BASE_SUM, n=BASE_N, logged=0;
+    exams.forEach(function(e){
+      var g=state.grades[e.id];
+      if(g!==""&&g!=null){ sum+=Number(g); n++; logged++; }
+    });
+    return {avg:sum/n, logged:logged};
+  }
+
+  function fmt(x){ return x.toFixed(2); }
+
+  function render(){
+    var r=computeAvg();
+    var avg=r.avg;
+    // gauge
+    var pct=Math.max(0,Math.min(1,(avg-G_MIN)/(G_MAX-G_MIN)))*100;
+    var water=document.getElementById("water");
+    water.style.height=pct+"%";
+    var above=avg>BASE_AVG+1e-9, below=avg<BASE_AVG-1e-9;
+    var col = above?"linear-gradient(180deg,#22c55e,#15803d)"
+            : below?"linear-gradient(180deg,#ef4444,#b91c1c)"
+            : "linear-gradient(180deg,var(--water),var(--water-d))";
+    water.style.background=col;
+
+    var val=document.getElementById("avgVal");
+    val.textContent=fmt(avg);
+    val.style.color = above?"var(--good)": below?"var(--bad)":"var(--ink)";
+
+    var d=document.getElementById("avgDelta");
+    var diff=avg-BASE_AVG;
+    if(Math.abs(diff)<1e-9){ d.textContent="at the waterline"; d.style.color="var(--muted)"; }
+    else if(diff>0){ d.textContent="▲ +"+diff.toFixed(2)+" above 8.75"; d.style.color="var(--good)"; }
+    else { d.textContent="▼ "+diff.toFixed(2)+" below 8.75"; d.style.color="var(--bad)"; }
+
+    // stats
+    var cleared=exams.filter(function(e){return state.done[e.id];}).length;
+    document.getElementById("stCleared").textContent=cleared;
+    document.getElementById("stLogged").textContent=r.logged;
+    document.getElementById("progCount").textContent=cleared;
+
+    // segments
+    var segs=document.getElementById("segs");
+    Array.prototype.forEach.call(segs.children,function(s,i){
+      s.className="seg"+(i<cleared?" on":"");
+    });
+
+    // cards contrib + cleared style
+    exams.forEach(function(e){
+      var card=document.getElementById("card-"+e.id);
+      if(card) card.classList.toggle("cleared", !!state.done[e.id]);
+      var c=document.getElementById("contrib-"+e.id);
+      var g=state.grades[e.id];
+      if(g===""||g==null){ c.className="contrib none"; c.textContent="no grade yet"; }
+      else if(Number(g)>BASE_AVG){ c.className="contrib up"; c.textContent="↑ lifts your average"; }
+      else if(Number(g)<BASE_AVG){ c.className="contrib down"; c.textContent="↓ dips your average"; }
+      else { c.className="contrib none"; c.textContent="· holds level"; }
+    });
+  }
+
+  function save(){
+    if(!hasStorage) return;
+    try{ window.storage.set(STORE_KEY, JSON.stringify(state), false); }catch(err){}
+  }
+
+  function buildCards(){
+    var grid=document.getElementById("grid");
+    exams.forEach(function(e){
+      var card=document.createElement("div");
+      card.className="card"; card.id="card-"+e.id;
+
+      var top=document.createElement("div"); top.className="card-top";
+      // done checkbox
+      var done=makeCheck(e.id+"-done","Done", state.done[e.id], true, function(v){
+        state.done[e.id]=v; save(); render();
+      });
+      var nm=document.createElement("div"); nm.className="card-name";
+      nm.innerHTML='<div class="t">'+esc(e.name)+'</div><div class="d">'+esc(e.date)+'</div>';
+      top.appendChild(done); top.appendChild(nm);
+
+      var body=document.createElement("div"); body.className="card-body";
+
+      var gr=document.createElement("div"); gr.className="grade-row";
+      var lab=document.createElement("label"); lab.textContent="Grade"; lab.setAttribute("for",e.id+"-grade");
+      var sel=document.createElement("select"); sel.className="grade"; sel.id=e.id+"-grade";
+      sel.innerHTML='<option value="">—</option>'+[5,6,7,8,9,10].map(function(g){
+        return '<option value="'+g+'"'+(String(state.grades[e.id])===String(g)?" selected":"")+'>'+g+'</option>';
+      }).join("");
+      sel.addEventListener("change",function(){ state.grades[e.id]=sel.value; save(); render(); });
+      var contrib=document.createElement("span"); contrib.className="contrib none"; contrib.id="contrib-"+e.id; contrib.textContent="no grade yet";
+      gr.appendChild(lab); gr.appendChild(sel); gr.appendChild(contrib);
+
+      var prep=document.createElement("div"); prep.className="prep";
+      prep.appendChild(makeCheck(e.id+"-notes","notes", state.prep[e.id].notes,false,function(v){state.prep[e.id].notes=v;save();}));
+      prep.appendChild(makeCheck(e.id+"-papers","past papers", state.prep[e.id].papers,false,function(v){state.prep[e.id].papers=v;save();}));
+      prep.appendChild(makeCheck(e.id+"-mock","mock run", state.prep[e.id].mock,false,function(v){state.prep[e.id].mock=v;save();}));
+
+      body.appendChild(gr); body.appendChild(prep);
+      card.appendChild(top); card.appendChild(body);
+      grid.appendChild(card);
+    });
+  }
+
+  function makeCheck(id,label,checked,big,onchange){
+    var l=document.createElement("label"); l.className="chk"+(big?" done":"");
+    var inp=document.createElement("input"); inp.type="checkbox"; inp.id=id; inp.checked=!!checked;
+    var box=document.createElement("span"); box.className="box"; box.innerHTML=CHECK;
+    var txt=document.createElement("span"); txt.className="lbl"; txt.textContent=label;
+    inp.addEventListener("change",function(){ onchange(inp.checked); });
+    l.appendChild(inp); l.appendChild(box); l.appendChild(txt);
+    return l;
+  }
+
+  function buildDeferred(){
+    var box=document.getElementById("deferredChips");
+    deferred.forEach(function(x){
+      var c=document.createElement("span"); c.className="chip";
+      c.innerHTML=esc(x[0])+' <b>'+esc(x[1])+'</b>';
+      box.appendChild(c);
+    });
+  }
+
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(m){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m];}); }
+
+  document.getElementById("resetBtn").addEventListener("click",function(){
+    if(!confirm("Clear all ticks and grades? This can't be undone.")) return;
+    exams.forEach(function(e){ state.grades[e.id]=""; state.done[e.id]=false;
+      state.prep[e.id]={notes:false,papers:false,mock:false}; });
+    // reflect in DOM
+    exams.forEach(function(e){
+      var s=document.getElementById(e.id+"-grade"); if(s) s.value="";
+      ["-done","-notes","-papers","-mock"].forEach(function(suf){
+        var i=document.getElementById(e.id+suf); if(i) i.checked=false;
+      });
+    });
+    save(); render();
+  });
+
+  function setSaveState(){
+    var dot=document.getElementById("saveDot"), txt=document.getElementById("saveText");
+    if(hasStorage){ dot.className="dot"; txt.textContent="Progress saves automatically on this device"; }
+    else { dot.className="dot off"; txt.textContent="Session only — download and open in a PDF/browser app to keep progress"; }
+  }
+
+  function init(){
+    buildCards(); buildDeferred(); setSaveState();
+    if(hasStorage){
+      window.storage.get(STORE_KEY,false).then(function(res){
+        if(res&&res.value){
+          try{
+            var saved=JSON.parse(res.value);
+            exams.forEach(function(e){
+              if(saved.grades&&e.id in saved.grades) state.grades[e.id]=saved.grades[e.id];
+              if(saved.done&&e.id in saved.done) state.done[e.id]=saved.done[e.id];
+              if(saved.prep&&saved.prep[e.id]) state.prep[e.id]=saved.prep[e.id];
+            });
+            // sync DOM
+            exams.forEach(function(e){
+              var s=document.getElementById(e.id+"-grade"); if(s) s.value=state.grades[e.id];
+              var dn=document.getElementById(e.id+"-done"); if(dn) dn.checked=!!state.done[e.id];
+              var p=state.prep[e.id];
+              var n=document.getElementById(e.id+"-notes"); if(n) n.checked=!!p.notes;
+              var pp=document.getElementById(e.id+"-papers"); if(pp) pp.checked=!!p.papers;
+              var mk=document.getElementById(e.id+"-mock"); if(mk) mk.checked=!!p.mock;
+            });
+          }catch(err){}
+        }
+        render();
+      }).catch(function(){ render(); });
+    } else {
+      render();
+    }
+  }
+
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init);
+  else init();
+})();
+</script>
+</body>
+</html>

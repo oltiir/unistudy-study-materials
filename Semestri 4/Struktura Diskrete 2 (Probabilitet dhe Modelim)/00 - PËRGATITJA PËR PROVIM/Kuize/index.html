@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="sq"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SD2 – Kuizet për provim</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1b1f2a;--mut:#5b6170;--acc:#3b5bdb;--bd:#e3e6ef;--accbg:#eef1fd}
+@media (prefers-color-scheme:dark){:root{--bg:#12141a;--card:#1c1f28;--tx:#e8eaf0;--mut:#9aa1b2;--acc:#7b93ff;--bd:#2c3040;--accbg:#22273a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:32px 16px 60px}h1{margin:0 0 6px}.sub{color:var(--mut);margin:0 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+a.card{display:block;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;text-decoration:none;color:var(--tx);box-shadow:0 2px 10px rgba(0,0,0,.04)}
+a.card:hover{border-color:var(--acc)}.card h2{margin:0 0 6px;font-size:1.1rem;color:var(--acc)}.card p{margin:0;color:var(--mut);font-size:.92rem}
+.best{margin-top:8px;font-size:.85rem;color:var(--tx);background:var(--accbg);display:inline-block;padding:2px 8px;border-radius:999px}
+.note{margin-top:26px;padding:16px;border-radius:12px;background:var(--card);border:1px solid var(--bd);color:var(--mut);font-size:.95rem}
+</style></head><body><div class="wrap">
+<h1>Struktura Diskrete 2 – Kuizet</h1><p class="sub">Hapen direkt në browser, pa internet. Rezultati më i mirë ruhet lokalisht në këtë browser.</p>
+<div class="grid">
+<a class="card" href="01-kodet.html" data-title="Kuiz 1 – Teoria e Kodeve"><h2>Kuiz 1 – Teoria e Kodeve</h2><p>Hamming, G/H, grupi standard, kodet ciklike · Det. 1–2 · 20 pyetje</p></a>
+<a class="card" href="02-probabiliteti.html" data-title="Kuiz 2 – Probabiliteti"><h2>Kuiz 2 – Probabiliteti</h2><p>Klasik, kushtëzuar, Bajes, ligji i shpërndarjes, E(X), D(X) · Det. 3 · 20 pyetje</p></a>
+<a class="card" href="03-statistika.html" data-title="Kuiz 3 – Statistika"><h2>Kuiz 3 – Statistika</h2><p>Mesataret, dispersioni dhe testimi i hipotezës · 23 pyetje</p></a>
+<a class="card" href="04-rekurencat.html" data-title="Kuiz 4 – Funksionet Gjeneruese dhe Rekurencat"><h2>Kuiz 4 – Funksionet Gjeneruese dhe Rekurencat</h2><p>FG, FGE, teorema binomiale dhe rekurencat · 25 pyetje</p></a>
+<a class="card" href="05-provimi-simulim.html" data-title="Kuiz 5 – Kontroll përfundimtar (30 min)"><h2>Kuiz 5 – Kontroll përfundimtar (30 min)</h2><p>Diagnostikim final; nuk zëvendëson provimin me shkrim · 24 pyetje</p></a>
+</div>
+<div class="note"><b>Si t'i përdorësh:</b> pas çdo teme bëj kuizin përkatës (10–15 min). Nëse merr nën 80%, kthehu te skedari .md i temës. Kuizi final zgjat 30 minuta dhe është diagnostik; provimin e vërtetë me shkrim bëje nga <code>09 - Provim Simulues i Ri.md</code>. Për pyetjet numerike përdor pikën për dhjetore (0.347).</div>
+</div>
+<script>
+document.querySelectorAll('a.card').forEach(a=>{ try{ const b=JSON.parse(localStorage.getItem('sd2quiz:'+a.dataset.title)||'null'); if(b){ const s=document.createElement('span'); s.className='best'; s.textContent='Më i miri: '+b.score+'/'+b.total; a.appendChild(s);} }catch(e){} });
+</script></body></html>

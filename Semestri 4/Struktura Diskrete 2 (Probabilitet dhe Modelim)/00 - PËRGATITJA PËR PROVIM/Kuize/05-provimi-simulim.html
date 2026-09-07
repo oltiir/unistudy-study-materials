@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sq"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kuiz 5 – Kontroll përfundimtar (30 min)</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1b1f2a;--mut:#5b6170;--acc:#3b5bdb;--ok:#2b8a3e;--bad:#c92a2a;--bd:#e3e6ef;--okbg:#e6f6ea;--badbg:#fdeaea;--accbg:#eef1fd}
+@media (prefers-color-scheme:dark){:root{--bg:#12141a;--card:#1c1f28;--tx:#e8eaf0;--mut:#9aa1b2;--acc:#7b93ff;--ok:#5fcf7a;--bad:#ff7b7b;--bd:#2c3040;--okbg:#17301f;--badbg:#3a1c1c;--accbg:#22273a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:24px 16px 60px}
+a{color:var(--acc)}h1{font-size:1.5rem;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 18px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin-bottom:18px}.bar>div{height:100%;background:var(--acc);width:0;transition:width .3s}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.q{font-size:1.1rem;font-weight:600;margin:0 0 16px;white-space:pre-wrap}
+.opt{display:block;width:100%;text-align:left;background:var(--bg);border:2px solid var(--bd);color:var(--tx);border-radius:10px;padding:12px 14px;margin:8px 0;font:inherit;cursor:pointer}
+.opt:hover{border-color:var(--acc)}.opt.sel{border-color:var(--acc);background:var(--accbg)}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.bad{border-color:var(--bad);background:var(--badbg)}
+input.ans{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx)}
+input.ans:focus{outline:none;border-color:var(--acc)}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:11px 18px;font:inherit;font-weight:600;cursor:pointer;margin-top:14px}
+.btn.sec{background:transparent;color:var(--acc);border:2px solid var(--acc)}
+.fb{margin-top:16px;padding:14px;border-radius:10px;border-left:5px solid;white-space:pre-wrap}
+.fb.ok{background:var(--okbg);border-color:var(--ok)}.fb.bad{background:var(--badbg);border-color:var(--bad)}
+.meta{color:var(--mut);font-size:.9rem}.timer{font-variant-numeric:tabular-nums;font-weight:700;color:var(--acc)}
+.res h2{margin:0 0 8px}.big{font-size:3rem;font-weight:800;color:var(--acc);margin:6px 0}
+.list{margin:14px 0 0;padding:0;list-style:none}.list li{padding:10px 12px;border-top:1px solid var(--bd);white-space:pre-wrap}
+.list li.bad{background:var(--badbg)}.tag{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:999px;background:var(--accbg);color:var(--acc);margin-right:6px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+</style></head><body><div class="wrap">
+<div class="top"><div><h1>Kuiz 5 – Kontroll përfundimtar (30 min)</h1><p class="sub">Diagnostikim nga të gjitha temat; nuk zëvendëson provimin me shkrim · 24 pyetje</p></div><div class="meta"><a href="index.html">← Kuizet</a></div></div>
+<div class="top"><span class="meta" id="prog"></span><span class="timer" id="timer"></span></div>
+<div class="bar"><div id="barfill"></div></div>
+<div class="card" id="card"></div>
+</div>
+<script>
+const QS = [{"t": "txt", "q": "[Det.1] G = [I₃ | 111ᵀ] (bit paritetit). Fjalëkodi i m = 110 është:", "a": ["1100"], "e": "1+1+0 = 0 → 1100. Si polinom: 1 + x."}, {"t": "mc", "q": "[Det.1] Fjalëkodi 0101 si polinom (biti i parë = x⁰):", "opts": ["1 + x²", "x + x³", "x² + x⁴", "1 + x³"], "a": 1, "e": "c₁ = 1, c₃ = 1."}, {"t": "txt", "q": "[Det.2] Hamming [7,4] sistematik, m = 1101. Fjalëkodi:", "a": ["1101100"], "e": "p₁ = 1+1+1 = 1, p₂ = 1+0+1 = 0, p₃ = 1+0+1 = 0."}, {"t": "mc", "q": "[Det.2] f = 1011001, g(x) = 1 + x³. Mbetja e f(x) : g(x) është:", "opts": ["0", "x² + 1", "x + 1", "x³"], "a": 1, "e": "f(x) = 1+x²+x³+x⁶; x³·g = x⁶+x³ → mbetet x²+1 ≠ 0 → gabim."}, {"t": "mc", "q": "[Det.2] G = [[1,1,0],[0,1,1]]. r = 101. Përfundimi:", "opts": ["gabim në bitin 1", "gabim në bitin 3", "r është fjalëkod, m = 11", "r është fjalëkod, m = 10"], "a": 2, "e": "110 + 011 = 101 ∈ C."}, {"t": "num", "q": "[Det.3] Kuti: 10 bardhë, 4 kuq, 9 verdhë; 3 pa kthim; X = kuq. P(X=1) = ? (3 shifra)", "a": 0.386, "tol": 0.003, "e": "4·C(19,2)/C(23,3) = 684/1771 = 0.386."}, {"t": "num", "q": "[Det.3] E njëjta kuti. E(X) = ? (3 shifra)", "a": 0.522, "tol": 0.003, "e": "3·4/23 = 0.5217."}, {"t": "num", "q": "[Det.3] Kuti: 9 bardhë, 8 kuq, 7 verdhë; 3 pa kthim; X = kuq. D(X) = ? (2 shifra)", "a": 0.61, "tol": 0.02, "e": "E(X) = 1, E(X²) = 1.609 → D = 0.609."}, {"t": "num", "q": "[Det.4] Gjatësia: 150–155:18, 155–160:22, 160–165:40, 165–170:20, 170–175:9, 175–180:11 (N=120). x̄ = ? (2 shifra)", "a": 163.04, "tol": 0.05, "e": "Σfx = 19565 → 163.04."}, {"t": "num", "q": "[Det.4] E njëjta tabelë. Mediana = ? (F: 18, 40, 80, 100, 109, 120)", "a": 162.5, "tol": 0.05, "e": "160 + (60−40)/40·5 = 162.5."}, {"t": "num", "q": "[Det.4] E njëjta tabelë. Moda = ? (2 shifra)", "a": 162.37, "tol": 0.05, "e": "160 + (40−22)/((40−22)+(40−20))·5 = 162.37."}, {"t": "num", "q": "[Det.4] E njëjta tabelë. IQR = ? (Q₁ = 157.73, Q₃ = 167.5)", "a": 9.77, "tol": 0.05, "e": "167.5 − 157.73 = 9.77."}, {"t": "mc", "q": "[Det.5] F.gj. i vargut 0,0,0,5,3,5,3,… është:", "opts": ["x³(5+3x)/(1−x²)", "x⁴(5+3x)/(1−x²)", "(5+3x)/(1−x²)", "x³(5+3x)/(1−x)"], "a": 0, "e": "3 zero → x³."}, {"t": "mc", "q": "[Det.5] F.gj. i vargut 0,0,0,0,1,2,3,4,… është:", "opts": ["x⁴/(1−x)", "x⁴/(1−x)²", "x⁵/(1−x)²", "1/(1−x)²"], "a": 1, "e": "1,2,3,… → 1/(1−x)²; 4 zero → x⁴."}, {"t": "txt", "q": "[Det.6] Vargu me f.gj. 1/(1−2x)³: 4 kufizat e para (me presje)", "a": ["1,6,24,80"], "e": "aₖ = 2ᵏ·C(k+2,2)."}, {"t": "txt", "q": "[Det.6] aₙ = 9aₙ₋₁ − 14aₙ₋₂ + 2ⁿ, a₀ = a₁ = 1. Sa është a₂ (nga rekurenca)?", "a": ["-1"], "e": "9·1 − 14·1 + 4 = −1. Përdore për të kontrolluar formulën!"}, {"t": "mc", "q": "[Det.6] Zgjidhja e aₙ = 9aₙ₋₁ − 14aₙ₋₂ + 2ⁿ, a₀ = a₁ = 1:", "opts": ["(26/25)2ⁿ − (1/25)7ⁿ − (2/5)n2ⁿ", "2ⁿ + 7ⁿ − n2ⁿ", "(26/25)2ⁿ + (1/25)7ⁿ", "(1/25)2ⁿ − (26/25)7ⁿ + (2/5)n2ⁿ"], "a": 0, "e": "Kontroll: n=2 → 104/25 − 49/25 − 80/25 = −1 ✓."}, {"t": "mc", "q": "[Teori] Largesa minimale Hamming e kodit është:", "opts": ["numri i fjalëkodeve", "gjatësia e fjalëkodit", "largesa më e vogël ndërmjet dy fjalëkodeve të ndryshme", "pesha e fjalëkodit zero"], "a": 2, "e": "Për kode lineare = pesha minimale jo-zero."}, {"t": "mc", "q": "[Teori] Ngjarje TË PAVARURA janë ato për të cilat:", "opts": ["nuk ndodhin njëkohësisht", "P(AB) = P(A)·P(B)", "P(A+B) = P(A)+P(B)", "A ⊂ B"], "a": 1, "e": "Ndodhja e njërës nuk ndikon tjetrën. Shembull: dy hedhje monedhe."}, {"t": "mc", "q": "[Teori] Formula e Bajesit:", "opts": ["P(Hᵢ|A) = P(A|Hᵢ)", "P(Hᵢ|A) = P(Hᵢ)P(A|Hᵢ) / Σₖ P(Hₖ)P(A|Hₖ)", "P(A) = Σ P(Hₖ)P(A|Hₖ)", "P(Hᵢ|A) = P(Hᵢ)/P(A)"], "a": 1, "e": "Emëruesi = probabiliteti i plotë P(A)."}, {"t": "mc", "q": "[Teori] Zgjidhja e përgjithshme e rekurencës lineare homogjene të rendit m përmban:", "opts": ["1 konstante", "m konstante arbitrare", "2m konstante", "asnjë konstante"], "a": 1, "e": "Caktohen nga m kushtet fillestare."}, {"t": "mc", "q": "[Teori] Vektorët 110, 011, 101 mod 2 janë:", "opts": ["linearisht të pavarur", "linearisht të varur, sepse 110 + 011 = 101", "ortogonalë", "fjalëkode të Hamming"], "a": 1, "e": "Ekziston kombinim jo-trivial që jep 0: 110 + 011 + 101 = 000."}];
+QS[0] = {"t":"txt","q":"[Det.1] C' gjenerohet nga G' me rreshta 1001 dhe 0101. Fjalëkodi për u = 11 është:","a":["1100"],"e":"1001 + 0101 = 1100. G' ka rang 2 dhe gjeneron 4 fjalëkode."};
+QS.push(
+  {"t":"mc","q":"[Syllabus] Test Z dykahësh me α=0.05: kur refuzohet H₀?","opts":["|z|>1.96","|z|<1.96","z>1.645 gjithmonë","vetëm kur z=0"],"a":0,"e":"Në testin dykahësh niveli 5% ndahet në dy bishta."},
+  {"t":"mc","q":"[Syllabus] Cila është FGE e vargut aₙ=2ⁿ?","opts":["1/(1−2x)","e²ˣ","2eˣ","xe²ˣ"],"a":1,"e":"e²ˣ=Σ2ⁿxⁿ/n!."}
+);
+const TIMER_MIN = 30;
+let order = [...QS.keys()];
+let i = 0, score = 0, answers = [], sel = null, locked = false, tStart = Date.now(), tInt = null;
+const card = document.getElementById('card');
+function norm(s){ return String(s).toLowerCase().replace(/\s+/g,'').replace(/−/g,'-').replace(/,/g,',').replace(/\.$/,''); }
+function numOf(s){ return parseFloat(String(s).replace(/\s+/g,'').replace(',', '.').replace('−','-')); }
+function shuffle(){ for(let k=order.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[order[k],order[j]]=[order[j],order[k]];} }
+function fmt(sec){ const m=Math.floor(sec/60), s=sec%60; return m+':'+String(s).padStart(2,'0'); }
+function tick(){ const el=document.getElementById('timer'); const gone=Math.floor((Date.now()-tStart)/1000);
+  if(TIMER_MIN>0){ const left=TIMER_MIN*60-gone; el.textContent='⏱ '+fmt(Math.max(0,left)); if(left<=0){clearInterval(tInt); finish();} }
+  else el.textContent='⏱ '+fmt(gone); }
+function render(){
+  if(i>=order.length){ finish(); return; }
+  const q = QS[order[i]]; sel=null; locked=false;
+  document.getElementById('prog').textContent = 'Pyetja '+(i+1)+' / '+order.length+'  ·  Pikë: '+score;
+  document.getElementById('barfill').style.width = (100*i/order.length)+'%';
+  let h = '<p class="q">'+esc(q.q)+'</p>';
+  if(q.t==='mc'){ q.opts.forEach((o,k)=>{ h+='<button class="opt" data-k="'+k+'">'+esc(o)+'</button>'; }); }
+  else { h+='<input class="ans" id="ans" autocomplete="off" placeholder="'+(q.t==='num'?'Shkruaj numrin (p.sh. 0.347)':'Shkruaj përgjigjen')+'">'; }
+  h+='<div class="row"><button class="btn" id="chk">Kontrollo</button><button class="btn sec" id="skip">Kalo</button></div><div id="fb"></div>';
+  card.innerHTML = h;
+  card.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ if(locked) return; card.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); sel=+b.dataset.k; });
+  document.getElementById('chk').onclick = check;
+  document.getElementById('skip').onclick = ()=>{ if(!locked){ answers.push({q, ok:false, given:'(kaluar)'}); } i++; render(); };
+  const inp=document.getElementById('ans'); if(inp){ inp.focus(); inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ locked? (i++,render()) : check(); } }); }
+}
+function check(){
+  if(locked){ i++; render(); return; }
+  const q = QS[order[i]]; let ok=false, given='';
+  if(q.t==='mc'){ if(sel===null) return; given=q.opts[sel]; ok = sel===q.a;
+    card.querySelectorAll('.opt').forEach((b,k)=>{ if(k===q.a) b.classList.add('ok'); else if(k===sel) b.classList.add('bad'); }); }
+  else { const v=document.getElementById('ans').value.trim(); if(!v) return; given=v;
+    if(q.t==='num'){ const n=numOf(v); ok = !isNaN(n) && Math.abs(n-q.a) <= (q.tol||0.01); }
+    else { ok = q.a.map(norm).includes(norm(v)); } }
+  locked=true; if(ok) score++;
+  answers.push({q, ok, given});
+  const fb=document.getElementById('fb');
+  fb.innerHTML = '<div class="fb '+(ok?'ok':'bad')+'"><b>'+(ok?'✔ Saktë!':'✘ Gabim.')+'</b> '+(q.t!=='mc'?'Përgjigja: <b>'+esc(Array.isArray(q.a)?q.a[0]:q.a)+'</b>. ':'')+esc(q.e||'')+'</div>';
+  document.getElementById('chk').textContent='Vazhdo →'; document.getElementById('skip').style.display='none';
+  document.getElementById('prog').textContent = 'Pyetja '+(i+1)+' / '+order.length+'  ·  Pikë: '+score;
+}
+function finish(){
+  clearInterval(tInt);
+  const pct=Math.round(100*score/order.length);
+  let h='<div class="res"><h2>Rezultati</h2><div class="big">'+score+' / '+order.length+'</div><p class="meta">'+pct+'% · koha '+fmt(Math.floor((Date.now()-tStart)/1000))+'</p>';
+  h+='<p>'+(pct>=85?'Shkëlqyeshëm – kjo temë është gati për provim.':pct>=65?'Mirë. Rishiko pyetjet e gabuara më poshtë dhe përsërite nesër.':'Kthehu te skedari i temës, lexoje edhe një herë, pastaj përsërite kuizin.')+'</p>';
+  h+='<div class="row"><button class="btn" onclick="restart(false)">Përsërit</button><button class="btn sec" onclick="restart(true)">Përsërit (i përzier)</button></div>';
+  h+='<ul class="list">'+answers.map((a,k)=>'<li class="'+(a.ok?'':'bad')+'"><span class="tag">'+(k+1)+'</span>'+(a.ok?'✔ ':'✘ ')+esc(a.q.q)+(a.ok?'':'\n   Ti: '+esc(a.given)+'  |  Saktë: '+esc(a.q.t==='mc'?a.q.opts[a.q.a]:(Array.isArray(a.q.a)?a.q.a[0]:a.q.a))+'\n   '+esc(a.q.e||''))+'</li>').join('')+'</ul></div>';
+  card.innerHTML=h; document.getElementById('barfill').style.width='100%';
+  document.getElementById('prog').textContent='Përfunduar';
+  try{ const key='sd2quiz:'+document.title; const best=JSON.parse(localStorage.getItem(key)||'null'); if(!best||score>best.score) localStorage.setItem(key,JSON.stringify({score,total:order.length,date:new Date().toISOString()})); }catch(e){}
+}
+function restart(sh){ i=0; score=0; answers=[]; order=[...QS.keys()]; if(sh) shuffle(); tStart=Date.now(); clearInterval(tInt); tInt=setInterval(tick,1000); tick(); render(); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+restart(false);
+</script></body></html>

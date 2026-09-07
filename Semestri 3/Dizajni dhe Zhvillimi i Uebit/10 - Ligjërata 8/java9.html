@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="sq">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Register Form - Validim me Regex</title>
+    <style>
+        body {
+            font-family: system-ui, Segoe UI, Roboto, Arial;
+            margin: 40px;
+            background: #f7f7fb
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 420px;
+            margin: 0 auto;
+            box-shadow: 0 6px 18px rgba(10, 10, 20, 0.08)
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-size: 14px
+        }
+
+        input {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 6px;
+            border: 1px solid #d7d7df;
+            border-radius: 6px;
+            box-sizing: border-box
+        }
+
+        .error {
+            color: #b00020;
+            font-size: 13px;
+            margin-top: 6px
+        }
+
+        .success {
+            color: #0a7a3a;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center
+        }
+
+        button {
+            margin-top: 16px;
+            width: 100%;
+            padding: 10px;
+            border: 0;
+            border-radius: 8px;
+            background: #2b69ff;
+            color: #fff;
+            font-weight: 600
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Regjistrim i thjeshtë</h2>
+        <form id="registerForm" novalidate>
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" 
+            required placeholder="min 3 karaktere" />
+            <div id="usernameError" class="error" aria-live="polite"></div>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" 
+            required placeholder="shembull@domen.com" />
+            <div id="emailError" class="error" aria-live="polite"></div>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required
+                placeholder="min 8 (1 uppercase, 1 digit, 1 special)" />
+            <div id="passwordError" class="error" aria-live="polite"></div>
+
+            <label for="confirm">Confirm Password</label>
+            <input id="confirm" name="confirm" type="password" 
+            required placeholder="Rijepni fjalëkalimin" />
+            <div id="confirmError" class="error" aria-live="polite"></div>
+
+            <label for="phone">Telefon (opsional)</label>
+            <input id="phone" name="phone" type="tel" 
+            placeholder="+38344123456" />
+            <div id="phoneError" class="error" aria-live="polite"></div>
+
+            <button type="submit">Regjistrohu</button>
+            <div id="formSuccess" class="success" role="status" aria-live="polite"></div>
+        </form>
+    </div>
+    <script>
+        const usernameRe = /^[a-zA-Z0-9._-]{3,20}$/; 
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/; 
+        const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/; 
+        const phoneRe = /^\+?\d{7,15}$/; 
+
+        const form = document.getElementById('registerForm');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const confirm = document.getElementById('confirm');
+        const phone = document.getElementById('phone');
+
+        const usernameError = document.getElementById('usernameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmError = document.getElementById('confirmError');
+        const phoneError = document.getElementById('phoneError');
+        const formSuccess = document.getElementById('formSuccess');
+
+        function clearErrors() {
+            [usernameError, emailError, passwordError, confirmError, 
+            phoneError, formSuccess].forEach(el => el.textContent = '');
+        }
+        function validateField() {
+            let valid = true;
+            clearErrors();
+            if (!usernameRe.test(username.value.trim())) {
+                usernameError.textContent = 'Username i pavlefshëm. 3-20 karaktere; shkronja, numra, . _ - lejohet.';
+                valid = false;
+            }
+            if (!emailRe.test(email.value.trim())) {
+                emailError.textContent = 'Email i pavlefshëm.';
+                valid = false;
+            }
+            if (!passwordRe.test(password.value)) {
+                passwordError.textContent = 'Fjalëkalimi duhet të ketë të paktën 8 karaktere, 1 shkronjë të madhe, 1 të vogël, 1 numër dhe 1 simbol.';
+                valid = false;
+            }
+            if (password.value !== confirm.value) {
+                confirmError.textContent = 'Fjalëkalimet nuk përputhen.';
+                valid = false;
+            }
+            if (phone.value.trim() !== '' && !phoneRe.test(phone.value.trim())) {
+                phoneError.textContent = 'Numër telefoni i pavlefshëm. P.sh. +38344123456 ose 044123456.';
+                valid = false;
+            }
+            return valid;
+        }
+
+        // Validim live (opsional):
+        username.addEventListener('input', () => { if (usernameRe.test(username.value.trim())) 
+            usernameError.textContent = ''; });
+        email.addEventListener('input', () => { if (emailRe.test(email.value.trim())) 
+            emailError.textContent = ''; });
+        password.addEventListener('input', () => { if (passwordRe.test(password.value)) 
+            passwordError.textContent = ''; });
+        confirm.addEventListener('input', () => { if (password.value === confirm.value) 
+            confirmError.textContent = ''; });
+        phone.addEventListener('input', () => { if (phone.value.trim() === '' || 
+        phoneRe.test(phone.value.trim())) phoneError.textContent = ''; });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formSuccess.textContent = '';
+
+            if (validateField()) {
+                formSuccess.textContent = 'Regjistrimi i suksesshëm! (kjo është vetëm demo në klient)';
+                form.reset();
+            } else {
+                formSuccess.textContent = '';
+            }
+        });
+    </script>
+</body>
+
+</html>
