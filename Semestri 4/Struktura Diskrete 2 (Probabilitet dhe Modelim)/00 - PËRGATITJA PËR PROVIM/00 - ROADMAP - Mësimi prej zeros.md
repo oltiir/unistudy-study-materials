@@ -259,6 +259,7 @@ Materialet:
 - [06 – Detyra për Ushtrim](<./06 - Detyra për Ushtrim (me zgjidhje).md>)
 - [09 – Provim Simulues](<./09 - Provim Simulues i Ri.md>)
 - [10 – Ushtrime për nesër sipas roadmap-it](<./10 - Ushtrime për nesër sipas roadmap-it.md>)
+- [11 – Varianti i fotografuar: Hamming C[9,5]](<./11 - Varianti i fotografuar - Hamming C9,5.md>)
 
 ## 22. Pyetjet teorike
 
