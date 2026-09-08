@@ -237,3 +237,71 @@ Faktorizimi që duhet ta dish: **x⁷ + 1 = (x + 1)(x³ + x + 1)(x³ + x² + 1)*
 **F. "A ka gabim r me g(x)?":** pjesëto r(x) : g(x). Mbetja 0 → jo; ≠ 0 → po. Herësi = mesazhi (nëse s'ka gabim).
 
 **G. "Fjalëkodi i pranueshëm + mesazhi" (kod ciklik):** pjesëto, gjej s(x); gjej i me xⁱ mod g = s(x); c = r + xⁱ; m(x) = c(x)/g(x).
+
+---
+
+## 9. Shtesë nga shënimet e dorës: ISBN, UPC dhe pariteti dydimensional
+
+### 9.1 Kodet kontrolluese të shifrave
+
+Këto kode zakonisht **zbulojnë** gabime në shkrimin/skanimin e numrave; nuk janë kode që korrigjojnë vetë një bit si Hamming.
+
+#### ISBN-10
+
+Për shifrat \(d_1d_2\ldots d_{10}\) duhet të vlejë
+
+> **\(10d_1+9d_2+\cdots+2d_9+d_{10}\equiv0\pmod{11}\).**
+
+Shifra e fundit mund të jetë **X**, që përfaqëson 10. Për ta gjetur, llogarit shumën e nëntë shifrave të para dhe zgjidh \(d_{10}\equiv-S\pmod{11}\).
+
+Shembull verifikimi: 0-306-40615-2 jep shumën 132, e cila pjesëtohet me 11, prandaj kodi është i vlefshëm.
+
+#### ISBN-13
+
+Për 12 shifrat e para përdoren peshat alternuese 1,3,1,3,…:
+
+> **\(S=d_1+3d_2+d_3+3d_4+\cdots+3d_{12}\),**
+>
+> **\(d_{13}=(10-(S\bmod10))\bmod10\).**
+
+Shembull: për 978-1-4028-9462-?, \(S=104\), prandaj shifra kontrolluese është **6**.
+
+#### UPC-A
+
+UPC-A ka 11 shifra të dhënash dhe një shifër kontrolluese. Pozicionet tek të 11 shifrave të para shumëzohen me 3, pozicionet çift me 1:
+
+> **\(S=3(d_1+d_3+d_5+d_7+d_9+d_{11})+(d_2+d_4+d_6+d_8+d_{10})\),**
+>
+> **\(d_{12}=(10-(S\bmod10))\bmod10\).**
+
+Shembull: 03600029145-? jep \(S=58\), prandaj shifra kontrolluese është **2**.
+
+> **Kujdes:** ISBN-13 fillon me peshën 1; UPC-A fillon me peshën 3.
+
+### 9.2 Kodi me paritet dydimensional (2D parity)
+
+Bitat e të dhënave vendosen në një matricë. Shtohet nga një bit pariteti për çdo rresht dhe çdo kolonë (zakonisht paritet çift), si dhe biti i këndit.
+
+~~~text
+Të dhënat        Pariteti i rreshtit
+1 0 1 1 | 1
+0 1 0 1 | 0
+1 1 0 0 | 0
+---------+--
+0 0 1 0 | 1
+Paritetet e kolonave
+~~~
+
+Nëse ndryshon **një bit**, saktësisht një rresht dhe një kolonë dështojnë kontrollin; prerja e tyre jep pozicionin e gabimit, kështu që gabimi korrigjohet.
+
+- Korrigjon me siguri një gabim bit.
+- Zbulon shumë gabime të shumëfishta.
+- Nuk zbulon çdo model: katër gabime në cepat e një drejtkëndëshi ruajnë paritetin e çdo rreshti dhe kolone.
+
+### 9.3 Kontroll i shpejtë në provim
+
+1. Shkruaj peshat mbi shifrat/bitat.
+2. Llogarit shumën pa e reduktuar herët.
+3. Apliko mod 11 për ISBN-10 ose mod 10 për ISBN-13/UPC.
+4. Verifiko duke futur edhe shifrën e gjetur: kongruenca duhet të japë 0.
+
