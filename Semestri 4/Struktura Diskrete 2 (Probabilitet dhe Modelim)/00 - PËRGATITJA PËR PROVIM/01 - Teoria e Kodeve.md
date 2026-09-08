@@ -1,5 +1,66 @@
 # 01 – Teoria Algjebrike e Kodeve (Det. 1 dhe Det. 2 në provim ≈ 25 pikë)
 
+<!-- ZERO-START-V1 -->
+## Si ta mësosh këtë kapitull prej zeros
+
+Mos fillo duke e mësuar matricën Hamming përmendësh. Së pari kupto zinxhirin:
+
+\[
+\text{mesazhi }m \xrightarrow{\;G\;} \text{fjalëkodi }c
+\xrightarrow{\text{kanali}} \text{vektori i pranuar }r
+\xrightarrow{\;H\;} \text{sindroma }s
+\]
+
+- **Biti** është një shifër 0 ose 1.
+- **Vektori binar** është një varg i renditur bitash, p.sh. 1010.
+- **Mesazhi \(m\)** është informacioni para kodimit.
+- **Fjalëkodi \(c\)** është mesazhi pasi i shtohen bitat e kontrollit.
+- **Gabimi \(e\)** tregon cilat pozita kanë ndryshuar gjatë transmetimit.
+- **Vektori i pranuar \(r\)** është \(r=c+e\), me mbledhje mod 2.
+- **Sindroma \(s\)** kontrollon nëse \(r\) sillet si një fjalëkod i vlefshëm.
+
+### Aritmetika që përdoret kudo: mod 2
+
+Në kodet binare, mbledhja bëhet mod 2:
+
+| Veprimi | Rezultati |
+|---|---:|
+| \(0+0\) | 0 |
+| \(0+1\) | 1 |
+| \(1+0\) | 1 |
+| \(1+1\) | 0 |
+
+Për shumë terma: numër çift njësheve jep 0; numër tek njësheve jep 1. Prandaj \(1+1+1=1\), ndërsa \(1+1+1+1=0\).
+
+### Çka tregojnë parametrat \(C[n,k]\)?
+
+- \(n\): numri i bitave të fjalëkodit;
+- \(k\): numri i bitave të mesazhit;
+- \(r=n-k\): numri i bitave të kontrollit;
+- numri i mesazheve dhe fjalëkodeve është \(2^k\).
+
+Shembull: te \(C[7,4]\), mesazhi ka 4 bita, fjalëkodi 7 bita, kontrolli 3 bita dhe ekzistojnë \(2^4=16\) mesazhe.
+
+### Si ta lexosh një shumëzim me matricë
+
+Kur shkruajmë \(c=mG\), nuk është magji: nëse një bit i mesazhit është 1, merret rreshti përkatës i \(G\); nëse është 0, rreshti nuk merret. Rreshtat e zgjedhur mblidhen mod 2.
+
+Kur shkruajmë \(s=Hr^T\), secili rresht i \(H\) zgjedh disa bita të \(r\). Shuma mod 2 e tyre bëhet një bit i sindromës. Meqë \(H\) ka \(n-k\) rreshta, sindroma ka \(n-k\) bita.
+
+### Kontrolli para se të vazhdosh
+
+Duhet të jesh në gjendje të përgjigjesh:
+
+1. Pse te \(C[9,5]\) kemi 4 bita kontrolli?
+2. Pse ekzistojnë \(2^5=32\) mesazhe?
+3. Pse \(1+1=0\) në këto detyra?
+4. Cili është dallimi mes \(m,c,r,e,s\)?
+
+Nëse këto janë të qarta, vazhdo me fjalorin dhe procedurat më poshtë.
+
+---
+
+
 > Në provim, dy detyrat e para janë GJITHMONË nga kodet: (1) matrica gjeneruese / kodet lineare,
 > (2) kodi Hamming C[7,4] **ose** kodet polinomiale/ciklike me g(x). Kjo pjesë vlen ~25 pikë,
 > dhe është më "mekanike" – nëse mëson procedurat, i merr pikët.
