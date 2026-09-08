@@ -1,5 +1,85 @@
 # 02 – Probabiliteti Diskret (Det. 3 në provim ≈ 10–17 pikë + 1–2 pyetje teorike)
 
+<!-- ZERO-START-V1 -->
+## Si ta kuptosh probabilitetin prej zeros
+
+Probabiliteti mat sa e mundshme është një ngjarje:
+
+\[
+0\le P(A)\le1
+\]
+
+- \(P(A)=0\): ngjarja është e pamundur.
+- \(P(A)=1\): ngjarja është e sigurt.
+- \(P(A)=0.5\): në kushte të njëjta, presim afërsisht gjysmën e rasteve.
+
+Shembull: në një kuti me 3 të kuqe dhe 2 të bardha ka 5 objekte gjithsej. Probabiliteti për të kuqe është:
+
+\[
+P(K)=\frac{\text{raste të volitshme}}{\text{raste gjithsej}}=\frac35
+\]
+
+### Pse ndonjëherë shumëzojmë?
+
+Kur kërkohen disa hapa njëri pas tjetrit, duhet të ndodhë hapi i parë **dhe** hapi i dytë. Atëherë shumëzojmë probabilitetet përgjatë së njëjtës rrugë.
+
+Dy të kuqe pa kthim:
+
+\[
+P(KK)=\frac35\cdot\frac24
+\]
+
+Pas tërheqjes së parë kanë mbetur 4 objekte, prandaj emëruesi ndryshon nga 5 në 4.
+
+### Pse ndonjëherë mbledhim?
+
+Kur rezultati mund të arrihet në disa mënyra të ndara, mbledhim rrugët.
+
+Një e kuqe dhe një e bardhë mund të ndodhë si:
+
+\[
+KB\quad\text{ose}\quad BK
+\]
+
+Prandaj:
+
+\[
+P(\text{një K dhe një B})=P(KB)+P(BK)
+\]
+
+Rregulli praktik:
+
+- **DHE përgjatë një rruge** \(\rightarrow\) shumëzo.
+- **OSE ndërmjet rrugëve të ndryshme** \(\rightarrow\) mblidh.
+
+### Me kthim kundrejt pa kthim
+
+- **Me kthim:** objekti kthehet; numrat në kuti mbeten të njëjtë; provat zakonisht janë të pavarura.
+- **Pa kthim:** objekti nuk kthehet; numrat ndryshojnë pas çdo hapi; provat janë të varura.
+
+### Pse përdoren kombinacionet?
+
+Kur zgjedhim objekte dhe renditja nuk ka rëndësi, përdorim:
+
+\[
+\binom nk=\frac{n!}{k!(n-k)!}
+\]
+
+\(\binom nk\) tregon sa mënyra ka për të zgjedhur \(k\) objekte nga \(n\), pa i dalluar renditjet. Për shembull, zgjedhja e objekteve A dhe B është e njëjta zgjedhje si B dhe A.
+
+### Si e dallon tipin e detyrës?
+
+1. Një tërheqje e vetme \(\rightarrow\) raste të volitshme / raste gjithsej.
+2. Disa tërheqje me rend të caktuar \(\rightarrow\) pema dhe shumëzimi.
+3. Numri i objekteve të një ngjyre në një mostër \(\rightarrow\) tabelë e ndryshores \(X\), zakonisht me kombinacione.
+4. Kalim nga një kuti/parking në tjetrin \(\rightarrow\) hipoteza dhe probabiliteti i plotë.
+5. Dihet rezultati dhe kërkohet shkaku \(\rightarrow\) formula e Bayes-it.
+
+Më poshtë secili rast zhvillohet hap pas hapi.
+
+---
+
+
 > Detyra 3 është **gjithmonë** njëra nga këto dy: (a) kutia me lëmshe, tërhiqen 3 pa kthim, X = numri i një ngjyre →
 > tabela e ligjit të shpërndarjes + pritja matematike (+ dispersioni); ose (b) probabiliteti i plotë / Bajesi
 > (dy kuti/parkingje, kalon diçka nga e para te e dyta). Të dyja janë të zgjidhura më poshtë.
