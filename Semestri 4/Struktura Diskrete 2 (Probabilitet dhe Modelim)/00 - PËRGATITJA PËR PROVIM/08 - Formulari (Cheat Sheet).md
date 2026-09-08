@@ -9,6 +9,8 @@
 - **Grupi standard**: rreshti 1 = C; rreshtat tjerë = udhëheqës (pesha min, i papërdorur) + C. r → udhëheqësi i rreshtit = gabimi; c = kreu i kolonës.
 - **Polinomiale**: c₀c₁…c_{n−1} ↔ c₀ + c₁x + … . **c(x) = m(x)·g(x)**. Dekodim: r(x) ÷ g(x) → mbetja 0: OK, mesazhi = herësi; ≠ 0: gabim, sindroma xⁱ mod g → pozicioni i.
 - g vlen për kod ciklik ⇔ deg g = n−k dhe **g | xⁿ + 1**. x⁷+1 = (x+1)(x³+x+1)(x³+x²+1). x⁸+1 = (x+1)⁸.
+- **ISBN-10:** 10d₁+9d₂+…+d₁₀ ≡ 0 (mod 11), X=10. **ISBN-13:** pesha 1,3,…; **UPC-A:** pesha 3,1,…; shifra e fundit e bën shumën 0 (mod 10).
+- **Pariteti 2D:** rreshti + kolona me paritet të gabuar lokalizojnë një gabim bit; katër cepat e një drejtkëndëshi mund të mos zbulohen.
 
 ## PROBABILITETI
 - **P(A) = m/n**. P(Ā) = 1−P(A). P(A∪B) = P(A)+P(B)−P(AB). Disjunkte: P(A+B) = P(A)+P(B).
@@ -17,10 +19,12 @@
 - **Pa kthim** (hipergjeometrike): P(X=k) = C(B,k)·C(N−B,n−k)/C(N,n). E(X) = n·B/N. Ose pema: shumëzo radhazi × numri i renditjeve C(n,k).
 - **Me kthim** (binomiale): P(X=k) = C(n,k)pᵏqⁿ⁻ᵏ, E = np, D = npq. Puason: λᵏe^{−λ}/k!.
 - **E(X) = Σxᵢpᵢ**, **E(X²) = Σxᵢ²pᵢ**, **D(X) = E(X²) − [E(X)]²**, σ = √D. Σpᵢ = 1 GJITHMONË.
+- **Z=X+Y:** P(Z=z)=ΣₓP(X=x,Y=z−x); me pavarësi =ΣₓP(X=x)P(Y=z−x). E(Z)=E(X)+E(Y); me pavarësi D(Z)=D(X)+D(Y).
 - C(n,k) = n!/(k!(n−k)!). C(21,3) = 1330, C(23,3) = 1771, C(24,3) = 2024, C(12,3) = 220, C(14,2) = 91.
 
 ## STATISTIKA (të dhëna të grupuara, xᵢ = mesi i klasës, h = gjerësia, F = kumulative)
-- **x̄ = Σfx/N**. **G = e^{(Σ f·ln x)/N}**. **H = N/Σ(f/x)**. Gjithmonë **H ≤ G ≤ x̄**.
+- **x̄ = Σfx/N**. **G = e^{(Σ f·ln x)/N}**. **H = N/Σ(f/x)**. **Q = √(Σfx²/N)**. Për të dhëna pozitive: **H ≤ G ≤ x̄ ≤ Q**.
+- **MAD = Σf|x−x̄|/N**. **IQR = Q₃−Q₁**; mënjanimi kuartil = IQR/2.
 - **Mo = L + (fₘ−f₁)/[(fₘ−f₁)+(fₘ−f₂)]·h** (klasa me f max; f₁ para, f₂ pas).
 - **Me = L + (N/2 − F_para)/fₘ·h**. **Q₁**: N/4. **Q₃**: 3N/4. **IQR = Q₃−Q₁**. Pₖ: kN/100.
 - **σ² = Σf(x−x̄)²/N = Σfx²/N − x̄²**, σ = √σ². (Me N−1 nëse kërkohet mostër.)
