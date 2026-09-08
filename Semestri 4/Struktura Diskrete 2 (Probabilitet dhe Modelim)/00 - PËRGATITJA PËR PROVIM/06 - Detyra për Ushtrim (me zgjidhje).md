@@ -171,3 +171,44 @@ P = (15·5 + 20·4 + 6·6 + 15·5)/(56·8) = (75+80+36+75)/448 = 266/448 = **19/
 **D11.** (a) e³ˣ = Σ3ⁿxⁿ/n! → **aₙ = 3ⁿ**: 1,3,9,27,… (b) a₀=1, a₁=1!·2=2, a₂=2!·3=6 → **1,2,6,0,…**. (c) xeˣ = Σn·xⁿ/n! → **aₙ=n**: 0,1,2,3,…
 
 **D12.** Drejtpërdrejt: eˣe²ˣ=e³ˣ → cₙ=3ⁿ. Me konvolucion: aₖ=1, bₙ₋ₖ=2ⁿ⁻ᵏ, prandaj cₙ=ΣC(n,k)2ⁿ⁻ᵏ=(1+2)ⁿ=**3ⁿ**.
+
+---
+
+## E. Ushtrime nga shënimet e dorës (të verifikuara)
+
+**E1 ★** Gjej shifrën kontrolluese \(t\) të ISBN-10: 99856-762-3-\(t\).
+
+**E2 ★** Gjej shifrën e fundit të ISBN-13: 978-1-4028-9462-?.
+
+**E3 ★** Gjej shifrën e fundit të UPC-A: 03600029145-?.
+
+**E4 ★★** Në një bllok me paritet çift 2D, gjatë transmetimit ndryshon biti në rreshtin 2, kolonën 3. Cilat kontrolle dështojnë dhe si korrigjohet?
+
+**E5 ★★** X merr \(-3,0,1\) me probabilitete \(1/4,1/2,1/4\); Y merr \(1,2\) me probabilitete \(1/3,2/3\). Duke supozuar pavarësi, gjej ligjin e \(Z=X+Y\), \(E(Z)\) dhe \(D(Z)\).
+
+**E6 ★★** Për të dhënat 9, 10, 9, 13, 14, 16 gjej mesataren aritmetike, mesataren kuadratike, MAD dhe devijimin standard të popullimit.
+
+**E7 ★** Për 1,2,3,4,5,6,7,8 përdor metodën e gjysmave për të gjetur \(Q_1,Q_3\), IQR dhe mënjanimin kuartil.
+
+### Zgjidhjet E
+
+**E1.** Shuma e nëntë shifrave me peshat 10,9,…,2 është 377. Duhet \(377+t\equiv0\pmod{11}\), prandaj **t=8**.
+
+**E2.** Shuma me peshat 1,3,… e 12 shifrave është 104. \(d_{13}=(10-4)\bmod10\), prandaj **d₁₃=6**.
+
+**E3.** \(S=3(0+6+0+2+1+5)+(3+0+0+9+4)=58\). Prandaj **d₁₂=2**.
+
+**E4.** Dështojnë kontrolli i **rreshtit 2** dhe i **kolonës 3**. Biti në prerjen (2,3) përmbyset përsëri.
+
+**E5.**
+
+| z | −2 | −1 | 1 | 2 | 3 |
+|---|---:|---:|---:|---:|---:|
+| P(Z=z) | 1/12 | 1/6 | 1/6 | 5/12 | 1/6 |
+
+**\(E(Z)=7/6\)** dhe, nga pavarësia, **\(D(Z)=9/4+2/9=89/36\)**.
+
+**E6.** \(\bar{x}=71/6\approx11.833\); \(Q=\sqrt{883/6}\approx12.131\); \(\operatorname{MAD}=2.5\); \(\sigma=\sqrt{257}/6\approx2.672\).
+
+**E7.** \(Q_1=(2+3)/2=2.5\), \(Q_3=(6+7)/2=6.5\); **IQR=4** dhe **mënjanimi kuartil=2**.
+
