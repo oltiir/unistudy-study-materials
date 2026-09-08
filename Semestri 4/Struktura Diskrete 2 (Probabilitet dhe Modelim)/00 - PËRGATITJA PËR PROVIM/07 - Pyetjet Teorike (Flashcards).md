@@ -1,6 +1,6 @@
 # 07 – Pyetjet teorike: përgjigje të gatshme (3–4 pikë secila, 12–16 pikë gjithsej)
 
-> Në provim vijnë 4 pyetje teorike. Këto 24 mbulojnë pyetjet e katër provimeve të ruajtura dhe temat teorike të syllabusit.
+> Në provim vijnë 4 pyetje teorike. Këto 30 mbulojnë pyetjet e katër provimeve të ruajtura dhe temat teorike të syllabusit.
 > Mëso përgjigjen **2–4 fjali + formulë + shembull**. Kaq mjafton për pikë të plota.
 
 ---
@@ -92,3 +92,26 @@ Formulohet H₀: μ=μ₀ dhe alternativa μ≠μ₀, μ>μ₀ ose μ<μ₀. Kur
 
 **24. Çfarë është funksioni gjenerues eksponencial?**
 FGE e vargut (aₙ) është E(x)=Σaₙxⁿ/n!, prandaj aₙ=n!·[xⁿ]E(x). Ndryshe nga FG e zakonshme, vargu 1,1,1,… ka FGE eˣ, kurse vargu cⁿ ka FGE eᶜˣ. Prodhimi i dy FGE-ve jep konvolucionin binomial cₙ=ΣC(n,k)aₖbₙ₋ₖ.
+
+---
+
+## SHTESA NGA SHËNIMET E DORËS
+
+**25. Si kontrollohen ISBN-10, ISBN-13 dhe UPC-A?**
+ISBN-10 plotëson \(10d_1+9d_2+\cdots+d_{10}\equiv0\pmod{11}\), ku X mund të përfaqësojë 10. ISBN-13 përdor peshat 1,3,1,3,… dhe UPC-A peshat 3,1,3,1,… mbi shifrat e të dhënave; shifra e fundit zgjidhet që shuma të jetë 0 mod 10.
+
+**26. Çfarë është kodi me paritet dydimensional?**
+Bitat vendosen në matricë dhe shtohet paritet për çdo rresht e kolonë. Një gabim i vetëm jep një rresht dhe një kolonë me paritet të gabuar; prerja e tyre e lokalizon dhe e korrigjon bitin. Katër gabime në cepat e një drejtkëndëshi mund të mbeten të pazbuluara.
+
+**27. Si gjendet shpërndarja e Z=X+Y?**
+Në përgjithësi \(P(Z=z)=\sum_xP(X=x,Y=z-x)\). Nëse X dhe Y janë të pavarura, \(P(Z=z)=\sum_xP(X=x)P(Y=z-x)\); produktet që japin të njëjtën shumë z bashkohen. Gjithmonë \(E(Z)=E(X)+E(Y)\), ndërsa për pavarësi \(D(Z)=D(X)+D(Y)\).
+
+**28. Çfarë është mesatarja kuadratike?**
+\(Q=\sqrt{\sum f_ix_i^2/N}\). Për të dhëna pozitive vlen \(H\le G\le\bar{x}\le Q\).
+
+**29. Çfarë është mënjanimi mesatar absolut?**
+\(\operatorname{MAD}=\sum f_i|x_i-\bar{x}|/N\). Ai përdor largesat absolute nga mesatarja, ndryshe nga devijimi standard që përdor katrorët e largesave.
+
+**30. Cili është dallimi mes IQR-së dhe mënjanimit kuartil?**
+IQR është \(Q_3-Q_1\). Mënjanimi kuartil (semi-interquartile range) është \((Q_3-Q_1)/2\), pra gjysma e IQR-së.
+
