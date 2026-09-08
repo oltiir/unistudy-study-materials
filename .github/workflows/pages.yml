@@ -26,8 +26,6 @@ jobs:
       - name: Drop non-site files from the artifact
         run: rm -rf .github scripts .gitignore
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
