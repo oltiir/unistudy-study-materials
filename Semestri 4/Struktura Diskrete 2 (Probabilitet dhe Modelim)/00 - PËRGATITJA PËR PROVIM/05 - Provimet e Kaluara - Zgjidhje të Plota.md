@@ -30,22 +30,36 @@ Kodi i ri C' = {1001, 1100, 0101, 0000}: çdo fjalëkod ka peshë çift, d(C') =
 
 > Kujdes: matrica [I₃ | 1ᵀ] do të ishte kodues për **të gjitha** 8 mesazhet 3-bitëshe. Ajo nuk është gjeneratori i këtij kodi C me vetëm 4 fjalëkode.
 
-## Det. 2 – Kodi ciklik C[7,4], g(x) = 1 + x³, pranohet f = 1011001
+## Det. 2 – Kodi ciklik C[7,4], g(x) = 1 + x³, pranohet f = 1011100
 
-f = f₀f₁…f₆ → **f(x) = 1 + x² + x³ + x⁶**.
-Pjesëtojmë f(x) me g(x) = x³ + 1:
+Me konventën e përdorur në material, biti i parë është koeficienti i \(x^0\):
 
-```
-x⁶ + x³ + x² + 1  :  x³ + 1
-x⁶ + x³                    ← x³·g(x)
-------------
-         x² + 1            ← mbetja (shkalla < 3, ndalemi)
-```
-q(x) = x³, **s(x) = x² + 1 ≠ 0 → ka ndodhur gabim.**
+\[
+f(x)=1+x^2+x^3+x^4
+\]
 
-Pjesëtimi jep një kandidat q(x)g(x) = x³ + x⁶ → 0001001, por **nuk provon** se ky është fjalëkodi më i afërt. Pa një rregull dekodimi të dhënë ose pa sindromë që identifikon unikisht gabimin, nuk lejohet të shpallet ky si korrigjim.
+Pjesëtimi mod 2 me \(g(x)=1+x^3\) jep:
 
-**Përfundimi i saktë:** g(x) = 1 + x³ **nuk** pjesëton x⁷ + 1 (mbetja x + 1), sepse x⁷ + 1 = (x+1)(x³+x+1)(x³+x²+1). Prandaj ky nuk është kod ciklik i vlefshëm [7,4]; pesha minimale është 2, kështu që gabimi zbulohet, por **nuk korrigjohet unikisht** – f ka 6 fjalëkode në largesë 2. Përgjigjja e sigurt është: *ka gabim; korrigjimi dhe mesazhi nuk mund të caktohen unikisht me këtë g(x).* Me gjenerator të vlefshëm g(x) = 1 + x + x³: f mod g = x + 1 = x³ mod g → gabimi në pozicionin 3 → c = 1010001, m = 1101.
+\[
+f(x)=(x+1)g(x)+(x^2+x)
+\]
+
+Pra:
+
+\[
+q(x)=x+1,\qquad s(x)=x^2+x\neq0
+\]
+
+**Përfundimi i parë:** është zbuluar gabim, sepse mbetja nuk është zero.
+
+**Kujdes matematikor për këtë detyrë:** \(g(x)=1+x^3\) nuk pjesëton \(x^7+1\), prandaj nuk është gjenerator standard i një kodi ciklik Hamming \([7,4]\). Kodi i shumëfishave të këtij \(g\) ka \(d=2\); vektori i pranuar ka disa fjalëkode njësoj afër dhe korrigjimi nuk është unik. Katër kandidatët në largesë 2 janë:
+
+\[
+1001000,\quad1011010,\quad1101100,\quad1111110
+\]
+
+Prandaj përgjigjja e sigurt është: **gabimi zbulohet, por fjalëkodi dhe mesazhi nuk caktohen unikisht pa një rregull shtesë dekodimi**. Nëse profesori jep tabelë sindromash ose kërkon një konventë specifike, ndiqet ajo tabelë.
+
 
 ## Det. 3 – 9 bardhë, 6 kuq, 6 verdhë; 3 tërheqje pa kthim; X = nr. i bardhëve
 
