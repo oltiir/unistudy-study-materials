@@ -20,12 +20,12 @@
 
 | Skedari | Çka është | Kur ta përdorësh |
 |---|---|---|
-| `01 - Teoria e Kodeve.md` | Shpjegim i thjeshtuar + procedura hap pas hapi | Dita 1 |
-| `02 - Probabiliteti.md` | Shpjegim + detyra standarde e zgjidhur | Dita 1 |
-| `03 - Statistika.md` | Formulat + tabela ndihmëse + shembull i plotë | Dita 2 |
+| `01 - Teoria e Kodeve.md` | Shpjegim + procedura; përfshin ISBN/UPC dhe paritetin 2D | Dita 1 |
+| `02 - Probabiliteti.md` | Shpjegim + detyra standarde; përfshin shpërndarjen e X+Y | Dita 1 |
+| `03 - Statistika.md` | Formulat + tabela; përfshin RMS, MAD dhe mënjanimin kuartil | Dita 2 |
 | `04 - Funksionet Gjeneruese dhe Rekurencat.md` | Shpjegim + tabela e funksioneve bazë + rekurenca e provimit | Dita 2 |
 | `05 - Provimet e Kaluara - Zgjidhje të Plota.md` | 4 provimet nga fotot, çdo detyrë e zgjidhur | Dita 2–3 |
-| `06 - Detyra për Ushtrim (me zgjidhje).md` | 30+ detyra ★/★★/★★★ me zgjidhje | Dita 2–3 |
+| `06 - Detyra për Ushtrim (me zgjidhje).md` | 30+ detyra ★/★★/★★★; E1–E7 janë nga shënimet | Dita 2–3 |
 | `07 - Pyetjet Teorike (Flashcards).md` | 24 pyetje me përgjigje të gatshme | Çdo mbrëmje 15 min |
 | `08 - Formulari (Cheat Sheet).md` | Gjithçka në një faqe | Dita 3 + mëngjesi i provimit |
 | `09 - Provim Simulues i Ri.md` | Provim i ri 100-pikësh + zgjidhje dhe rubricë | Matja finale e gatishmërisë |
@@ -39,7 +39,7 @@
 **Bllok 1 (2h) – Kodet, pjesa e lehtë**
 1. Lexo `01` §1–§5 (fjalori, G, H, Hamming, grupi standard). Mos e lexo pasivisht: **mbylle dhe rishkruaj G dhe H të Hamming nga mendja.**
 2. Zgjidh vetë: Provimi B Det.1 dhe Det.2, Provimi C Det.1, Provimi D Det.1–2 (skedari 05, mbulo zgjidhjet).
-3. Ushtrime: A1, A2, A3, A6 nga `06`.
+3. Ushtrime: A1, A2, A3, A6 dhe E1–E4 nga `06`.
 4. Kuizi `Kuize/01-kodet.html`.
 
 *Pushim 20 min.*
@@ -53,7 +53,7 @@
 **Bllok 3 (2h) – Probabiliteti**
 1. Lexo `02` plotësisht. Fokus te §7 (kutia) dhe §4 (Bajes).
 2. Zgjidh vetë Det.3 të të 4 provimeve (janë 3 kuti + 1 parking). Duhet ta bësh një kuti në **≤ 12 min**.
-3. Ushtrime B1, B2, B3, B5. Nëse ke kohë: B7.
+3. Ushtrime B1, B2, B3, B5 dhe E5. Nëse ke kohë: B7.
 4. Kuizi `Kuize/02-probabiliteti.html`.
 
 **Mbrëmja (20 min):** Flashcards `07` pyetjet 1–17. Lexo me zë, mbulo, përsërit.
@@ -65,7 +65,7 @@
 **Bllok 1 (2h) – Statistika (detyra më e vlefshme!)**
 1. Lexo `03` §0–§5. Ndërto tabelën ndihmëse me dorë për shembullin.
 2. Zgjidh **plotësisht** Det.4 të Provimit B (5 klasa, më e shkurtër) dhe Provimit D (120 nxënës). Mat kohën: qëllimi **≤ 20 min** për detyrë të plotë.
-3. Ushtrime C1, C2.
+3. Ushtrime C1, C2 dhe E6–E7.
 4. Lexo `03` §6 (testimi i hipotezës), pastaj zgjidh C4 dhe C5 nga `06`.
 5. Kuizi `Kuize/03-statistika.html`.
 
