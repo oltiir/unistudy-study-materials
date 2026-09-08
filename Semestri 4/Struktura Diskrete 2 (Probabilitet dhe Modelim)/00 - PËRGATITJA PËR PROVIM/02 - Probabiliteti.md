@@ -175,3 +175,28 @@ Nëse çdo provë ka sukses me probabilitet p (q = 1 − p) dhe provat janë **t
 3. Për X = 1 ose X = 2 harron t'i shumëzosh me **3** (numri i renditjeve). Në përgjithësi me C(3,k).
 4. D(X) = E(X²) − [E(X)]², **jo** E(X²) − E(X).
 5. Në Bajes, emëruesi është **P(A) e plotë**, jo vetëm një term.
+
+---
+
+## 10. Shtesë nga shënimet e dorës: shuma e dy ndryshoreve të rastit
+
+Nëse \(Z=X+Y\), vlerat e barabarta të shumës duhet të bashkohen:
+
+> **\(P(Z=z)=\sum_x P(X=x,\;Y=z-x)\).**
+
+Kur X dhe Y janë të pavarura, kjo bëhet konvolucioni
+
+> **\(P(Z=z)=\sum_x P(X=x)P(Y=z-x)\).**
+
+Shembull: X merr vlerat −3, 0, 1 me probabilitete \(1/4,1/2,1/4\), ndërsa Y merr 1, 2 me probabilitete \(1/3,2/3\). Duke shumëzuar çdo çift dhe duke bashkuar shumat e njëjta:
+
+| z | −2 | −1 | 1 | 2 | 3 |
+|---|---:|---:|---:|---:|---:|
+| P(Z=z) | 1/12 | 1/6 | 1/6 | 5/12 | 1/6 |
+
+Kontrolli: probabilitetet japin 1.
+
+Gjithmonë vlen **\(E(X+Y)=E(X)+E(Y)\)**. Nëse X dhe Y janë të pavarura, vlen edhe **\(D(X+Y)=D(X)+D(Y)\)**. Në shembull, \(E(Z)=7/6\) dhe \(D(Z)=89/36\).
+
+> **Gabimi tipik:** probabilitetet e çifteve shumëzohen vetëm kur X dhe Y janë të pavarura; përndryshe duhet shpërndarja e përbashkët.
+
