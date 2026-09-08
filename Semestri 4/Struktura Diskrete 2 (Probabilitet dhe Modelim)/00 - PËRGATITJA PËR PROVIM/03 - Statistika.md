@@ -169,3 +169,50 @@ Një prodhues pohon μ = 50. Merret mostër n = 36, x̄ = 52 dhe dihet σ = 6. T
 - Përfundim: në nivelin 5% ka evidencë statistikore se mesatarja ndryshon nga 50.
 
 > Mos shkruaj “H₀ u vërtetua”. Shkruaj **refuzohet H₀** ose **nuk ka evidencë të mjaftueshme për ta refuzuar H₀**. Gabimi i llojit I = refuzojmë H₀ kur është e vërtetë dhe ka probabilitet α.
+
+---
+
+## 8. Shtesë nga shënimet e dorës: masa të tjera për të dhënat
+
+### 8.1 Mesatarja kuadratike
+
+Mesatarja kuadratike (RMS) është
+
+> **\(Q=\sqrt{\dfrac{\sum f_i x_i^2}{N}}\).**
+
+Për të dhëna pozitive vlen renditja **\(H\le G\le \bar{x}\le Q\)**.
+
+### 8.2 Mënjanimi mesatar absolut
+
+Mënjanimi mesatar absolut rreth mesatares është
+
+> **\(\operatorname{MAD}=\dfrac{\sum f_i|x_i-\bar{x}|}{N}\).**
+
+Mos e ngatërro me devijimin standard: te MAD përdoren vlerat absolute; te varianca/devijimi standard përdoren katrorët.
+
+### 8.3 Moda dhe mediana për të dhëna të pagrupuara
+
+- **Moda** është vlera me frekuencën më të madhe; mund të mos ekzistojë ose mund të ketë disa moda.
+- Pas renditjes, për \(n\) tek mediana është vlera në pozicionin \((n+1)/2\).
+- Për \(n\) çift, mediana është mesatarja e vlerave në pozicionet \(n/2\) dhe \(n/2+1\).
+
+### 8.4 IQR dhe mënjanimi kuartil
+
+> **\(\operatorname{IQR}=Q_3-Q_1\),**
+>
+> **mënjanimi kuartil \(=\dfrac{Q_3-Q_1}{2}\).**
+
+Pra këto dy madhësi nuk janë e njëjta gjë; e dyta është gjysma e IQR-së.
+
+### 8.5 Shembull i verifikuar: 9, 10, 9, 13, 14, 16
+
+\[
+\bar{x}=\frac{71}{6}\approx11.833,\qquad
+\sigma^2=\frac{257}{36}\approx7.139,\qquad
+\sigma=\frac{\sqrt{257}}{6}\approx2.672.
+\]
+
+Me emërues \(n-1\), devijimi standard i mostrës është \(s=\sqrt{257/30}\approx2.927\). Mesatarja kuadratike është \(Q=\sqrt{883/6}\approx12.131\), ndërsa \(\operatorname{MAD}=2.5\).
+
+> Vlera rreth 12.65 që shfaqet në një faqe të shënimeve nuk mund të jetë devijimi standard: ajo është më e madhe se amplituda 7. Rezultati i saktë me emërues \(N\) është **2.672**.
+
