@@ -1,5 +1,106 @@
 # 04 – Funksionet Gjeneruese dhe Rekurencat (Det. 5 + Det. 6 ≈ 25–34 pikë)
 
+<!-- ZERO-START-V1 -->
+## Si ta kuptosh këtë kapitull prej zeros
+
+### Çka është vargu?
+
+Vargu është një listë numrash me renditje:
+
+\[
+a_0,a_1,a_2,a_3,\ldots
+\]
+
+Indeksi nis zakonisht nga 0. Për vargun \(2,5,8,\ldots\):
+
+\[
+a_0=2,\qquad a_1=5,\qquad a_2=8
+\]
+
+Kjo është shumë e rëndësishme: numri në pozitën \(n\) bëhet koeficienti i \(x^n\).
+
+### Çka bën funksioni gjenerues?
+
+Funksioni gjenerues e paketon krejt vargun në një shprehje:
+
+\[
+A(x)=a_0+a_1x+a_2x^2+a_3x^3+\cdots
+\]
+
+Shembull:
+
+\[
+2,5,8,\ldots \quad\longrightarrow\quad 2+5x+8x^2+\cdots
+\]
+
+\(x\) këtu nuk është një numër që duhet ta gjejmë. Ai shërben si etiketë e pozitës. Koeficienti para \(x^3\) është \(a_3\).
+
+### Prej nga del \(\frac1{1-x}\)?
+
+Le të jetë:
+
+\[
+S=1+x+x^2+x^3+\cdots
+\]
+
+Shumëzoje me \(x\):
+
+\[
+xS=x+x^2+x^3+\cdots
+\]
+
+Zbritja \(S-xS\) anulon të gjitha termat pasues:
+
+\[
+S-xS=1
+\]
+
+\[
+S(1-x)=1\quad\Rightarrow\quad S=\frac1{1-x}
+\]
+
+Prandaj:
+
+\[
+1,1,1,1,\ldots \longleftrightarrow \frac1{1-x}
+\]
+
+Nëse shfaqen vetëm fuqitë çift \(1+x^2+x^4+\cdots\), zëvendësojmë \(x\) me \(x^2\):
+
+\[
+\frac1{1-x^2}
+\]
+
+### Pse zerot në fillim japin faktor \(x^k\)?
+
+Vargu \(7,3,7,3,\ldots\) fillon te \(x^0\). Nëse shtojmë katër zero përpara, 7 kalon nga \(x^0\) në \(x^4\). Prandaj krejt funksioni shumëzohet me \(x^4\).
+
+### Dy drejtime të kundërta të detyrave
+
+1. **Vargu \(\rightarrow\) funksioni:** shkruaj termat me \(x^n\), identifiko modelin, përdor serinë gjeometrike dhe zhvendosjen.
+2. **Funksioni \(\rightarrow\) vargu:** zgjero funksionin dhe lexo koeficientët.
+
+### Çka është rekurenca?
+
+Rekurenca e përkufizon një anëtar përmes anëtarëve para tij. Shembull:
+
+\[
+a_n=2a_{n-1},\qquad a_0=3
+\]
+
+Atëherë:
+
+\[
+a_1=2\cdot3=6,\quad a_2=2\cdot6=12,\quad a_3=24
+\]
+
+Kushti fillestar është i domosdoshëm; pa \(a_0\), formula përshkruan shumë vargje të ndryshme.
+
+Më poshtë mësohen veçmas: modelet bazë, zhvendosja, teorema binomiale dhe zgjidhja e rekurencave.
+
+---
+
+
 > Det. 5: "Të caktohet funksioni gjenerues i vargut 0,0,0,0,7,3,7,3,…" (translacion + varg periodik).
 > Det. 6: ose "Të gjendet vargu që ka funksion gjenerues (1+2x)⁻⁴" (teorema binomiale e zgjeruar),
 > ose "Të zgjidhet rekurenca aₙ = 9aₙ₋₁ − 14aₙ₋₂ + 2ⁿ" (rekurencë lineare johomogjene).
