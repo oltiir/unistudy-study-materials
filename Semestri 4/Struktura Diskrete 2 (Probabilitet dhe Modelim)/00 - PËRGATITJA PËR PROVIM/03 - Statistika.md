@@ -1,5 +1,75 @@
 # 03 – Statistika Përshkruese (Det. 4 në provim ≈ 16–20 pikë – DETYRA MË E VLEFSHME!)
 
+<!-- ZERO-START-V1 -->
+## Si ta kuptosh statistikën prej zeros
+
+Në detyrat e provimit nuk jepen zakonisht të gjitha matjet një nga një. Ato grupohen në intervale.
+
+Shembull:
+
+| Pesha | Frekuenca |
+|---|---:|
+| 60–62 kg | 10 |
+
+Kjo do të thotë se 10 persona kanë peshë ndërmjet 60 dhe 62 kg. Nuk e dimë peshën e saktë të secilit. Për llogaritje e përfaqësojmë gjithë intervalin me pikën e mesit:
+
+\[
+x_i=\frac{60+62}{2}=61
+\]
+
+Pra sillemi sikur këta 10 persona kanë afërsisht 61 kg. Kjo është arsyeja pse llogaritjet për të dhëna të grupuara janë përafrime.
+
+### Simbolet që përdorim
+
+- \(L_i\): kufiri i poshtëm i intervalit;
+- \(U_i\): kufiri i sipërm;
+- \(h=U_i-L_i\): gjerësia e intervalit;
+- \(x_i=(L_i+U_i)/2\): mesi i intervalit;
+- \(f_i\): sa të dhëna janë në atë interval;
+- \(N=\sum f_i\): numri i përgjithshëm;
+- \(F_i\): frekuenca kumulative, pra sa të dhëna kemi mbledhur deri te ai interval.
+
+### Pse mesatarja është e ponderuar?
+
+Nëse mesi 61 paraqitet 10 herë, kontributi i tij është \(10\cdot61\). Prandaj:
+
+\[
+\bar x=\frac{\sum f_ix_i}{N}
+\]
+
+Nuk mund t'i mbledhim vetëm meset e intervaleve, sepse intervalet nuk kanë të gjitha të njëjtën frekuencë.
+
+### Si gjendet mediana pa pasur të gjitha të dhënat?
+
+Mediana ndan të dhënat në dy gjysma. Pozita e saj është \(N/2\). Me frekuencën kumulative gjejmë intervalin që përmban këtë pozitë, pastaj bëjmë interpolim brenda intervalit.
+
+### Si gjendet moda?
+
+Moda ndodhet në intervalin me frekuencën më të madhe. Formula përdor edhe frekuencën para dhe pas tij për të vlerësuar ku brenda intervalit ndodhet kulmi.
+
+### Çka mat devijimi standard?
+
+Mesatarja tregon qendrën. Devijimi standard tregon sa larg, në përgjithësi, janë të dhënat nga ajo qendër:
+
+- devijim i vogël: vlerat janë të grumbulluara afër mesatares;
+- devijim i madh: vlerat janë më të shpërndara.
+
+### Rendi që ndiqet gjithmonë
+
+1. Gjej \(N=\sum f_i\).
+2. Gjej \(h\), \(x_i\), \(f_ix_i\) dhe \(F_i\).
+3. Llogarit mesin aritmetik.
+4. Gjej klasën modale dhe mediane.
+5. Llogarit meset gjeometrike/harmonike nëse kërkohen.
+6. Llogarit variancën dhe devijimin standard.
+7. Gjej \(Q_1,Q_3\) dhe kontrollo a kërkohet IQR apo mënjanimi kuartil.
+8. Vizato histogramin.
+
+Më poshtë kjo procedurë zbatohet në një tabelë reale të provimit.
+
+---
+
+
 > Detyra 4 është GJITHMONË: tabelë me intervale (pesha, gjatësia, pikët) dhe frekuenca f, N = 100 ose 120.
 > Kërkohen: histogrami, mesi aritmetik/gjeometrik/harmonik, moda, mediana, devijimi standard,
 > mënjanimi interkuartil (IQR), ndonjëherë centili. Është llogaritje e pastër – me tabelë ndihmëse nuk gabon.
