@@ -3,9 +3,9 @@
 ## KODET
 - Mbledhja mod 2: 1+1 = 0. d(x,y) = nr. pozicionesh të ndryshme = w(x+y). **d(C) linear = pesha min jo-zero.**
 - Zbulon **d−1**, korrigjon **⌊(d−1)/2⌋**. Kodi linear C[n,k]: 2ᵏ fjalëkode, shkalla k/n.
-- **c = m·G** (shuma e rreshtave të G ku m ka 1). G = [I_k | P] ⇒ **H = [Pᵀ | I_{n−k}]**, H·cᵀ = 0, G·Hᵀ = 0.
+- **c = m·G** (shuma e rreshtave të G ku m ka 1). Dy forma: G = [I_k | P] ⇒ H = [Pᵀ | I_r]; ose forma e fotografive **H = [I_r | Q] ⇒ G = [Qᵀ | I_k]**. Në të dyja: H·cᵀ = 0 dhe G·Hᵀ = 0.
 - **Sindroma s = H·rᵀ**: 0 → OK; = kolona j → gabim në bitin j.
-- **Hamming [7,4]**: G-rreshtat 1000|110, 0100|101, 0010|011, 0001|111; p₁ = m₁+m₂+m₄, p₂ = m₁+m₃+m₄, p₃ = m₂+m₃+m₄. H = kolonat 110,101,011,111,100,010,001 (si rreshta të Hᵀ).
+- **Hamming [7,4], forma e provimit:** H ka kolonat 111,110,101,100,011,010,001. Renditja c=(m₁,m₂,m₃,p₁,m₄,p₂,p₃); p₁=m₁+m₂+m₃, p₂=m₁+m₂+m₄, p₃=m₁+m₃+m₄. Për m=0110 del **c=0110011**.
 - **Grupi standard**: rreshti 1 = C; rreshtat tjerë = udhëheqës (pesha min, i papërdorur) + C. r → udhëheqësi i rreshtit = gabimi; c = kreu i kolonës.
 - **Polinomiale**: c₀c₁…c_{n−1} ↔ c₀ + c₁x + … . **c(x) = m(x)·g(x)**. Dekodim: r(x) ÷ g(x) → mbetja 0: OK, mesazhi = herësi; ≠ 0: gabim, sindroma xⁱ mod g → pozicioni i.
 - g vlen për kod ciklik ⇔ deg g = n−k dhe **g | xⁿ + 1**. x⁷+1 = (x+1)(x³+x+1)(x³+x²+1). x⁸+1 = (x+1)⁸.
