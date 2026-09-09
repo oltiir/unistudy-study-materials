@@ -1,5 +1,7 @@
 # 05 – Provimet e kaluara: zgjidhje të plota, hap pas hapi
 
+> **Përditësim nga fotografitë e zgjidhjeve:** për Hamming përdor si konventë kryesore \(H=[I_r\mid Q]\), \(G=[Q^T\mid I_k]\). Në këtë renditje, \(m=0110\) te \(C[7,4]\) jep \(c=0110011\). Shih [materialin shtesë të verifikuar](<./12 - Materiali shtesë nga fotografitë - Zgjidhje të verifikuara.md>) për matricat e sakta dhe korrigjimet e llogaritjeve të dorës.
+
 > Katër provime të kaluara (fotot që ke). Të gjitha llogaritjet janë verifikuar me kompjuter.
 > **Këshillë:** mos i lexo zgjidhjet direkt. Mbulo, provo vetë 15 min, pastaj krahaso.
 
