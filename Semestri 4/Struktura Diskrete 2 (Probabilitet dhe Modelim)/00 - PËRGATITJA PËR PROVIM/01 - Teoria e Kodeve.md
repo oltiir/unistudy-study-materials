@@ -152,6 +152,8 @@ Fjalëkodi c = c₀c₁c₂…c_{n−1} ↔ **c(x) = c₀ + c₁x + c₂x² + �
 
 Nëse G = [ I_k | P ] atëherë **H = [ Pᵀ | I_{n−k} ]**. (Këtë formulë mësoje përmendësh.)
 
+Në konventën e përdorur në fotografitë e provimit, identiteti vendoset në anën tjetër: **H = [ I_r | Q ]** dhe **G = [ Qᵀ | I_k ]**. Të dy çiftet janë të sakta; zgjidh njërin dhe mos i përziej kolonat.
+
 **Sindroma** e vektorit të pranuar r: **s = H · rᵀ**.
 - s = 0 → r është fjalëkod, pranohet (asnjë gabim i zbuluar).
 - s ≠ 0 → ka gabim. Nëse s është e barabartë me **kolonën j të H**, gabimi është në pozicionin j → ndrysho bitin j.
@@ -160,31 +162,79 @@ Nëse G = [ I_k | P ] atëherë **H = [ Pᵀ | I_{n−k} ]**. (Këtë formulë m
 
 ## 4. Kodi Hamming C[7,4] (shumë i pyetur!)
 
-- n = 7, k = 4, 3 bita kontrolli, 2⁴ = 16 fjalëkode, d = 3, korrigjon **deri në 1 gabim**.
-- **H** (3 × 7): kolonat janë **të gjithë vektorët binarë jo-zero me gjatësi 3** (7 copë). Renditja e kolonave përcakton G.
+- \(n=7\), \(k=4\), \(r=n-k=3\).
+- \(H\) ka madhësi \(3\times7\), \(G\) ka madhësi \(4\times7\), sindroma ka 3 bita.
+- Ka \(2^4=16\) fjalëkode, \(d=3\), prandaj korrigjon një gabim.
 
-Forma sistematike që rekomandoj (mësoje këtë):
+### Konventa e provimit nga shënimet e dorës
 
-```
-      1 0 0 0 | 1 1 0             1 1 0 1 | 1 0 0
-G =   0 1 0 0 | 1 0 1       H =   1 0 1 1 | 0 1 0
-      0 0 1 0 | 0 1 1             0 1 1 1 | 0 0 1
-      0 0 0 1 | 1 1 1
-```
-Kontroll: pjesa P e G (kolonat 5-7) e transponuar = pjesa e majtë e H. ✓
+Në fotografitë e zgjidhjeve përdoret:
 
-**Kodimi i m = m₁m₂m₃m₄:** c = m₁ m₂ m₃ m₄ p₁ p₂ p₃ ku
-- p₁ = m₁ + m₂ + m₄
-- p₂ = m₁ + m₃ + m₄
-- p₃ = m₂ + m₃ + m₄
+\[
+H=[I_r\mid Q],\qquad G=[Q^T\mid I_k]
+\]
 
-**Shembull (provim): m = 0110**
-p₁ = 0+1+0 = 1, p₂ = 0+1+0 = 1, p₃ = 1+1+0 = 0 → **c = 0110 110**.
-Kontroll me rreshta: c = rreshti₂ + rreshti₃ = 0100101 + 0010011 = 0110110 ✓
+Për \(C[7,4]\), kolonat e \(H\) renditen \(111,110,101,100,011,010,001\):
 
-**Dekodimi (korrigjimi) me sindromë:** s = H·rᵀ. Nëse s ≠ 0, s përputhet me një kolonë të H → ai pozicion është gabim.
+\[
+H=
+\begin{bmatrix}
+1&1&1&1&0&0&0\\
+1&1&0&0&1&1&0\\
+1&0&1&0&1&0&1
+\end{bmatrix}
+\]
 
-> Shënim: Ekziston edhe forma "klasike" me pozicionet p₁p₂d₁p₃d₂d₃d₄ (bitat e kontrollit në pozicionet 1,2,4). Aty m=0110 → 1100110. Të dyja janë të sakta – thuaj cilën konventë përdor.
+Kolonat 4, 6 dhe 7 janë \(100,010,001\), pra formojnë \(I_3\). Kjo tregon se bitat e kontrollit janë në pozitat 4, 6 dhe 7. Mesazhi vendoset në pozitat 1, 2, 3 dhe 5:
+
+\[
+c=(m_1,m_2,m_3,p_1,m_4,p_2,p_3)
+\]
+
+Nga kushti \(Hc^T=0\) dalin formulat:
+
+\[
+p_1=m_1+m_2+m_3
+\]
+
+\[
+p_2=m_1+m_2+m_4
+\]
+
+\[
+p_3=m_1+m_3+m_4
+\]
+
+**Shembulli real i provimit: \(m=0110\).**
+
+\[
+p_1=0+1+1=0,\qquad
+p_2=0+1+0=1,\qquad
+p_3=0+1+0=1
+\]
+
+\[
+\boxed{c=0110011}
+\]
+
+Ky është rezultati që përputhet me zgjidhjen e fotografuar.
+
+### Pse mund të shohësh një përgjigje tjetër?
+
+Në formën sistematike alternative \(G=[I_4\mid P]\), mesazhi vendoset në katër pozitat e para dhe mund të fitohet \(0110110\). Në renditjen klasike \(p_1p_2d_1p_3d_2d_3d_4\) mund të fitohet \(1100110\).
+
+Të tria format mund të përshkruajnë kode Hamming ekuivalente. **Nuk lejohet të merret matrica nga njëra formë dhe renditja e biteve nga një tjetër. Në provim përdor konventën e fotografive dhe shkruaje \(H\) para llogaritjes.**
+
+### Dekodimi me sindromë
+
+\[
+s=Hr^T
+\]
+
+- \(s=000\): nuk zbulohet gabim;
+- \(s\neq000\): krahasoje me kolonat e \(H\);
+- nëse \(s\) është kolona \(j\), ndrysho bitin \(j\) të vektorit të pranuar.
+
 
 ---
 
