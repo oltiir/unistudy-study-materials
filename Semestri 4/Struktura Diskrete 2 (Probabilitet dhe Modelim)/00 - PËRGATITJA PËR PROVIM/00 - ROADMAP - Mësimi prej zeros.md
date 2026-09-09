@@ -105,7 +105,8 @@ Materiali kryesor: [01 – Teoria e Kodeve](<./01 - Teoria e Kodeve.md>)
 - [ ] Di t'i gjej formulat për (p_1,p_2,p_3) nga (G).
 - [ ] Di ta kodoj mesazhin (m=0110).
 - [ ] Di të kontrolloj dhe korrigjoj një gabim me sindromë.
-- [ ] Dalloj formën sistematike nga renditja klasike (p_1p_2d_1p_3d_2d_3d_4).
+- [ ] Dalloj formën e provimit H=[I|Q], G=[Qᵀ|I] nga forma alternative G=[I|P], H=[Pᵀ|I].
+- [ ] Në formën e provimit di pse m=0110 jep c=0110011.
 
 **Detyrë reale e provimit:** “Është dhënë mesazhi (m=[0110]); të gjenerohet një fjalëkod i kodit Hamming (C[7,4]).”
 
@@ -114,8 +115,9 @@ Materiali kryesor: [01 – Teoria e Kodeve](<./01 - Teoria e Kodeve.md>)
 - [ ] Di të gjej (r=9-5=4).
 - [ ] Kuptoj pse sindroma ka 4 bita.
 - [ ] Di të zgjedh 9 kolona të ndryshme jo-zero për (H).
-- [ ] Di ta vendos (I_4) në fund të (H).
-- [ ] Di ta ndërtoj (G=[I_5\mid P]).
+- [ ] Për fotografitë di ta vendos (I_4) në fillim të H=[I_4|Q].
+- [ ] Di ta ndërtoj G=[Qᵀ|I_5] dhe ta kontrolloj.
+- [ ] E njoh edhe formën alternative H=[Pᵀ|I_4], G=[I_5|P].
 - [ ] Di të kontrolloj (GH^T=0).
 
 **Detyrë reale e provimit:** ndërtimi i matricës së kontrollit (H) dhe matricës gjeneruese (G) për (C[9,5]).
@@ -260,6 +262,7 @@ Materialet:
 - [09 – Provim Simulues](<./09 - Provim Simulues i Ri.md>)
 - [10 – Ushtrime për nesër sipas roadmap-it](<./10 - Ushtrime për nesër sipas roadmap-it.md>)
 - [11 – Varianti i fotografuar: Hamming C[9,5]](<./11 - Varianti i fotografuar - Hamming C9,5.md>)
+- [12 – Materiali shtesë nga fotografitë: zgjidhje të verifikuara](<./12 - Materiali shtesë nga fotografitë - Zgjidhje të verifikuara.md>)
 
 ## 22. Pyetjet teorike
 
