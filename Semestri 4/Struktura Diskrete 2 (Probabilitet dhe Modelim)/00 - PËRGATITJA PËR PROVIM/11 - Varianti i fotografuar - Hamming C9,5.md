@@ -4,182 +4,120 @@ Ky është varianti i provimit që përmban ndërtimin e (H) dhe (G) për (C[9,5
 
 ---
 
-## Detyra 1 – Kodo (m=0110) me Hamming (C[7,4])
+## Detyra 1 – Kodo \(m=0110\) me Hamming \(C[7,4]\)
 
-Përdorim formën sistematike:
+Zgjidhja e fotografuar përdor kolonat e \(H\) në këtë rend:
 
-[
-G=[I_4mid P]
-]
+\[
+111,\ 110,\ 101,\ 100,\ 011,\ 010,\ 001
+\]
 
-me:
+\[
+H=
+\begin{bmatrix}
+1&1&1&1&0&0&0\\
+1&1&0&0&1&1&0\\
+1&0&1&0&1&0&1
+\end{bmatrix}
+\]
 
-[
-P=
-egin{bmatrix}
-1&1&0\
-1&0&1\
-0&1&1\
-1&1&1
-end{bmatrix}
-]
+Identiteti \(I_3\) gjendet në kolonat 4, 6 dhe 7, prandaj:
 
-Mesazhi është:
+\[
+c=(m_1,m_2,m_3,p_1,m_4,p_2,p_3)
+\]
 
-[
-m=0110
-]
+Nga \(Hc^T=0\):
 
-Bitat 1 janë në pozitat 2 dhe 3, prandaj (c=mG) është shuma mod 2 e rreshtave 2 dhe 3:
+\[
+p_1=m_1+m_2+m_3,\qquad
+p_2=m_1+m_2+m_4,\qquad
+p_3=m_1+m_3+m_4
+\]
 
-[
-0100101+0010011=0110110
-]
+Për \(m=0110\):
 
-Pra:
+\[
+p_1=0,\qquad p_2=1,\qquad p_3=1
+\]
 
-[
-oxed{c=0110110}
-]
+\[
+\boxed{c=0110011}
+\]
 
-Kontrolli:
-
-[
-Hc^T=000
-]
+> Ky rezultat përputhet me shënimin e dorës. \(0110110\) është rezultat i një forme tjetër sistematike, jo i renditjes së përdorur në këtë variant.
 
 ---
 
-## Detyra 2 – Ndërto (H) dhe (G) për (C[9,5])
+## Detyra 2 – Ndërto \(H\) dhe \(G\) për \(C[9,5]\)
 
 ### Hapi 1: Lexo parametrat
 
-Nga (C[9,5]):
-
-[
-n=9,qquad k=5
-]
-
-Numri i bitave të kontrollit është:
-
-[
-r=n-k=9-5=4
-]
+\[
+n=9,\qquad k=5,\qquad r=n-k=4
+\]
 
 Prandaj:
 
-- (H) ka (r=4) rreshta dhe (n=9) kolona;
-- (G) ka (k=5) rreshta dhe (n=9) kolona;
-- sindroma ka 4 bita.
+\[
+H:4\times9,\qquad G:5\times9
+\]
 
-[
-H:4	imes9,qquad G:5	imes9
-]
+Sindroma ka 4 bita sepse ka nga një bit për secilin prej 4 rreshtave të \(H\).
 
-Kontrolli për korrigjimin e një gabimi:
+### Hapi 2: Përdor formën e fotografuar
 
-[
-2^rge n+1
-]
+Në fletë përdoret:
 
-[
-2^4=16ge10
-]
+\[
+H=[I_4\mid Q]
+\]
 
-Pra 4 bita sindrome mjaftojnë për rastin “pa gabim” dhe 9 pozitat e mundshme të një gabimi.
-
-### Hapi 2: Zgjidh kolonat e (H)
-
-Për ta lokalizuar një gabim, kolonat e (H) duhet të jenë:
-
-- jo-zero;
-- të ndryshme nga njëra-tjetra.
-
-Për formë sistematike, katër kolonat e fundit i vendosim si (I_4). Një zgjedhje e vlefshme është:
-
-[
+\[
 H=
-left[
-egin{array}{ccccc|cccc}
-1&1&1&0&0&1&0&0&0\
-1&0&0&1&1&0&1&0&0\
-0&1&0&1&0&0&0&1&0\
-0&0&1&0&1&0&0&0&1
-end{array}
-ight]
-]
+\left[
+\begin{array}{cccc|ccccc}
+1&0&0&0&1&1&0&0&1\\
+0&1&0&0&1&1&1&1&0\\
+0&0&1&0&0&1&0&1&1\\
+0&0&0&1&0&1&1&1&1
+\end{array}
+\right]
+\]
 
-Kolonat janë:
+Nëntë kolonat janë jo-zero dhe të ndryshme. Kjo lejon që sindroma ta identifikojë secilën prej 9 pozitave të një gabimi.
 
-[
-1100, 1010, 1001, 0110, 0101, 1000, 0100, 0010, 0001
-]
+### Hapi 3: Transpono \(Q\)
 
-Të nënta janë jo-zero dhe të ndryshme.
+Kur \(H=[I_4\mid Q]\), matrica gjeneruese është:
 
-### Hapi 3: Ndaje (H=[P^Tmid I_4])
+\[
+G=[Q^T\mid I_5]
+\]
 
-Pesë kolonat e para formojnë (P^T):
-
-[
-P^T=
-egin{bmatrix}
-1&1&1&0&0\
-1&0&0&1&1\
-0&1&0&1&0\
-0&0&1&0&1
-end{bmatrix}
-]
-
-Pas transponimit:
-
-[
-P=
-egin{bmatrix}
-1&1&0&0\
-1&0&1&0\
-1&0&0&1\
-0&1&1&0\
-0&1&0&1
-end{bmatrix}
-]
-
-### Hapi 4: Ndërto (G=[I_5mid P])
-
-[
+\[
 G=
-left[
-egin{array}{ccccc|cccc}
-1&0&0&0&0&1&1&0&0\
-0&1&0&0&0&1&0&1&0\
-0&0&1&0&0&1&0&0&1\
-0&0&0&1&0&0&1&1&0\
-0&0&0&0&1&0&1&0&1
-end{array}
-ight]
-]
+\left[
+\begin{array}{cccc|ccccc}
+1&1&0&0&1&0&0&0&0\\
+1&1&1&1&0&1&0&0&0\\
+0&1&0&1&0&0&1&0&0\\
+0&1&1&1&0&0&0&1&0\\
+1&0&1&1&0&0&0&0&1
+\end{array}
+\right]
+\]
 
-### Hapi 5: Kontrolli
+### Hapi 4: Kontrollo
 
-Duhet të vlejë:
+\[
+GH^T=Q^T+Q^T=0
+\]
 
-[
-GH^T=0
-]
+Kjo është arsyeja pse matrica \(G\) ndërtohet me \(Q^T\), jo me \(Q\).
 
-Kjo ndodh sepse:
+> Mund të përdoret edhe forma alternative \(G=[I_5\mid P]\), \(H=[P^T\mid I_4]\), por në këtë variant ndiq formën e fotografuar.
 
-[
-G=[I_5mid P],qquad H=[P^Tmid I_4]
-]
-
-dhe në mod 2:
-
-[
-GH^T=P+P=0
-]
-
-> Matricat mund të duken ndryshe nëse kolonat renditen ndryshe. Përgjigjja është e vlefshme nëse kolonat e (H) janë jo-zero, të ndryshme, pjesa identitet është vendosur në përputhje me (G), dhe (GH^T=0).
 
 ---
 
