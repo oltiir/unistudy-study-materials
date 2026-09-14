@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Big Data — Quiz për Provim</title>
+<style>
+:root{--bg:#0b1020;--card:#151d33;--text:#eef2ff;--muted:#aab4d0;--accent:#7c9cff;--ok:#3ddc97;--bad:#ff6b7a}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#090d18,#111a31);color:var(--text);font:16px/1.5 system-ui,sans-serif}
+main{max-width:850px;margin:auto;padding:24px}.head,.card,.result{background:var(--card);border:1px solid #26304d;border-radius:18px;padding:22px;margin:16px 0}
+h1{margin:0 0 8px;font-size:clamp(26px,5vw,42px)}h2{font-size:20px}.muted{color:var(--muted)}
+.progress{height:10px;background:#26304d;border-radius:10px;overflow:hidden}.bar{height:100%;background:var(--accent);width:0;transition:.25s}
+.option{display:block;width:100%;text-align:left;color:var(--text);background:#0f1629;border:1px solid #33405f;border-radius:12px;padding:12px 14px;margin:9px 0;cursor:pointer}
+.option:hover{border-color:var(--accent)}.option.selected{border-color:var(--accent);background:#18264a}.option.correct{border-color:var(--ok);background:#123428}.option.wrong{border-color:var(--bad);background:#3a1720}
+button.action{background:var(--accent);color:#071022;border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;margin-right:8px}
+.feedback{margin-top:12px;padding:12px;border-radius:10px;background:#0f1629}.hidden{display:none}.score{font-size:44px;font-weight:800}
+code{background:#0a1020;padding:2px 6px;border-radius:5px}
+</style>
+</head>
+<body><main>
+<section class="head">
+<h1>Big Data — Quiz për Provim</h1>
+<p class="muted">25 pyetje · zgjidh përgjigjen dhe kontrolloje menjëherë.</p>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<p id="meta" class="muted"></p>
+</section>
+<section id="quiz"></section>
+<section id="result" class="result hidden"></section>
+</main>
+<script>
+const Q=[
+["Cila NUK është njëra nga 5V-të?",["Volume","Velocity","Verification","Value"],2,"Pesë V-të janë Volume, Velocity, Variety, Veracity dhe Value."],
+["JSON zakonisht është:",["Structured","Semi-structured","Unstructured","Vetëm binary"],1,"JSON ka keys/strukturë fleksibile, prandaj është semi-structured."],
+["Cili është shembull i streaming?",["Raport mujor","Backup çdo natë","Analizë e pagesës sapo ndodh","Import vjetor"],2,"Streaming përpunon eventet ndërsa mbërrijnë."],
+["Në HDFS, metadata kryesore menaxhohet nga:",["DataNode","NameNode","Mapper","Reducer"],1,"NameNode menaxhon namespace dhe hartën e blocks; DataNodes ruajnë blocks."],
+["Supervised learning përdor:",["Vetëm data pa labels","Data me përgjigje/labels","Vetëm foto","Vetëm clusters"],1,"Supervised learning mëson nga inpute me rezultate të njohura."],
+["K-Means është:",["Supervised classification","Unsupervised clustering","Regression","Decision tree"],1,"K-Means formon clusters pa labels."],
+["Në K-Means, K është:",["Numri i fqinjëve","Learning rate","Numri i clusters","Numri i features"],2,"K tregon sa clusters/centroidë kërkohen."],
+["Pas assignment në K-Means bëhet:",["Fshirja e pikave","Mesatarja e pikave të çdo cluster-i","Majority vote","Bayes"],1,"Mesatarja koordinatë më koordinatë jep centroidin e ri."],
+["Në K-NN, K është:",["Numri i clusters","Numri i fqinjëve","Numri i iteracioneve","Numri i klasave"],1,"K-NN përdor K pikat më të afërta."],
+["Pse scaling është i rëndësishëm për K-NN?",["Ndryshon labels","Feature me shkallë të madhe mund të dominojë distancën","Rrit K","Eliminon klasat"],1,"Distanca ndikohet drejtpërdrejt nga madhësia numerike e features."],
+["Formula e Bayes është:",["P(A|B)=P(A)P(B)","P(A|B)=P(B|A)P(A)/P(B)","P(A|B)=P(B)/P(A)","P(A|B)=1-P(A)"],1,"Posterior = likelihood × prior / evidence."],
+["Pse quhet naive Naive Bayes?",["Nuk përdor probabilitet","Supozon pavarësi kushtore të features","Ka vetëm dy klasa","Nuk trajnohet"],1,"Supozimi thjeshtues është conditional independence."],
+["Laplace smoothing parandalon:",["Distancat negative","Zero probabilities","Overfitting në pemë","Clusters bosh"],1,"Shtimi i një count-i shmang produktin zero."],
+["Gaussian NB përdoret kryesisht për:",["Features numerike","Vetëm strings","Pika pa klasa","Grafë"],0,"Gaussian NB modelon feature numerike me mean dhe variance për klasë."],
+["Në regresion, output-i zakonisht është:",["Cluster","Vlerë numerike","Vetëm True/False","Centroid"],1,"Regresioni parashikon madhësi të vazhdueshme."],
+["Në y=w0+w1x, w0 është:",["Slope","Intercept","Error","Learning rate"],1,"w0 është vlera e parashikuar kur x=0."],
+["Decision Tree është:",["Vetëm unsupervised","Supervised për classification/regression","Vetëm clustering","Sistem skedarësh"],1,"Pemët mësojnë rregulla if-then nga labels/targets."],
+["Gini=0 do të thotë:",["Node plotësisht i pastër","Gabim maksimal","Learning rate zero","Dataset bosh gjithmonë"],0,"Të gjitha mostrat në node kanë të njëjtën klasë."],
+["Në SOM, BMU është:",["Neuroni më larg","Neuroni më i afërt me inputin","Output label","Learning rate"],1,"Best Matching Unit ka distancën minimale."],
+["Update-i SOM duhet ta lëvizë winner-in:",["Drejt inputit","Larg inputit gjithmonë","Në zero","Te label-i"],0,"w'=w+alpha(x-w) e afron w me x."],
+["Perceptron së pari llogarit:",["Entropy","net=Σwx+b","Centroidin","Posteriorin"],1,"Net input pastaj kalon në activation/step."],
+["Error-i në shënime për Perceptron është:",["d+y","d-y","y/d","w-x"],1,"Me konventën e përdorur: e=desired-output."],
+["MLP ndryshon nga Perceptron sepse ka:",["Vetëm një input","Hidden layers dhe aktivizime jo-lineare","Pa weights","Vetëm clusters"],1,"Hidden layers i lejojnë MLP të mësojë funksione jo-lineare."],
+["Derivati i sigmoidit është:",["σ(z)+1","σ(z)(1-σ(z))","1/σ(z)","z²"],1,"Ky faktor përdoret gjatë backpropagation."],
+["Gradient Descent bën update:",["w'=w+αJ gjithmonë","w'=w-α∂J/∂w","w'=x-y","w'=w/K"],1,"Lëvizim kundër gradientit për ta ulur loss-in."]
+];
+let i=0,score=0,chosen=null,locked=false;
+const quiz=document.getElementById("quiz"),bar=document.getElementById("bar"),meta=document.getElementById("meta");
+function render(){
+ if(i>=Q.length)return finish();
+ const [q,opts]=Q[i]; chosen=null;locked=false;
+ meta.textContent=`Pyetja ${i+1} / ${Q.length} · Pikë: ${score}`;
+ bar.style.width=(100*i/Q.length)+"%";
+ quiz.innerHTML=`<div class="card"><h2>${i+1}. ${q}</h2><div id="opts">${opts.map((o,k)=>`<button class="option" data-k="${k}">${o}</button>`).join("")}</div><div id="fb"></div><button class="action" id="check">Kontrollo</button><button class="action hidden" id="next">Tjetra</button></div>`;
+ document.querySelectorAll(".option").forEach(b=>b.onclick=()=>{if(locked)return;document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");chosen=+b.dataset.k});
+ document.getElementById("check").onclick=check;
+}
+function check(){
+ if(chosen===null)return;
+ locked=true;const correct=Q[i][2],exp=Q[i][3];
+ document.querySelectorAll(".option").forEach((b,k)=>{if(k===correct)b.classList.add("correct");else if(k===chosen)b.classList.add("wrong")});
+ if(chosen===correct)score++;
+ document.getElementById("fb").innerHTML=`<div class="feedback"><b>${chosen===correct?"Saktë ✓":"Gabim ✗"}</b><br>${exp}</div>`;
+ document.getElementById("check").classList.add("hidden");
+ const n=document.getElementById("next");n.classList.remove("hidden");n.onclick=()=>{i++;render()};
+}
+function finish(){
+ bar.style.width="100%";quiz.innerHTML="";
+ const pct=Math.round(score/Q.length*100);
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("result").innerHTML=`<h2>Rezultati</h2><div class="score">${score}/${Q.length}</div><p>${pct}%</p><p>${pct>=80?"Shumë mirë — kalo te provimi simulues.":pct>=60?"Mirë — rishiko pyetjet e gabuara.":"Lexo guide-in kryesor dhe provo përsëri."}</p><button class="action" onclick="location.reload()">Përsërite</button>`;
+ meta.textContent="Përfunduar";
+}
+render();
+</script></body></html>
