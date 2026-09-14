@@ -10,6 +10,7 @@
 
 - [Plani 1-ditor](./PLAN-1-DITOR.md)
 - [Provimi simulues 100 pikë](./PROVIMI-SIMULUES.md)
+- [Detyrat nga provimi real — zgjidhje](./DETYRAT-E-PROVIMIT-REAL.md)
 - [Quiz interaktiv — 25 pyetje](./QUIZ.html)
 
 ## Renditja e mësimit
