@@ -33,11 +33,11 @@ Pastaj shpjego dallimin mes classification dhe regression.
 
 Jepen pikat:
 
-$$\nX_1=(1,1),\\quad X_2=(2,1),\\quad X_3=(5,4),\\quad X_4=(6,5)\n$$
+$$\nX_1=(1,1),\quad X_2=(2,1),\quad X_3=(5,4),\quad X_4=(6,5)\n$$
 
 Centroidët fillestarë:
 
-$$\nC_1=(1,1),q\\quad C_2=(6,5)\n$$
+$$\nC_1=(1,1),\qquad C_2=(6,5)\n$$
 
 a) Llogarit distancën e secilës pikë nga të dy centroidët.  
 b) Cakto clusters.  
@@ -61,9 +61,9 @@ Klasifiko (Q=(2,2)) për (K=3), duke përdorur distancën Euklidiane.
 
 Një sëmundje prek 2% të popullatës. Testi ka:
 
-$$\nP(+\\mid S)=0.95\n$$
+$$\nP(+\mid S)=0.95\n$$
 
-$$\nP(-\\mid 
+$$\nP(-\mid 
 eg S)=0.90\n$$
 
 Gjej (P(Smid +)).
@@ -74,9 +74,9 @@ Në dataset ka 10 mostra: 6 të klasës A dhe 4 të klasës B.
 
 Për inputin (X=(x_1=T,x_2=F)) dihet:
 
-$$\nP(x_1=T\\mid A)=\\frac46,\\quad P(x_2=F\\mid A)=\\frac36\n$$
+$$\nP(x_1=T\mid A)=\frac46,\quad P(x_2=F\mid A)=\frac36\n$$
 
-$$\nP(x_1=T\\mid B)=\\frac14,\\quad P(x_2=F\\mid B)=\\frac34\n$$
+$$\nP(x_1=T\mid B)=\frac14,\quad P(x_2=F\mid B)=\frac34\n$$
 
 Gjej klasën e X me Naive Bayes.
 
@@ -84,7 +84,7 @@ Gjej klasën e X me Naive Bayes.
 
 Për pikat:
 
-$$\n(1,2),\\quad(2,3),\\quad(3,5)\n$$
+$$\n(1,2),\quad(2,3),\quad(3,5)\n$$
 
 a) Llogarit (sum x,sum y,sum xy,sum x^2).  
 b) Gjej (w_1,w_0).  
@@ -102,7 +102,7 @@ c) A është split-i më i pastër se parent-i?
 
 Jepen:
 
-$$\nx=(2,-1),\\quad w=(2,-1),\\quad b=0,\\quad\\eta=0.05,\\quad d=0\n$$
+$$\nx=(2,-1),\quad w=(2,-1),\quad b=0,\quad\eta=0.05,\quad d=0\n$$
 
 Përdor step function me (y=1) kur (netge0).
 
@@ -140,33 +140,33 @@ Classification jep kategori; regression jep vlerë numerike.
 
 ## 3. K-Means
 
-$$\nd(X_1,C_1)=0,\\quad d(X_1,C_2)=\\sqrt{41}\\approx6.40\n$$
+$$\nd(X_1,C_1)=0,\quad d(X_1,C_2)=\sqrt{41}\approx6.40\n$$
 
-$$\nd(X_2,C_1)=1,\\quad d(X_2,C_2)=\\sqrt{32}\\approx5.66\n$$
+$$\nd(X_2,C_1)=1,\quad d(X_2,C_2)=\sqrt{32}\approx5.66\n$$
 
-$$\nd(X_3,C_1)=5,\\quad d(X_3,C_2)=\\sqrt2\\approx1.41\n$$
+$$\nd(X_3,C_1)=5,\quad d(X_3,C_2)=\sqrt2\approx1.41\n$$
 
-$$\nd(X_4,C_1)=\\sqrt{41}\\approx6.40,\\quad d(X_4,C_2)=0\n$$
+$$\nd(X_4,C_1)=\sqrt{41}\approx6.40,\quad d(X_4,C_2)=0\n$$
 
 Cluster 1: (X_1,X_2). Cluster 2: (X_3,X_4).
 
-$$\nC_1'=\\left(\\frac{1+2}{2},\\frac{1+1}{2}\\right)=(1.5,1)\n$$
+$$\nC_1'=\left(\frac{1+2}{2},\frac{1+1}{2}\right)=(1.5,1)\n$$
 
-$$\nC_2'=\\left(\\frac{5+6}{2},\\frac{4+5}{2}\\right)=(5.5,4.5)\n$$
+$$\nC_2'=\left(\frac{5+6}{2},\frac{4+5}{2}\right)=(5.5,4.5)\n$$
 
 ## 4. K-NN
 
 Nga (Q=(2,2)):
 
-$$\nd((1,1),Q)=\\sqrt2\\approx1.41\\quad[A]\n$$
+$$\nd((1,1),Q)=\sqrt2\approx1.41\quad[A]\n$$
 
-$$\nd((2,1),Q)=1\\quad[A]\n$$
+$$\nd((2,1),Q)=1\quad[A]\n$$
 
-$$\nd((4,3),Q)=\\sqrt5\\approx2.24\\quad[B]\n$$
+$$\nd((4,3),Q)=\sqrt5\approx2.24\quad[B]\n$$
 
-$$\nd((5,5),Q)=\\sqrt{18}\\approx4.24\\quad[B]\n$$
+$$\nd((5,5),Q)=\sqrt{18}\approx4.24\quad[B]\n$$
 
-$$\nd((3,2),Q)=1\\quad[B]\n$$
+$$\nd((3,2),Q)=1\quad[B]\n$$
 
 Tre më të afërt: A, B, A → **klasa A**.
 
@@ -174,38 +174,38 @@ Tre më të afërt: A, B, A → **klasa A**.
 
 Specificity 90% do të thotë:
 
-$$\nP(+\\mid
+$$\nP(+\mid
 eg S)=0.10\n$$
 
-$$\nP(S\\mid+)=
-\\frac{0.95(0.02)}
+$$\nP(S\mid+)=
+\frac{0.95(0.02)}
 {0.95(0.02)+0.10(0.98)}\n$$
 
-$$\n=\\frac{0.019}{0.117}\\approx0.1624=16.24%\n$$
+$$\n=\frac{0.019}{0.117}\approx0.1624=16.24%\n$$
 
 ## 6. Naive Bayes
 
-$$\nScore(A)=P(A)P(T\\mid A)P(F\\mid A)\n$$
+$$\nScore(A)=P(A)P(T\mid A)P(F\mid A)\n$$
 
-$$\n=\\frac6{10}\\cdot\\frac46\\cdot\\frac36=0.20\n$$
+$$\n=\frac6{10}\cdot\frac46\cdot\frac36=0.20\n$$
 
-$$\nScore(B)=\\frac4{10}\\cdot\\frac14\\cdot\\frac34=0.075\n$$
+$$\nScore(B)=\frac4{10}\cdot\frac14\cdot\frac34=0.075\n$$
 
 Meqë (0.20>0.075), X klasifikohet **A**.
 
 ## 7. Regression
 
-$$\nN=3,\\quad\\sum x=6,\\quad\\sum y=10,\\quad\\sum xy=23,\\quad\\sum x^2=14\n$$
+$$\nN=3,\quad\sum x=6,\quad\sum y=10,\quad\sum xy=23,\quad\sum x^2=14\n$$
 
-$$\nw_1=\\frac{3(23)-6(10)}{3(14)-6^2}=\\frac96=1.5\n$$
+$$\nw_1=\frac{3(23)-6(10)}{3(14)-6^2}=\frac96=1.5\n$$
 
-$$\nw_0=\\frac{10-1.5(6)}3=\\frac13\\approx0.333\n$$
+$$\nw_0=\frac{10-1.5(6)}3=\frac13\approx0.333\n$$
 
-$$\n\\hat y=0.333+1.5x\n$$
+$$\n\hat y=0.333+1.5x\n$$
 
 Për (x=4):
 
-$$\n\\hat y=0.333+6=6.333\n$$
+$$\n\hat y=0.333+6=6.333\n$$
 
 ## 8. Decision Tree
 
@@ -217,7 +217,7 @@ $$\nGini(L)=0\n$$
 
 $$\nGini(R)=1-(1/3)^2-(2/3)^2=0.444\n$$
 
-$$\nGini(split)=\\frac36(0)+\\frac36(0.444)=0.222\n$$
+$$\nGini(split)=\frac36(0)+\frac36(0.444)=0.222\n$$
 
 Po: impurity u zvogëlua nga 0.444 në 0.222.
 
@@ -225,7 +225,7 @@ Po: impurity u zvogëlua nga 0.444 në 0.222.
 
 $$\nnet=2(2)+(-1)(-1)+0=5\n$$
 
-$$\ny=1,q\\quad e=0-1=-1\n$$
+$$\ny=1,\qquad e=0-1=-1\n$$
 
 $$\nw_1'=2+0.05(-1)(2)=1.9\n$$
 
@@ -241,9 +241,9 @@ $$\nw'=(1,0)+0.5[(0,2)-(1,0)]=(0.5,1)\n$$
 
 MLP forward pass:
 
-$$\nz_h=W_hx+b_h,\\quad h=\\sigma(z_h)\n$$
+$$\nz_h=W_hx+b_h,\quad h=\sigma(z_h)\n$$
 
-$$\nz_o=W_oh+b_o,\\quad y=\\sigma(z_o)\n$$
+$$\nz_o=W_oh+b_o,\quad y=\sigma(z_o)\n$$
 
 Gradient descent:
 
