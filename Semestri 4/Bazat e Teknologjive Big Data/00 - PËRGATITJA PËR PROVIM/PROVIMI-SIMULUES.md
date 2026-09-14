@@ -100,7 +100,7 @@ $$
 (1,2),\quad(2,3),\quad(3,5)
 $$
 
-a) Llogarit (sum x,sum y,sum xy,sum x^2).  
+a) Llogarit $\sum x$, $\sum y$, $\sum xy$ dhe $\sum x^2$.  
 b) Gjej (w_1,w_0).  
 c) Parashiko y kur (x=4).
 
@@ -120,7 +120,7 @@ $$
 x=(2,-1),\quad w=(2,-1),\quad b=0,\quad\eta=0.05,\quad d=0
 $$
 
-Përdor step function me (y=1) kur (netge0).
+Përdor step function me $y=1$ kur $net\ge 0$.
 
 a) Gjej net dhe y.  
 b) Gjej error-in (e=d-y).  
