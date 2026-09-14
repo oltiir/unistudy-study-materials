@@ -99,15 +99,21 @@ Jepen pika pa klasa, numri K dhe centroidët fillestarë. Kërkohen distancat, c
 
 ### Distanca Euklidiane
 
-$$\nd(X,C)=\sqrt{\sum_{j=1}^{m}(x_j-c_j)^2}\n$$
+$$
+d(X,C)=\sqrt{\sum_{j=1}^{m}(x_j-c_j)^2}
+$$
 
 Në 2D:
 
-$$\nd=\sqrt{(x_1-c_1)^2+(x_2-c_2)^2}\n$$
+$$
+d=\sqrt{(x_1-c_1)^2+(x_2-c_2)^2}
+$$
 
 ### Centroidi i ri
 
-$$\nC_k=\frac{1}{n_k}\sum_{X_i\in cluster_k}X_i\n$$
+$$
+C_k=\frac{1}{n_k}\sum_{X_i\in cluster_k}X_i
+$$
 
 ## Shembull
 
@@ -121,9 +127,13 @@ Centroidët: (C_1=(1,1)), (C_2=(5,4)).
 
 Centroidët e rinj:
 
-$$\nC_1'=\left(\frac{1+1}{2},\frac{1+2}{2}\right)=(1,1.5)\n$$
+$$
+C_1'=\left(\frac{1+1}{2},\frac{1+2}{2}\right)=(1,1.5)
+$$
 
-$$\nC_2'=\left(\frac{4+5}{2},\frac{4+4}{2}\right)=(4.5,4)\n$$
+$$
+C_2'=\left(\frac{4+5}{2},\frac{4+4}{2}\right)=(4.5,4)
+$$
 
 ## Gabime tipike
 
@@ -175,7 +185,9 @@ Për (K=3), fqinjët janë A, A, B → **Q klasifikohet A**.
 
 ## Bayes Theorem
 
-$$\nP(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}\n$$
+$$
+P(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}
+$$
 
 - (P(A)): prior.
 - (P(Bmid A)): likelihood.
@@ -186,17 +198,25 @@ $$\nP(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}\n$$
 
 Jepen:
 
-$$\nP(C)=0.008,\quad P(
-eg C)=0.992\n$$
+$$
+P(C)=0.008,\quad P(
+eg C)=0.992
+$$
 
-$$\nP(+\mid C)=0.98,\quad P(+\mid
-eg C)=0.03\n$$
+$$
+P(+\mid C)=0.98,\quad P(+\mid
+eg C)=0.03
+$$
 
-$$\nP(C\mid +)=
+$$
+P(C\mid +)=
 \frac{0.98\cdot0.008}
-{0.98\cdot0.008+0.03\cdot0.992}\n$$
+{0.98\cdot0.008+0.03\cdot0.992}
+$$
 
-$$\nP(C\mid +)=\frac{0.00784}{0.03760}\approx0.2085=20.85%\n$$
+$$
+P(C\mid +)=\frac{0.00784}{0.03760}\approx0.2085=20.85%
+$$
 
 **Ideja:** sensitivity 98% nuk do të thotë se një person pozitiv ka 98% probabilitet të ketë kancer. Prior-i i vogël dhe false positives ndikojnë shumë.
 
@@ -204,7 +224,9 @@ $$\nP(C\mid +)=\frac{0.00784}{0.03760}\approx0.2085=20.85%\n$$
 
 Supozon që features janë conditionally independent kur klasa dihet:
 
-$$\nP(C\mid x_1,\ldots,x_n)\propto P(C)\prod_iP(x_i\mid C)\n$$
+$$
+P(C\mid x_1,\ldots,x_n)\propto P(C)\prod_iP(x_i\mid C)
+$$
 
 Llogarit një score për secilën klasë dhe zgjedh score-in më të madh. Denominator-i (P(X)) mund të hiqet kur vetëm krahasohen klasat.
 
@@ -212,7 +234,9 @@ Llogarit një score për secilën klasë dhe zgjedh score-in më të madh. Denom
 
 Nëse klasa A ka 4 mostra dhe feature (x_1=T) paraqitet 3 herë:
 
-$$\nP(x_1=T\mid A)=\frac34\n$$
+$$
+P(x_1=T\mid A)=\frac34
+$$
 
 Pastaj shumëzohen prior-i dhe probabilitetet e të gjitha features.
 
@@ -220,7 +244,9 @@ Pastaj shumëzohen prior-i dhe probabilitetet e të gjitha features.
 
 Nëse një kategori s’është paraqitur asnjëherë, probabiliteti 0 do ta bëjë produktin 0. Me Laplace smoothing:
 
-$$\nP(x_i=t\mid C)=\frac{N_{t,C}+1}{N_C+n_i}\n$$
+$$
+P(x_i=t\mid C)=\frac{N_{t,C}+1}{N_C+n_i}
+$$
 
 ku (n_i) është numri i kategorive të feature-it.
 
@@ -228,17 +254,25 @@ ku (n_i) është numri i kategorive të feature-it.
 
 Përdoret për features numerike. Për secilin feature dhe klasë llogariten veçmas mesatarja dhe varianca:
 
-$$\n\mu=\frac{\sum x_i}{N}\n$$
+$$
+\mu=\frac{\sum x_i}{N}
+$$
 
-$$\n\sigma^2=\frac{\sum(x_i-\mu)^2}{N}\n$$
+$$
+\sigma^2=\frac{\sum(x_i-\mu)^2}{N}
+$$
 
-$$\nP(x\mid C)=
+$$
+P(x\mid C)=
 \frac{1}{\sqrt{2\pi\sigma_C^2}}
-e^{-\frac{(x-\mu_C)^2}{2\sigma_C^2}}\n$$
+e^{-\frac{(x-\mu_C)^2}{2\sigma_C^2}}
+$$
 
 Në fund:
 
-$$\nScore(C)=P(C)\prod_iP(x_i\mid C)\n$$
+$$
+Score(C)=P(C)\prod_iP(x_i\mid C)
+$$
 
 **Gabim tipik:** një mean/variance i vetëm për krejt datasetin. Duhet një për çdo feature brenda çdo klase.
 
@@ -248,59 +282,91 @@ $$\nScore(C)=P(C)\prod_iP(x_i\mid C)\n$$
 
 ## Simple Linear Regression
 
-$$\n\hat y=w_0+w_1x\n$$
+$$
+\hat y=w_0+w_1x
+$$
 
 - (w_0): intercept — y kur x=0.
 - (w_1): slope — sa ndryshon y kur x rritet për 1.
 
-$$\nw_1=\frac{N\sum xy-\sum x\sum y}
-{N\sum x^2-(\sum x)^2}\n$$
+$$
+w_1=\frac{N\sum xy-\sum x\sum y}
+{N\sum x^2-(\sum x)^2}
+$$
 
-$$\nw_0=\frac{\sum y-w_1\sum x}{N}\n$$
+$$
+w_0=\frac{\sum y-w_1\sum x}{N}
+$$
 
 ## Shembull i plotë
 
 Pikat: ((1,2),(2,3),(3,5)).
 
-$$\nN=3, \sum x=6, \sum y=10, \sum xy=23, \sum x^2=14\n$$
+$$
+N=3, \sum x=6, \sum y=10, \sum xy=23, \sum x^2=14
+$$
 
-$$\nw_1=\frac{3(23)-6(10)}{3(14)-6^2}
-=\frac{9}{6}=1.5\n$$
+$$
+w_1=\frac{3(23)-6(10)}{3(14)-6^2}
+=\frac{9}{6}=1.5
+$$
 
-$$\nw_0=\frac{10-1.5(6)}3=\frac13\approx0.333\n$$
+$$
+w_0=\frac{10-1.5(6)}3=\frac13\approx0.333
+$$
 
 Modeli:
 
-$$\n\hat y=0.333+1.5x\n$$
+$$
+\hat y=0.333+1.5x
+$$
 
 Për (x=4):
 
-$$\n\hat y=0.333+1.5(4)=6.333\n$$
+$$
+\hat y=0.333+1.5(4)=6.333
+$$
 
 ## Multiple Linear Regression
 
-$$\n\hat y=w_0+w_1x_1+w_2x_2\n$$
+$$
+\hat y=w_0+w_1x_1+w_2x_2
+$$
 
 Forma e përgjithshme:
 
-$$\nW=(X^TX)^{-1}X^Ty\n$$
+$$
+W=(X^TX)^{-1}X^Ty
+$$
 
 Për llogaritje me dy features, përdor centered sums:
 
-$$\nS_{11}=\sum(x_1-\bar x_1)^2,\quad
-S_{22}=\sum(x_2-\bar x_2)^2\n$$
+$$
+S_{11}=\sum(x_1-\bar x_1)^2,\quad
+S_{22}=\sum(x_2-\bar x_2)^2
+$$
 
-$$\nS_{12}=\sum(x_1-\bar x_1)(x_2-\bar x_2)\n$$
+$$
+S_{12}=\sum(x_1-\bar x_1)(x_2-\bar x_2)
+$$
 
-$$\nS_{1y}=\sum(x_1-\bar x_1)(y-\bar y),\quad
-S_{2y}=\sum(x_2-\bar x_2)(y-\bar y)\n$$
+$$
+S_{1y}=\sum(x_1-\bar x_1)(y-\bar y),\quad
+S_{2y}=\sum(x_2-\bar x_2)(y-\bar y)
+$$
 
-$$\nD=S_{11}S_{22}-S_{12}^2\n$$
+$$
+D=S_{11}S_{22}-S_{12}^2
+$$
 
-$$\nw_1=\frac{S_{1y}S_{22}-S_{2y}S_{12}}D,\quad
-w_2=\frac{S_{2y}S_{11}-S_{1y}S_{12}}D\n$$
+$$
+w_1=\frac{S_{1y}S_{22}-S_{2y}S_{12}}D,\quad
+w_2=\frac{S_{2y}S_{11}-S_{1y}S_{12}}D
+$$
 
-$$\nw_0=\bar y-w_1\bar x_1-w_2\bar x_2\n$$
+$$
+w_0=\bar y-w_1\bar x_1-w_2\bar x_2
+$$
 
 Për dy outputs (y_1,y_2), bëhet regresioni veçmas për secilin output.
 
@@ -317,18 +383,24 @@ Decision Tree është metodë supervised për classification dhe regression. Mod
 
 ## Gini impurity
 
-$$\nGini=1-\sum_kp_k^2\n$$
+$$
+Gini=1-\sum_kp_k^2
+$$
 
 - Gini = 0 → node i pastër.
 - Gini më i vogël → ndarje më e mirë.
 
 ## Entropy
 
-$$\nH(S)=-\sum_kp_klog_2p_k\n$$
+$$
+H(S)=-\sum_kp_klog_2p_k
+$$
 
 ## Information Gain
 
-$$\nIG=H(parent)-\sum_j\frac{|S_j|}{|S|}H(S_j)\n$$
+$$
+IG=H(parent)-\sum_j\frac{|S_j|}{|S|}H(S_j)
+$$
 
 Zgjidhet split-i me **Information Gain më të madh** ose impurity të ponderuar më të vogël.
 
@@ -336,14 +408,18 @@ Zgjidhet split-i me **Information Gain më të madh** ose impurity të ponderuar
 
 Parent ka 4 A dhe 2 B:
 
-$$\nGini(parent)=1-(4/6)^2-(2/6)^2=0.444\n$$
+$$
+Gini(parent)=1-(4/6)^2-(2/6)^2=0.444
+$$
 
 Një split jep:
 
 - Left: 3 A, 0 B → Gini = 0.
 - Right: 1 A, 2 B → (Gini=1-(1/3)^2-(2/3)^2=0.444).
 
-$$\nGini_{split}=\frac36(0)+\frac36(0.444)=0.222\n$$
+$$
+Gini_{split}=\frac36(0)+\frac36(0.444)=0.222
+$$
 
 Ndarja e uli impurity nga 0.444 në 0.222.
 
@@ -370,17 +446,25 @@ SOM është rrjet neural **unsupervised** që harton të dhëna me shumë dimens
 6. Zvogëlohen learning rate dhe neighborhood me kohë.
 7. Përsëritet për inputet.
 
-$$\nw_j(t+1)=w_j(t)+\alpha(t)h_{cj}(t)[x-w_j(t)]\n$$
+$$
+w_j(t+1)=w_j(t)+\alpha(t)h_{cj}(t)[x-w_j(t)]
+$$
 
 Pa neighborhood factor:
 
-$$\nw_{ri}=w_{vjetër}+\alpha(x-w_{vjetër})\n$$
+$$
+w_{ri}=w_{vjetër}+\alpha(x-w_{vjetër})
+$$
 
 Shembull:
 
-$$\nx=(0,2),\quad w=(1,0),\quad \alpha=0.5\n$$
+$$
+x=(0,2),\quad w=(1,0),\quad \alpha=0.5
+$$
 
-$$\nw'=(1,0)+0.5[(0,2)-(1,0)]=(0.5,1)\n$$
+$$
+w'=(1,0)+0.5[(0,2)-(1,0)]=(0.5,1)
+$$
 
 Pesha lëviz **drejt inputit**. Nëse del më larg, kontrollo shenjën.
 
@@ -396,35 +480,55 @@ Pesha lëviz **drejt inputit**. Nëse del më larg, kontrollo shenjën.
 
 Perceptron është classifier linear me një neuron.
 
-$$\nnet=\sum_iw_ix_i+b\n$$
+$$
+net=\sum_iw_ix_i+b
+$$
 
 Step function:
 
-$$\ny=
+$$
+y=
 \begin{cases}
 1,&net\ge0\
 0,&net<0
-\end{cases}\n$$
+\end{cases}
+$$
 
-$$\ne=d-y\n$$
+$$
+e=d-y
+$$
 
-$$\nw_i'=w_i+\eta e x_i\n$$
+$$
+w_i'=w_i+\eta e x_i
+$$
 
-$$\nb'=b+\eta e\n$$
+$$
+b'=b+\eta e
+$$
 
 ## Shembull nga forma e shënimeve
 
-$$\nx=(2,-1),\quad w=(2,-1),\quad b=0,\quad \eta=0.05,\quad d=0\n$$
+$$
+x=(2,-1),\quad w=(2,-1),\quad b=0,\quad \eta=0.05,\quad d=0
+$$
 
-$$\nnet=2(2)+(-1)(-1)+0=5\n$$
+$$
+net=2(2)+(-1)(-1)+0=5
+$$
 
 Pra (y=1), ndërsa (e=0-1=-1).
 
-$$\nw_1'=2+0.05(-1)(2)=1.9\n$$
+$$
+w_1'=2+0.05(-1)(2)=1.9
+$$
 
-$$\nw_2'=-1+0.05(-1)(-1)=-0.95\n$$
+$$
+w_2'=-1+0.05(-1)(-1)=-0.95
+$$
 
-$$\nb'=0+0.05(-1)=-0.05\n$$
+$$
+b'=0+0.05(-1)=-0.05
+$$
 
 Përsëritet për datasetin derisa gabimet të ndalen ose arrihet numri i iteracioneve. Perceptron nuk zgjidh probleme jo-linearisht të ndashme si XOR.
 
@@ -438,29 +542,45 @@ MLP ka input layer, një ose më shumë hidden layers dhe output layer. Hidden l
 
 Për hidden neuron:
 
-$$\nz_h=\sum_iw_{ih}x_i+b_h\n$$
+$$
+z_h=\sum_iw_{ih}x_i+b_h
+$$
 
-$$\nh=\sigma(z_h),\qquad \sigma(z)=\frac1{1+e^{-z}}\n$$
+$$
+h=\sigma(z_h),\qquad \sigma(z)=\frac1{1+e^{-z}}
+$$
 
 Për output:
 
-$$\nz_o=\sum_hw_{ho}h+b_o\n$$
+$$
+z_o=\sum_hw_{ho}h+b_o
+$$
 
-$$\ny=\sigma(z_o)\n$$
+$$
+y=\sigma(z_o)
+$$
 
 ## Backpropagation
 
 Nëse përdoret (e=d-y):
 
-$$\n\delta_o=(d-y)y(1-y)\n$$
+$$
+\delta_o=(d-y)y(1-y)
+$$
 
-$$\n\delta_h=h(1-h)\sum_o w_{ho}\delta_o\n$$
+$$
+\delta_h=h(1-h)\sum_o w_{ho}\delta_o
+$$
 
 Update:
 
-$$\nw_{ho}'=w_{ho}+\eta\delta_oh\n$$
+$$
+w_{ho}'=w_{ho}+\eta\delta_oh
+$$
 
-$$\nw_{ih}'=w_{ih}+\eta\delta_hx_i\n$$
+$$
+w_{ih}'=w_{ih}+\eta\delta_hx_i
+$$
 
 Bias-i përditësohet po njësoj, por inputi i bias-it është 1.
 
@@ -475,7 +595,9 @@ Bias-i përditësohet po njësoj, por inputi i bias-it është 1.
 
 Mos harro derivatin e sigmoidit:
 
-$$\n\sigma'(z)=\sigma(z)[1-\sigma(z)]\n$$
+$$
+\sigma'(z)=\sigma(z)[1-\sigma(z)]
+$$
 
 ---
 
@@ -483,9 +605,13 @@ $$\n\sigma'(z)=\sigma(z)[1-\sigma(z)]\n$$
 
 Gradient Descent minimizon loss function duke lëvizur parametrat në drejtimin e kundërt të gradientit:
 
-$$\nw'=w-\alpha\frac{\partial J}{\partial w}\n$$
+$$
+w'=w-\alpha\frac{\partial J}{\partial w}
+$$
 
-$$\nb'=b-\alpha\frac{\partial J}{\partial b}\n$$
+$$
+b'=b-\alpha\frac{\partial J}{\partial b}
+$$
 
 - (alpha): learning rate.
 - gradienti pozitiv → w zvogëlohet.
@@ -496,19 +622,29 @@ $$\nb'=b-\alpha\frac{\partial J}{\partial b}\n$$
 
 ## Shembull i shkurtër
 
-$$\nJ(w)=(w-3)^2,\qquad J'(w)=2(w-3)\n$$
+$$
+J(w)=(w-3)^2,\qquad J'(w)=2(w-3)
+$$
 
 Me (w_0=0), (alpha=0.1):
 
-$$\ngradient=-6\n$$
+$$
+gradient=-6
+$$
 
-$$\nw_1=0-0.1(-6)=0.6\n$$
+$$
+w_1=0-0.1(-6)=0.6
+$$
 
 Iteracioni tjetër:
 
-$$\ngradient=2(0.6-3)=-4.8\n$$
+$$
+gradient=2(0.6-3)=-4.8
+$$
 
-$$\nw_2=0.6-0.1(-4.8)=1.08\n$$
+$$
+w_2=0.6-0.1(-4.8)=1.08
+$$
 
 w afrohet gradualisht te minimumi (w=3).
 
@@ -532,19 +668,33 @@ w afrohet gradualisht te minimumi (w=3).
 
 ## Formulat që duhen ditur pa shikuar
 
-$$\nd=\sqrt{\sum(x_i-c_i)^2}\n$$
+$$
+d=\sqrt{\sum(x_i-c_i)^2}
+$$
 
-$$\nP(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}\n$$
+$$
+P(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}
+$$
 
-$$\nP(C\mid X)\propto P(C)\prod_iP(x_i\mid C)\n$$
+$$
+P(C\mid X)\propto P(C)\prod_iP(x_i\mid C)
+$$
 
-$$\n\hat y=w_0+w_1x\n$$
+$$
+\hat y=w_0+w_1x
+$$
 
-$$\nnet=\sum_iw_ix_i+b\n$$
+$$
+net=\sum_iw_ix_i+b
+$$
 
-$$\nw'=w+\eta(d-y)x\n$$
+$$
+w'=w+\eta(d-y)x
+$$
 
-$$\nw'=w-\alpha\nabla J(w)\n$$
+$$
+w'=w-\alpha\nabla J(w)
+$$
 
 ---
 
