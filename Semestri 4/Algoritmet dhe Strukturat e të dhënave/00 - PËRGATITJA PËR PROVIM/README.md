@@ -35,6 +35,7 @@ Vetëm shikimi i videos nuk mjafton. Në provim duhet ta tregosh gjendjen pas ç
 | 12 | [Pyetje teorike](./12-Pyetje-Teorike-Flashcards.md) | Pyetje dhe përgjigje për rikujtim aktiv |
 | 13 | [Cheat Sheet](./13-Cheat-Sheet.md) | Formulat, kushtet dhe kompleksitetet në një vend |
 | 14 | [Mini-provim](./14-Mini-Provim.md) | Simulim i provimit me zgjidhje |
+| 15 | [Pyetje reale nga testet](./15-Pyetje-Reale-nga-Testet.md) | Analiza e testit, përgjigjet, zgjidhjet praktike dhe strategjia me pikë negative |
 
 ## Plani nga e marta deri të premten
 
@@ -64,6 +65,7 @@ Rezultati i ditës: duhet të mund ta ndërtosh MST me Kruskal/Prim dhe ta plot�
 
 ### E premte - Vetëm përsëritje
 
+- Zgjidhi edhe një herë detyrat në `15-Pyetje-Reale-nga-Testet.md` pa i parë zgjidhjet.
 - Lexo `13-Cheat-Sheet.md`.
 - Përgjigju me zë në flashcards.
 - Rishiko vetëm gabimet e mini-provimit.
@@ -99,4 +101,3 @@ Një temë nuk konsiderohet e mësuar vetëm sepse e njeh emrin. Duhet të munde
 - ta tregosh kompleksitetin;
 - ta krahasosh me algoritmin më të ngjashëm;
 - ta dallosh një pohim të gabuar në true/false.
-
