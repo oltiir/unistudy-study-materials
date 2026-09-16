@@ -213,6 +213,8 @@ Një augmenting path në residual graph mund të përmbajë:
 
 Ford-Fulkerson është algoritmi që kërkon augmenting paths; nuk është lloj segmenti i path-it. Dijkstra nuk përdoret për këtë qëllim.
 
+Pra, në formulimin e testit **"Augmenting paths nuk ndodh të paraqiten tek"**, alternativa e saktë është **Dijkstra**.
+
 ## 7. Metodat e `String`
 
 Metodat standarde që shfaqen në algoritmet e stringjeve janë:
@@ -229,11 +231,25 @@ Kujdes:
 
 - është `length()`, jo `Length()`;
 - është `charAt(i)`, jo `get(key, i)`;
-- Java ka `concat()`, jo metodë me emrin `concatenate()`.
+- Java ka metodën `concat()`, ndërsa në test është shkruar `concatenate()` si emër konceptual për bashkimin e stringjeve;
+- duke u bazuar në formulimin dhe pikët e testit, profesori ka shumë gjasa që te ajo pyetje t'i presë **`length()`, `charAt()` dhe concatenation** si tri përgjigjet.
+
+Në kod shkruaj `concat()`. Në alternativat e atij testi, trajtoje `concatenate()` si operacionin e bashkimit që profesori ka synuar.
 
 ## 8. LZW
 
 LZW mund ta kodojë inputin ndërsa e lexon dhe e ndërton fjalorin gradualisht. Nuk ka nevojë për tabelë paraprake të frekuencave. Kjo e bën të përshtatshëm edhe për përpunim streaming.
+
+LZW mund të përdoret si për të dhëna statike, ashtu edhe për stream që përpunohet gjatë ardhjes. Dallimi kryesor nga Huffman nuk është "static kundër streaming", por fakti që LZW e ndërton dictionary-n gjatë punës dhe nuk kërkon frekuencat paraprakisht.
+
+## 8.1 Dallimet Brute Force kundrejt Boyer-Moore
+
+Në pyetjen e testit, dallimet që duhet t'i njohësh janë:
+
+- **koha:** Brute Force mund të bëjë deri `O(NM)` krahasime; Boyer-Moore shpesh është sublinear në praktikë, megjithëse varianti bazë mund të ketë worst case të dobët;
+- **memoria:** Brute Force përdor `O(1)` memorie shtesë, ndërsa Boyer-Moore ruan tabelën `right[]`;
+- **lëvizja:** Brute Force provon pozitat një nga një dhe versioni klasik mund të bëjë backup; Boyer-Moore krahason nga djathtas dhe llogarit `skip`;
+- **saktësia:** nuk është dallim — të dy algoritmet japin një match të saktë.
 
 Mos e ngatërro:
 
