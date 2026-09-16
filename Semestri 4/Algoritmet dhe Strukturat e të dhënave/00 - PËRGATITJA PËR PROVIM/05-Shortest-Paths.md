@@ -232,7 +232,7 @@ për i = 1 deri V-1:
 
 ### Negative cycle
 
-Negative cycle është cikël me shumë negative.
+Negative cycle është cikël me **shumë totale negative** të peshave.
 
 ```text
 A->B = 2
@@ -332,4 +332,3 @@ Kjo përdoret në scheduling dhe critical path method. Në graf të përgjithsh�
 4. Sepse një shortest simple path ka maksimum V-1 brinjë.
 5. Pas V-1 kalimeve, nëse një kalim tjetër përmirëson distancë.
 6. Sepse DAG nuk ka cikle, pra as negative cycle.
-
