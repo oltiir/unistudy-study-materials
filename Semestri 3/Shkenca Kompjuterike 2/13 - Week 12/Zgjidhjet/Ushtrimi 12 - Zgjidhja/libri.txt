@@ -1,0 +1,6 @@
+Libri Shkollor;1234567891232;L1;2000;Gjuhe Shqipe
+Libri Shkollor;2234567891232;L2;2000;Matematike
+Libri Shkollor;3234567891232;L3;2000;Gjuhe Shqipe
+Enciklopedia;4234567891232;L4;2000;4
+Enciklopedia;5234567891232;L5;2000;2
+Enciklopedia;6234567891232;L6;2000;4
