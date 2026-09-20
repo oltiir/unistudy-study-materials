@@ -17,13 +17,17 @@ Inner (`Tutori`), static nested (`Vizituesi`), lokale brenda metode (`Dekani` te
 
 ## Zgjidhjet — kodi
 
-Grupi 1/2/5 `Fakulteti` = zgjidhja e detyrës 1.4 të `Ushtrime 6.pdf`. `Klasa*`/`KlasaJ*`/`KlasaBrendshme*` = demo minimale për secilin lloj.
+Grupi 1/2/5 `Fakulteti` = zgjidhja e detyrës 1.4 të `Ushtrime 6.pdf`. `Klasa*`/`KlasaJ*`/`KlasaBrendshme*` = demo minimale për secilin lloj. **Zgjidhja ime** — `Dyqani anonime + lokale (detyra 2)` (PajisjaElektrike anonime, Fshesa lokale) dhe `Biblioteka anonime + lokale (detyra 1)` (Romani/Fjalori/Regjistri) — detyrat që profesori s'i publikoi, kompilojnë.
 
 **`Zgjidhjet/Grupi 1/`** — Asistenti, Beni *(abstrakte)*, Fakulteti *(static{})*, Grupi1, KlasaJ, KlasaJashtmeAnonime, KlasaJashtmeLokale, Mesimdhenesi *(abstrakte)*, Profesori
 
 **`Zgjidhjet/Grupi 2/`** — Artor, Asistenti, Fakulteti *(static{})*, Klasa1 *(static{})*, KlasaA, KlasaB, KlasaBL, KlasaBS, Mesimdhenesi *(abstrakte)*, Profesori
 
 **`Zgjidhjet/Grupi 5/`** — Asistenti, Fakulteti *(static{})*, KlasaAnonime *(abstrakte)*, KlasaBrendshmeAnonime, KlasaBrendshmeLokale, KlasaJashtme, KlasaJashtmeS, Mesimdhenesi *(abstrakte)*, Profesori
+
+**`Zgjidhjet/Zgjidhja ime - Biblioteka anonime + lokale (detyra 1)/`** — Biblioteka *(static{})*, Enciklopedia, Libri *(abstrakte)*, LibriShkollor
+
+**`Zgjidhjet/Zgjidhja ime - Dyqani anonime + lokale (detyra 2)/`** — Dyqani *(static{})*, Enelaresja, MP3Player, MulliriKafes, Pajisja *(abstrakte)*, PajisjaElektrike *(abstrakte)*
 
 ## ⚠ Kujdes
 

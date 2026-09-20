@@ -13,13 +13,15 @@
 
 ## Zgjidhjet — kodi
 
-`Ushtrimi 12 - Zgjidhja` = zgjidhja zyrtare e `Perseritje.pdf`. Grupi 1/5 = Punetori/Ndermarrja nga ligjërata.
+`Ushtrimi 12 - Zgjidhja` = zgjidhja zyrtare e `Perseritje.pdf`. Grupi 1/5 = Punetori/Ndermarrja nga ligjërata. **Zgjidhja ime** — `Biblioteka (Perseritje)`: `shtypSipasDrejtimit` bën `instanceof LibriShkollor` para cast-it — **më e saktë** se e profesorit, e cila plas me Enciklopedi në listë.
 
 **`Zgjidhjet/Grupi 1/`** — Drejtori, Individi *(interface)*, Koordinatori, Menaxheri, Ndermarrja *(koleksion)*, Punetori *(abstrakte)*, PunetoriException *(exception)*, Shoferi, StafiAdministrativ
 
 **`Zgjidhjet/Grupi 5/`** — Drejtori, Individi *(interface)*, Koordinatori, Menaxheri, Ndermarrja *(koleksion)*, Punetori *(abstrakte)*, PunetoriException *(exception)*, Shoferi, StafiAdministrativ *(abstrakte)*
 
 **`Zgjidhjet/Ushtrimi 12 - Zgjidhja/`** — Biblioteka *(koleksion, io)*, Botohet *(interface)*, Enciklopedia, Libri *(abstrakte)*, LibriException *(exception)*, LibriShkollor
+
+**`Zgjidhjet/Zgjidhja ime - Biblioteka (Perseritje)/`** — Bibloteka *(koleksion, io)*, Botohet *(interface)*, Enciklopedia, Libri *(abstrakte)*, LibriException *(exception)*, LibriShkollor
 
 ## ⚠ Kujdes
 

@@ -13,9 +13,11 @@
 
 ## Zgjidhjet — kodi
 
-`Detyra e zgjidhur - Ligjerate` e zgjidh detyrën 1 të `Ushtrime 4.pdf`.
+`Detyra e zgjidhur - Ligjerate` e zgjidh detyrën 1 të `Ushtrime 4.pdf`. **Zgjidhja ime** — `Publikimi-Journal-Libri (detyra 1)`: detyra 1 e `Perseritje Klasat Abstrakte.pdf`, hierarki me 3 nivele, kompilon dhe ekzekutohet.
 
 **`Zgjidhjet/Detyra e zgjidhur - Ligjerate/`** — Asistenti, Dekani, Fakulteti, Mesimdhenesi *(abstrakte)*, Profesori, StafiAkademik *(abstrakte)*
+
+**`Zgjidhjet/Zgjidhja ime - Publikimi-Journal-Libri (detyra 1)/`** — Biblioteka, Enciklopedia, Journal, Libri *(abstrakte)*, LibriShkollor, Publikimi *(abstrakte)*
 
 ## ⚠ Kujdes
 

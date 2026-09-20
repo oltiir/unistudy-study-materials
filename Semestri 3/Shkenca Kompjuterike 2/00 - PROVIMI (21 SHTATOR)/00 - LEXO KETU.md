@@ -13,6 +13,7 @@ Gjithçka që të duhet është në këtë dosje. Asgjë tjetër nuk të duhet s
 | 3 | **Kodi rreth Klasave dhe Interface-ëve** | **60** | `03 - Klasa dhe Interface (64p)/` |
 | 4 | Kodi rreth paketës java.io | **15** | `04 - java.io (15p)/` |
 | 5 | Threads dhe Concurrency | **9** | `05 - Threads (9p)/` |
+| — | provat e mia + gabimet | — | `06 - Provat e mia/` |
 | | **Gjithsej** | **100** | |
 
 > **64 nga 100 pikë** janë klasa + interface + exception. Aty shpenzoje kohën.
@@ -43,6 +44,13 @@ janë në fund të `03 - .../zgjidhja-provimi.md`.
 3. **Shkruaje me dorë** nga e para: `PunetoriException` → `Individi` → `Punetori` →
    `Shoferi`/`Koordinatori`/`Menaxheri` → `StafiAdministrativ` → `Drejtori` → `Ndermarrja`.
 4. Krahasoje me `zgjidhja-provimi/`. Çdo ndryshim = pikë e humbur në provim.
+
+### Bllok 1b — 15 min · provat e mia
+- Lexo `06 - Provat e mia/GABIMET-E-MIA.md`. Prova 1 ime është ~50/60 — dallimi janë **`equals()`,
+  `set` + validimi te `Punetori`, dhe emri `PunetoriException`**. Këto tri i shkruan në 5 minuta.
+- Modeli më i plotë që kam shkruar vetë: `03 - .../zgjidhja-ime/Fakulteti me varg + file (Ushtrime 10)/`
+  — hierarki + interface default + exception + lexim/shkrim file në një program. Ekzekutoje:
+  `javac *.java && java Fakulteti ubt.txt dalja.out`.
 
 ### Bllok 2 — 45 min · pyetja 4 (15 pikë)
 - Lexo `04 - java.io (15p)/zgjidhja-provimi.md`.
@@ -81,6 +89,7 @@ janë në fund të `03 - .../zgjidhja-provimi.md`.
 7. **`start()`, jo `run()`.**
 8. **`main()` gjithmonë brenda `try/catch`.**
 9. Pa kohë? Shkruaj **kontejnerin dhe `main()`** — aty janë më së shumti pikë.
+10. **60 sekonda para dorëzimit:** lista e kontrollit në fund të `06 - Provat e mia/GABIMET-E-MIA.md`.
 
 ---
 
@@ -101,11 +110,13 @@ janë në fund të `03 - .../zgjidhja-provimi.md`.
         Biblioteka (Java 12)/ ...... zgjidhja e profesorit, i njëjti model si provimi
         Klasa Abstrakte (Java 4)/ .. zgjidhja e profesorit për klasa abstrakte
     ushtrime/ ...................... 5 fletë ushtrimesh, nga më e rëndësishmja
+    zgjidhja-ime/ .................. Fakulteti me file (varg / ArrayList) — zgjidhja ime e plotë e Ushtrime 10 dhe 11
 
 04 - java.io (15p)/
     zgjidhja-provimi.md ............ shpjegimi i pyetjes 4 + kontradikta e tekstit
     zgjidhja-provimi/ .............. FileNumero.java — i testuar
     zgjidhja-mesuesit/ ............. 8 detyra I/O të zgjidhura nga profesori
+    zgjidhja-ime/ .................. NumeroReshtat, LineWithoutA, LineStartX — Ushtrime 8 detyrat 1-3 (pa zgjidhje zyrtare)
     ushtrime/ ...................... I.O Streams.pdf — detyra 8 (LineCounter) është binjaku i pyetjes 4
 
 05 - Threads (9p)/
@@ -113,6 +124,11 @@ janë në fund të `03 - .../zgjidhja-provimi.md`.
     zgjidhja-provimi/ .............. OurThread.java (të dy variantet) — i testuar
     zgjidhja-mesuesit/ ............. Vrapimi — zgjidhja e profesorit
     ushtrime/ ...................... detyra + ligjërata e threads (teoria)
+
+06 - Provat e mia/
+    GABIMET-E-MIA.md ............... çka humbi pikë në 4 provat e mia + lista e kontrollit 60-sekondëshe
+    Prova 1 - Pyetja 3/ ............ Ndermarrja ime — kompilon, ~50/60
+    Prova 2 - Pyetjet 4 dhe 5/ ..... FileNumero + OurThread
 ```
 
 ---

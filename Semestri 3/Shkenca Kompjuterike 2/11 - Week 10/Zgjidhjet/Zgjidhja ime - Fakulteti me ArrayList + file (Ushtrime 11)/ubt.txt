@@ -1,0 +1,25 @@
+Profesori;Arben Krasniqi;1970;Networking;Profesor i rregullt
+Profesori;Driton Berisha;1975;Cyber Security;Profesor i asocuar
+Profesori;Liridon Gashi;1968;Databases;Profesor i rregullt
+Profesori;Valon Hoxha;1972;Software Engineering;Profesor i asocuar
+Profesori;Blerim Kelmendi;1978;Artificial Intelligence;Profesor i rregullt
+Profesori;Faton Shala;1965;Operating Systems;Profesor i rregullt
+Profesori;Ilir Rexhepi;1971;Computer Networks;Profesor i asocuar
+Profesori;Besnik Morina;1977;Web Development;Profesor i rregullt
+Profesori;Agim Mehmeti;1969;Computer Architecture;Profesor i rregullt
+Profesori;Yllka Dervishi;1976;Data Science;Profesor i asocuar
+Profesori;Rina Hasani;1980;Machine Learning;Profesor i asocuar
+Profesori;Gent Zogaj;1974;Information Systems;Profesor i rregullt
+Asistenti;Erion Halili;1985;Software Engineering;Laboratorike
+Asistenti;Arta Sadiku;1987;Databases;Ushtrime teorike
+Asistenti;Krenar Bytyqi;1983;Cyber Security;Laboratorike
+Asistenti;Dafina Gashi;1989;Web Development;Ushtrime praktike
+Asistenti;Alban Kastrati;1986;Operating Systems;Laboratorike
+Asistenti;Luan Berisha;1984;Networking;Ushtrime teorike
+Asistenti;Blerta Hoxha;1990;Data Science;Ushtrime praktike
+Asistenti;Donika Krasniqi;1988;Artificial Intelligence;Laboratorike
+Asistenti;Ardian Shabani;1982;Computer Architecture;Laboratorike
+Asistenti;Elira Mehmeti;1991;Information Systems;Ushtrime teorike
+Asistenti;Jeton Dervishi;1985;Machine Learning;Laboratorike
+Asistenti;Vlera Rexhepi;1992;Computer Networks;Ushtrime praktike
+Asistenti;Shkumbin Morina;1983;Programming Fundamentals;Ushtrime teorike

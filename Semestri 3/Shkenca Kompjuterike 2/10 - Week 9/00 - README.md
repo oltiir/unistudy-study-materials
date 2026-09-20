@@ -17,7 +17,7 @@
 
 ## Zgjidhjet — kodi
 
-`Ushtrimi 9 - Zgjidhja` = **zgjidhja zyrtare** e 8 detyrave të `I.O Streams.pdf`. Grupi 1/5 `NumeroReshtat` = detyra 1 e `Ushtrime 8.pdf`; Grupi 2 `LineWithoutA` = detyra 2 (e paplotë).
+`Ushtrimi 9 - Zgjidhja` = **zgjidhja zyrtare** e 8 detyrave të `I.O Streams.pdf`. Grupi 1/5 `NumeroReshtat` = detyra 1 e `Ushtrime 8.pdf`; Grupi 2 `LineWithoutA` = detyra 2 (e paplotë). **Zgjidhja ime** — `Ushtrime 8 detyrat 1-3`: NumeroReshtat, LineWithoutA, LineStartX — të vetmet zgjidhje për këtë fletë (profesori s'e publikoi), kompilojnë.
 
 **`Zgjidhjet/Grupi 1/`** — NumeroReshtat *(io)*, Ushtrimi1Read *(io)*, Ushtrimi1Write *(io)*, Ushtrimi2Read *(io)*
 
@@ -26,6 +26,8 @@
 **`Zgjidhjet/Grupi 5/`** — NumeroRreshtat *(io)*, Reader1 *(io)*, Reader2 *(io)*, Writer1 *(io)*
 
 **`Zgjidhjet/Ushtrimi 9 - Zgjidhja/`** — Detyra1 *(io)*, Detyra2 *(io)*, Detyra3 *(io)*, LineCounter *(io)*, LineMaxChar *(io)*, LineMaxWord *(io)*, LineMaxWords *(io)*, LinesWithX *(io)*
+
+**`Zgjidhjet/Zgjidhja ime - Ushtrime 8 detyrat 1-3 (pa zgjidhje zyrtare)/`** — LineStartX *(io)*, LineWithoutA *(io)*, NumeroReshtat *(io)*
 
 ## ⚠ Kujdes
 

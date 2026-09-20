@@ -1,0 +1,21 @@
+LibriShkollor;10001;Java Basics;2005;SHKI 1
+LibriShkollor;10002;OOP in Java;2008;SHKI 2
+LibriShkollor;10003;Data Structures;2011;SHKI 3
+LibriShkollor;10004;Algorithms 1;2010;SHKI 2
+LibriShkollor;10005;Computer Networks;2015;SHKI 4
+LibriShkollor;10006;Database Systems;2014;SHKI 3
+LibriShkollor;10007;Operating Systems;2013;SHKI 4
+LibriShkollor;10008;Web Development;2017;SHKI 2
+LibriShkollor;10009;Cyber Security;2019;SHKI 4
+LibriShkollor;10010;Software Engineering;2016;SHKI 3
+
+Enciklopedia;20001;Human Anatomy;2012;5
+Enciklopedia;20002;World History;2010;7
+Enciklopedia;20003;Physics Encyclopedia;2015;6
+Enciklopedia;20004;Chemistry Guide;2014;4
+Enciklopedia;20005;Biology Encyclopedia;2013;8
+Enciklopedia;20006;Space Exploration;2018;9
+Enciklopedia;20007;Artificial Intelligence;2020;10
+Enciklopedia;20008;Mathematics Encyclopedia;2011;6
+Enciklopedia;20009;Geography Atlas;2009;3
+Enciklopedia;20010;Technology Handbook;2021;12

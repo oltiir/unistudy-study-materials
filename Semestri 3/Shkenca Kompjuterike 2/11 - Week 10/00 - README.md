@@ -18,13 +18,17 @@ Tre koleksionet me `Iterator` dhe for-each. `Ushtrime 10.pdf` = **varg** + `lexo
 
 ## Zgjidhjet — kodi
 
-Grupi 1/2/5: `Ushtrimi1/2/3` = tre koleksionet; `Ushtrimi4`/`LexoNgaFile` = lexim rreshtash, `split(";")`, krijim objektesh. **Demo — NUK e zgjidhin detyrat e mëdha të PDF-ve.**
+Grupi 1/2/5: `Ushtrimi1/2/3` = tre koleksionet; `Ushtrimi4`/`LexoNgaFile` = lexim rreshtash, `split(";")`, krijim objektesh. **Demo — NUK e zgjidhin detyrat e mëdha të PDF-ve.** **Zgjidhja ime** — `Fakulteti me varg + file (Ushtrime 10)` dhe `Fakulteti me ArrayList + file (Ushtrime 11)`: zgjidhjet e plota me lexim nga file (`split(";")`), interface me default, exception; ekzekutohen me `java Fakulteti ubt.txt dalja.out`.
 
 **`Zgjidhjet/Grupi 1/`** — KlasaIme, Ushtrimi1 *(koleksion)*, Ushtrimi2, Ushtrimi3 *(koleksion)*, Ushtrimi4 *(io)*
 
 **`Zgjidhjet/Grupi 2/`** — LexoNgaFile *(io)*, Ushtrimi1ArrayList *(koleksion)*, Ushtrimi1LinkedList, Ushtrimi1Vector *(koleksion)*
 
 **`Zgjidhjet/Grupi 5/`** — KlasaIme, Ushtrimi1 *(koleksion)*, Ushtrimi2, Ushtrimi3 *(koleksion)*, Ushtrimi4 *(io)*
+
+**`Zgjidhjet/Zgjidhja ime - Fakulteti me ArrayList + file (Ushtrime 11)/`** — Angazhohet *(interface)*, Asistenti, Fakulteti *(koleksion, io)*, Mesimdhenesi *(abstrakte)*, MesimdhenesiException *(exception)*, Profesori
+
+**`Zgjidhjet/Zgjidhja ime - Fakulteti me varg + file (Ushtrime 10)/`** — Angazhohet *(interface)*, Asistenti, Fakulteti *(io)*, Mesimdhenesi *(abstrakte)*, MesimdhenesiException *(exception)*, Profesori
 
 ## Arkivat
 

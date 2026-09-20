@@ -18,13 +18,17 @@
 
 ## Zgjidhjet — kodi
 
-Grupi 1/2/5 = **demo ligjërate për static**. **NUK i zgjidhin PDF-të e kësaj jave** (ato kërkojnë inner classes).
+Grupi 1/2/5 = **demo ligjërate për static** — nuk i zgjidhin PDF-të e kësaj jave (ato kërkojnë inner classes); zgjidhjet e fletëve janë te *Zgjidhja ime* më poshtë. **Zgjidhja ime** — `Dyqani inner + static nested (detyra 2)` dhe `EkipiOlimpik inner + static nested (detyra 1)`: **këto i zgjidhin fletët e kësaj jave** (Turiela/TV, HedhesiGjyles/Mundesi), kompilojnë.
 
 **`Zgjidhjet/Grupi 1/`** — Counter1, CounterStatik, Ushtrimi1 *(static{})*, Ushtrimi2 *(static{})*, Ushtrimi3 *(static{})*, Ushtrimi4 *(static{})*
 
 **`Zgjidhjet/Grupi 2/`** — A *(static{})*, B *(static{})*, CountTest, CountTestStatik, Studenti, StudentiMain, StudentiStatik, Ushtrimi1 *(static{})*
 
 **`Zgjidhjet/Grupi 5/`** — A *(static{})*, B *(static{})*, Counter1, Counter2, Ushtrimi1
+
+**`Zgjidhjet/Zgjidhja ime - Dyqani inner + static nested (detyra 2)/`** — Dyqani *(static{})*, Enelaresja, MP3Player, MulliriKafes, Pajisja *(abstrakte)*, PajisjaElektrike *(abstrakte)*
+
+**`Zgjidhjet/Zgjidhja ime - EkipiOlimpik inner + static nested (detyra 1)/`** — Atleti *(abstrakte)*, EkipiOlimpik *(static{})*, Futbollisti, Karateisti, Sportisti *(abstrakte)*, Vrapuesi
 
 ## Arkivat
 

@@ -17,9 +17,11 @@
 
 ## Zgjidhjet — kodi
 
-Grupi 1/5 `InterfaceA/B` + `KlasaKonkreteA`/`Grupi5` = **demo ligjërate**. **NUK e zgjidhin** detyrën `Mesimdhenesi/Angazhohet` të PDF-ve.
+Grupi 1/5 `InterfaceA/B` + `KlasaKonkreteA`/`Grupi5` = **demo ligjërate**, nuk e zgjidhin detyrën e PDF-ve. **Zgjidhja ime** — `Pajisja + Perdoret (detyra 2)`: Pajisja abstrakte + interface Perdoret + Dyqani me varg, kompilon.
 
 **`Zgjidhjet/Grupi 1/`** — InterfaceA *(interface)*, InterfaceB *(interface)*, KlasaKonkreteA
 
 **`Zgjidhjet/Grupi 5/`** — Grupi5, InterfaceA *(interface)*, InterfaceB *(interface)*
+
+**`Zgjidhjet/Zgjidhja ime - Pajisja + Perdoret (detyra 2)/`** — Dyqani, Enelarsja, MP3Player, Pajisja *(abstrakte)*, Perdoret *(interface)*
 

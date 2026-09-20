@@ -17,9 +17,11 @@
 
 ## Zgjidhjet — kodi
 
-Grupi 2: `Klasa11→Klasa12→Klasa13` zinxhir abstrakt; `Klasa1/Klasa2` overloading vs overriding; `Klasa3/Klasa4` abstrakte me `final`. **Demo ligjërate — NUK e zgjidhin detyrat e PDF-ve.**
+Grupi 2: `Klasa11→Klasa12→Klasa13` zinxhir abstrakt; `Klasa1/Klasa2` overloading vs overriding; `Klasa3/Klasa4` abstrakte me `final`. **Demo ligjërate — NUK e zgjidhin detyrat e PDF-ve.** **Zgjidhja ime** — `Biblioteka me varg (detyra 3)`: detyra 3 e fletës (Libri/LibriShkollor/Enciklopedia/Biblioteka me varg), kompilon.
 
 **`Zgjidhjet/Grupi 2/`** — Klasa1, Klasa11 *(abstrakte)*, Klasa12 *(abstrakte)*, Klasa13, Klasa2, Klasa3 *(abstrakte)*, Klasa4
+
+**`Zgjidhjet/Zgjidhja ime - Biblioteka me varg (detyra 3)/`** — Biblioteka, Enciklopedia, Libri *(abstrakte)*, LibriShkollor
 
 ## Arkivat
 
