@@ -2,6 +2,11 @@
 
 Gjithçka që të duhet është në këtë dosje. Asgjë tjetër nuk të duhet sonte.
 
+> **E reja (21 shtator, natën):** dosja `07 - Udhezues per provim/` ka tetë fletë shpjeguese që mbulojnë
+> **të dy testet** (provimin shembull në PDF dhe testin e fundit `Kinemaja` nga fotot). Fillo nga
+> `07 - Udhezues per provim/00 - Harta dhe rendi i mesimit.md`; aty është rendi i leximit. Blloqet më poshtë
+> mbeten të vlefshme si plan kohor.
+
 ---
 
 ## Struktura e provimit (nga `01 - Provimi Shembull.pdf`)
