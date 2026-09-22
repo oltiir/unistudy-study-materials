@@ -52,6 +52,29 @@ for çdo file:
 
 Set shmang që i njëjti file të përsëritet për të njëjtën fjalë.
 
+### Shembull FileIndex i zgjidhur
+
+Merr tri skedarë:
+
+- A: `data trees data`
+- B: `trees hash`
+- C: `data graph`
+
+Për A, fjala `data` haset dy herë, por `SET<File>` ruan A vetëm një herë. Indeksi final është:
+
+| Key | Value: set i skedarëve |
+|---|---|
+| `data` | `{A,C}` |
+| `trees` | `{A,B}` |
+| `hash` | `{B}` |
+| `graph` | `{C}` |
+
+Query `trees` kthen A dhe B. Query për një key që mungon kthen set bosh/null sipas API-së, jo të gjithë skedarët.
+
+#### Detyrë për ty
+
+Ndërto FileIndex për D1: `algoritme stack queue`, D2: `tree algoritme hash`, D3: `queue hash queue`. Shkruaj key/value pas përpunimit të çdo dokumenti dhe përgjigju queries `queue`, `algoritme`, `graph`.
+
 ## Concordance
 
 Qëllimi: për një fjalë gjej çdo pozitë dhe kontekstin rreth saj.
@@ -75,6 +98,20 @@ Në vector shumë të madh me pak elemente jo-zero, array shpenzon `O(N)` hapës
 `sum += this[i] * that[i]`.
 
 Koha `O(nnz)`, hapësira `O(nnz)`, ku `nnz` është numri i elementeve jo-zero.
+
+### Shembull sparse dot product i zgjidhur
+
+Le të jetë sparse vector me `N=8`: `{1:3, 5:2}`, dhe dense vector `[4,10,0,1,7,6,2,9]`.
+
+Iterojmë vetëm në keys jo-zero `1` dhe `5`:
+
+`dot = 3 * dense[1] + 2 * dense[5] = 3*10 + 2*6 = 42`.
+
+U bënë vetëm 2 shumëzime në vend të 8. Indekset që mungojnë në symbol table trajtohen si vlerë 0.
+
+#### Detyrë për ty
+
+Llogarit dot product për sparse `{0:2, 4:-1, 7:3}` dhe dense `[5,2,0,0,4,1,9,2]`. Shkruaj vetëm termat që vizitohen. Kontrolli final: `12`.
 
 ## Sparse matrix
 

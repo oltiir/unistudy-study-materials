@@ -157,3 +157,33 @@ for (int i=0; i<n; i++)
 ```
 
 Përgjigjja: `O(N²)`.
+
+## Shembull i zgjidhur hap pas hapi
+
+Analizo këtë kod:
+
+```java
+for (int i=1; i<=n; i++)
+    for (int j=1; j<=i; j++) work();
+
+for (int k=1; k<n; k*=2) work();
+```
+
+1. Për `i = 1`, cikli i brendshëm punon 1 herë; për `i = 2`, 2 herë; ...; për `i = n`, `n` herë.
+2. Puna e pjesës së parë është `1 + 2 + ... + n = n(n+1)/2 = Theta(n²)`.
+3. Në pjesën e dytë, `k` merr vlerat `1, 2, 4, 8, ...`. Pas `t` iterimeve kemi `k = 2^t`; ndalet kur `2^t >= n`, pra bën `Theta(log n)` hapa.
+4. Pjesët janë njëra pas tjetrës, prandaj mblidhen: `Theta(n²) + Theta(log n)`.
+5. Termi dominues është `n²`, kështu kompleksiteti total është **`Theta(n²)`**.
+
+### Detyrë për ty
+
+Analizo secilën pjesë dhe pastaj totalin:
+
+```java
+for (int i=0; i<n; i++)
+    for (int j=i; j<n; j++) work();
+
+for (int x=n; x>1; x/=2) work();
+```
+
+Shkruaj sa herë ekzekutohet `work()` në pjesën e parë si shumë, kompleksitetin e pjesës së dytë dhe termin dominues. Kontrolli final: totalja duhet të dalë `Theta(n²)`.

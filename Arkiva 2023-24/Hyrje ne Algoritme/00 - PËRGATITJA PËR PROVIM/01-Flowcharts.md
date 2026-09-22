@@ -134,6 +134,40 @@ while k <= n+3:
 y = 2*s - 7*p
 ```
 
+## Shembull i zgjidhur hap pas hapi
+
+**Detyra:** Gjej shumën e kubeve të numrave çift nga `2` deri në `n`. Provoje për `n = 8`.
+
+1. Input-i është `n`; output-i është shuma `S`.
+2. Shuma nis me `S = 0`.
+3. Meqë duhen vetëm numrat çift, nis me `i = 2` dhe rrite me `2`.
+4. Për sa kohë `i <= n`, shto `i³` në shumë.
+
+```text
+Lexo n
+S = 0
+i = 2
+derisa i <= n:
+    S = S + i*i*i
+    i = i + 2
+Shfaq S
+```
+
+Gjurmimi për `n = 8`:
+
+| `i` | `i³` | `S` para | `S` pas |
+|---:|---:|---:|---:|
+| 2 | 8 | 0 | 8 |
+| 4 | 64 | 8 | 72 |
+| 6 | 216 | 72 | 288 |
+| 8 | 512 | 288 | 800 |
+
+Pas rritjes së fundit `i = 10`, kushti `10 <= 8` është i pavërtetë. Prandaj output-i është `800`. Në flowchart, kontrolli `i <= n?` është romb; dega **Po** shkon te llogaritja, ndërsa **Jo** te output-i.
+
+### Detyrë për ty
+
+Ndërto pseudokodin dhe flowchart-in për shumën e katrorëve të numrave tek nga `3` deri në `n`. Bëje trace-in për `n = 9`. Për vetëkontroll, rezultati final duhet të jetë `3² + 5² + 7² + 9² = 164`.
+
 ## Gabimet tipike
 
 - Harron inicializimin.

@@ -80,6 +80,51 @@ while (h>=1) {
 - In-place, jo stable.
 - Materiali jep worst rreth `N^(3/2)` për 3x+1; analiza e saktë varet nga gap sequence.
 
+## Shembuj të zgjidhur hap pas hapi
+
+### Selection sort
+
+Sorto `[6, 3, 5, 1]`. Në çdo iterim kërkohet minimumi i suffix-it dhe bëhet vetëm një swap.
+
+| `i` | Suffix-i i skanuar | Minimumi | Array pas swap-it |
+|---:|---|---:|---|
+| 0 | `[6, 3, 5, 1]` | 1 | `[1, 3, 5, 6]` |
+| 1 | `[3, 5, 6]` | 3 | `[1, 3, 5, 6]` |
+| 2 | `[5, 6]` | 5 | `[1, 3, 5, 6]` |
+
+Pas iterimit të parë, `1` është në pozitën finale; algoritmi nuk ndalet edhe pse pjesa tjetër rastësisht është e sortuar.
+
+#### Detyrë për ty
+
+Apliko selection sort në `[9, 4, 7, 2, 6]`. Shkruaj `i`, indeksin e minimumit dhe array-in pas çdo swap-i.
+
+### Insertion sort
+
+Sorto `[5, 2, 4, 3]` duke futur elementin aktual në prefix-in e sortuar:
+
+1. `i=1`: `2 < 5`, ndërroji -> `[2, 5, 4, 3]`.
+2. `i=2`: `4 < 5`, ndërroji -> `[2, 4, 5, 3]`; `4 < 2` është false, ndalo.
+3. `i=3`: `3 < 5` -> `[2, 4, 3, 5]`; `3 < 4` -> `[2, 3, 4, 5]`; `3 < 2` është false.
+
+Prefix-i zmadhohet nga një element pas çdo iterimi dhe mbetet i sortuar.
+
+#### Detyrë për ty
+
+Apliko insertion sort në shkronjat `A L G O`. Shkruaj array-in pas çdo swap-i dhe rretho prefix-in e sortuar pas çdo `i`.
+
+### Shellsort
+
+Sorto `[8, 5, 3, 7, 6, 2]` me gap-et `h=4`, pastaj `h=1`.
+
+- Me `h=4`, krahasohen indekset `(0,4)` dhe `(1,5)`: `6 < 8` jep `[6,5,3,7,8,2]`; `2 < 5` jep `[6,2,3,7,8,5]`.
+- Me `h=1`, bëhet insertion sort mbi array-in tashmë pjesërisht të rregulluar: `[2,6,3,7,8,5]` -> `[2,3,6,7,8,5]` -> `[2,3,5,6,7,8]`.
+
+Rezultati final është `[2, 3, 5, 6, 7, 8]`. Te `h=4` nuk krahasohen fqinjët, por elementet katër pozita larg.
+
+#### Detyrë për ty
+
+Apliko Shellsort me gap-et `4` dhe `1` në `[12, 7, 9, 1, 5, 3, 10, 2]`. Shkruaj array-in pas fazës `h=4`, pastaj pas çdo lëvizjeje të fazës `h=1`.
+
 ## Trace i saktë në provim
 
 ### Selection

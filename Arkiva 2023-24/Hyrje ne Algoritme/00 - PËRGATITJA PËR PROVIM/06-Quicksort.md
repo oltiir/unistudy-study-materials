@@ -45,6 +45,10 @@ Kujdes kufijtë. Skanimet duhet të ndalen edhe në elemente të barabarta me pi
 
 Pivoti 5 është final. Tani rekursion vetëm te `[4,3,1,2]` dhe `[7,6]`.
 
+### Detyrë për ty: 2-way
+
+Bëj vetëm partition-in e parë për `[6,3,7,2,8,5,4]`, me pivot `6`. Shëno ku ndalen `i/j` dhe çdo swap. Kontrolli pas vendosjes së pivotit: `[5,3,4,2,6,8,7]`; pivoti përfundon në indeksin 4.
+
 ## Dijkstra 3-way partition
 
 Përdoret kur ka shumë duplikate. Mban invariantin:
@@ -67,6 +71,25 @@ while (i<=gt) {
 Kur elementi është `> v`, mos e rrit `i`: elementi i ardhur nga `gt` ende nuk është kontrolluar.
 
 Pas partition rekursioni bëhet vetëm në `[lo..lt-1]` dhe `[gt+1..hi]`; pjesa e barabartë është final.
+
+### Shembull 3-way i zgjidhur hap pas hapi
+
+Partition për `[3,5,2,3,4,3,2]`, me pivot `v=3`:
+
+| Hapi | `lt,i,gt` para hapit | Krahasimi | Veprimi | Array pas hapit |
+|---:|---|---|---|---|
+| 1 | `0,1,6` | `5>3` | swap `i,gt`; `gt--`, por jo `i++` | `[3,2,2,3,4,3,5]` |
+| 2 | `0,1,5` | `2<3` | swap `lt,i`; `lt++`, `i++` | `[2,3,2,3,4,3,5]` |
+| 3 | `1,2,5` | `2<3` | swap `lt,i`; `lt++`, `i++` | `[2,2,3,3,4,3,5]` |
+| 4 | `2,3,5` | `3=3` | vetëm `i++` | `[2,2,3,3,4,3,5]` |
+| 5 | `2,4,5` | `4>3` | swap `i,gt`; `gt--` | `[2,2,3,3,3,4,5]` |
+| 6 | `2,4,4` | `3=3` | `i++`; cikli mbaron | `[2,2,3,3,3,4,5]` |
+
+Në fund zonat janë `<3: [2,2]`, `=3: [3,3,3]`, `>3: [4,5]`. Pjesa e barabartë nuk futet më në rekursion.
+
+### Detyrë për ty: 3-way
+
+Bëj partition për `[4,2,4,5,1,4,3]` me pivot `4`. Pas çdo hapi shkruaj `lt,i,gt` dhe katër zonat e invariantit. Kujdes: pas rastit `> pivot`, mos e rrit `i`.
 
 ## Kompleksiteti
 

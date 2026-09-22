@@ -7,10 +7,13 @@ Ky material mbulon 12 temat dhe të 31 materialet e kursit Moodle `39168`. Ësht
 Për çdo temë:
 
 1. Lexo seksionet **Ideja** dhe **Konceptet kryesore**.
-2. Kopjo me dorë algoritmin ose tabelën e hapave.
-3. Bëje shembullin pa e parë përgjigjen.
-4. Përgjigju pyetjeve te **Kontrolli i njohurive**.
-5. Zgjidh së paku dy ushtrime nga materialet origjinale.
+2. Ndiqe **Shembullin e zgjidhur** rresht për rresht dhe shpjego me zë pse bëhet secili hap.
+3. Mbylle shembullin dhe riprodhoje vetë në letër.
+4. Zgjidhe menjëherë seksionin **Detyrë për ty** pa e parë kontrollin final.
+5. Përgjigju pyetjeve te **Kontrolli i njohurive**.
+6. Zgjidh së paku dy ushtrime nga materialet origjinale.
+
+Çdo kapitull ka së paku një shembull të punuar dhe një detyrë të ngjashme. Te temat me disa algoritme, si sortimet dhe hashing, ka ushtrim pas secilës nën-temë kryesore.
 
 Mos mëso vetëm kodin përmendësh. Në provim duhet të dish të shpjegosh invariantin: çka është e garantuar pas çdo hapi të algoritmit.
 

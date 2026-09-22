@@ -74,6 +74,38 @@ Rendi i këtyre kontrolleve është pjesë e algoritmit; mos i aplikoni sipas in
 
 Për çdo link të kuq majtas, bashko child-in dhe parent-in në një 3-node me dy keys. Links të zeza mbeten lidhje vertikale mes nodes të 2-3 tree.
 
+## Shembuj të zgjidhur hap pas hapi
+
+### Insert në 2-3 tree
+
+Inserto `10,20,30,15,25`:
+
+1. `10` krijon 2-node `[10]`.
+2. `20` futet në të njëjtën gjethe -> 3-node `[10|20]`.
+3. `30` krijon përkohësisht `[10|20|30]`; ndahet dhe key e mesëm `20` ngrihet si root, me fëmijët `[10]` dhe `[30]`.
+4. `15<20`, futet në gjethen majtas -> `[10|15]`.
+5. `25>20`, futet në gjethen djathtas -> `[25|30]`.
+
+Tree finale ka root `[20]` dhe dy 3-nodes `[10|15]`, `[25|30]`. Të gjitha gjethet janë në të njëjtin nivel.
+
+#### Detyrë për ty
+
+Ndërto 2-3 tree për `10,15,2,12,5,13`. Pas çdo key shkruaj node ku hyn, 4-node e përkohshme nëse krijohet, key që ngrihet dhe tree pas split-it.
+
+### I njëjti balancim në LLRB
+
+Inserto `10,20,30`:
+
+1. `10` insertohet i kuq, pastaj root ngjyroset i zi.
+2. `20` vjen si link i kuq djathtas i `10`; `rotateLeft(10)` e bën `20` root të zi dhe `10` fëmijë të kuq majtas. Kjo përfaqëson 3-node `[10|20]`.
+3. `30` futet i kuq djathtas i `20`. Tani të dy fëmijët `10` dhe `30` janë të kuq, prandaj `flipColors`: ata bëhen të zinj, `20` bëhet përkohësisht i kuq dhe në fund root ngjyroset i zi.
+
+Rezultati përfaqëson 2-3 tree me root `[20]` dhe fëmijët `[10]`, `[30]`.
+
+#### Detyrë për ty
+
+Ndërto LLRB për `15,41,32,10`. Pas çdo inserti provo kontrollet në rend: red-right, red-left-left, dy fëmijë të kuq. Shëno çdo `rotateLeft`, `rotateRight`, `flipColors`, pastaj ktheje tree finale në 2-3 tree.
+
 ## Performanca
 
 - Lartësia worst case `<= 2 log2 N`.

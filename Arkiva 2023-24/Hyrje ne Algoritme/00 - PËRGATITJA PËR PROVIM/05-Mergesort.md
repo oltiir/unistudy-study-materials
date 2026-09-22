@@ -75,6 +75,29 @@ Kujdes te blloku i fundit që mund të jetë më i shkurtër.
 
 Në merge final: merret 2 majtas, 3 djathtas, 6 djathtas, pastaj 7 majtas.
 
+## Shembull i zgjidhur hap pas hapi
+
+Bashko dy pjesët e sortuara `L=[2,5,8]` dhe `R=[1,3,9]`. Krahaso vetëm elementet ku tregojnë `i` dhe `j`; më i vogli kalon në output.
+
+| Hapi | Krahasimi | Zgjedhja dhe arsyeja | Output |
+|---:|---|---|---|
+| 1 | `2` me `1` | merret `1` nga R, sepse `1<2` | `[1]` |
+| 2 | `2` me `3` | merret `2` nga L | `[1,2]` |
+| 3 | `5` me `3` | merret `3` nga R | `[1,2,3]` |
+| 4 | `5` me `9` | merret `5` nga L | `[1,2,3,5]` |
+| 5 | `8` me `9` | merret `8` nga L | `[1,2,3,5,8]` |
+| 6 | L mbaroi | kopjohet pjesa e mbetur e R | `[1,2,3,5,8,9]` |
+
+Rezultati është i sortuar sepse në çdo hap merret elementi më i vogël që ende nuk është përdorur. Për `N=6`, merge shkruan saktësisht 6 elemente në output.
+
+### Detyrë për ty
+
+Bashko `L=[1,6,7,12]` dhe `R=[2,3,9,10]`. Shkruaj një rresht për çdo krahasim, vlerat e `i/j` dhe output-in pas hapit. Kontrolli final: `[1,2,3,6,7,9,10,12]`.
+
+### Detyrë top-down për ty
+
+Bëj ndarjet dhe merge-t për `[8,3,7,4,9,2]`. Në çdo merge shëno dy pjesët që janë tashmë të sortuara; nëse ndonjëra nuk është e sortuar, ke bërë merge para kohe.
+
 ## Stabiliteti
 
 Mergesort është stable nëse, kur çelësat janë të barabartë, merret elementi nga gjysma e majtë. Kjo është arsyeja e degës finale `else a[k]=aux[i++]`.

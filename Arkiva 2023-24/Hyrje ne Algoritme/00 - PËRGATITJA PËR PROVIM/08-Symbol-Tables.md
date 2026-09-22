@@ -77,6 +77,40 @@ Keys: `[A,C,E,H,L,M,P,R,S,X]`.
 - `ceiling(Q)=R`;
 - search për Q mbaron me `lo=7`, që është pozita e insertimit.
 
+## Shembuj të zgjidhur hap pas hapi
+
+### `put` bën update, jo key të dytë
+
+Fut sekuencën `S,E,A,R,C,H,E`, ku value është indeksi i karakterit:
+
+| Hapi | `put` | Çfarë ndodh | Size |
+|---:|---|---|---:|
+| 0 | `S -> 0` | key i ri | 1 |
+| 1 | `E -> 1` | key i ri | 2 |
+| 2 | `A -> 2` | key i ri | 3 |
+| 3 | `R -> 3` | key i ri | 4 |
+| 4 | `C -> 4` | key i ri | 5 |
+| 5 | `H -> 5` | key i ri | 6 |
+| 6 | `E -> 6` | `E` ekziston; value `1` zëvendësohet me `6` | 6 |
+
+Gjendja logjike finale është `{A:2, C:4, E:6, H:5, R:3, S:0}`. Renditja fizike varet nga implementimi, por key `E` shfaqet vetëm një herë.
+
+### Binary search dhe `rank`
+
+Në keys `[A,C,E,H,L,M,P,R,S,X]` kërko `Q`:
+
+1. `lo=0, hi=9, mid=4`: `keys[4]=L`; `Q>L`, prandaj `lo=5`.
+2. `mid=7`: key është `R`; `Q<R`, prandaj `hi=6`.
+3. `mid=5`: key është `M`; `Q>M`, prandaj `lo=6`.
+4. `mid=6`: key është `P`; `Q>P`, prandaj `lo=7`.
+5. Tani `lo=7>hi=6`; `Q` mungon dhe `rank(Q)=7`.
+
+Pozita 7 është para `R`; prandaj `floor(Q)=P` dhe `ceiling(Q)=R`.
+
+### Detyrë për ty
+
+Për keys `[B,D,G,K,N,T]`, gjej me trace të plotë `rank(H)`, `floor(H)`, `ceiling(H)` dhe pozitën ku do të insertohej `H`. Pastaj përsërite për key ekzistues `K` dhe shpjego pse `rank(K)` është edhe indeksi i tij.
+
 ## Zgjedhja e implementimit
 
 | Implementimi | Search | Insert | Ordered ops |

@@ -114,6 +114,42 @@ Për `24,22,94,19,62,39,88,32,40,41,27`:
 - Për të fshirë 62 me successor, përdor minimumin e subtree të tij djathtas (88 në strukturën e dhënë).
 - `floor(68)=62` para fshirjes; pas fshirjes struktura mund të japë predecessor-in tjetër sipas keys të mbetur. Gjithmonë llogarit mbi tree aktual, jo mbi shembullin e vjetër.
 
+## Shembull i zgjidhur hap pas hapi
+
+Inserto `8,3,10,1,6,14,4,7,13` në këtë rend:
+
+- `8` bëhet root.
+- `3<8`, prandaj shkon majtas; `10>8`, prandaj djathtas.
+- Për `6`: `6<8`, pastaj `6>3`, kështu bëhet fëmijë djathtas i 3.
+- Për `4`: `4<8`, `4>3`, `4<6`, kështu bëhet fëmijë majtas i 6.
+- Çdo key tjetër vendoset duke e nisur krahasimin përsëri nga root-i.
+
+```mermaid
+flowchart TD
+    n8((8)) --> n3((3))
+    n8 --> n10((10))
+    n3 --> n1((1))
+    n3 --> n6((6))
+    n6 --> n4((4))
+    n6 --> n7((7))
+    n10 --> n14((14))
+    n14 --> n13((13))
+```
+
+Traversals dalin duke zbatuar rregullin në çdo subtree, jo duke lexuar vetëm diagramin horizontalisht:
+
+- inorder: `1,3,4,6,7,8,10,13,14`;
+- preorder: `8,3,1,6,4,7,10,14,13`;
+- postorder: `1,4,7,6,3,13,14,10,8`.
+
+Për key që mungon `5`, rruga e kërkimit është `8 -> 3 -> 6 -> 4 -> null`. Gjatë kësaj rruge, kandidati më i mirë më i vogël është `4`, ndërsa më i madhi është `6`; pra `floor(5)=4`, `ceiling(5)=6`.
+
+Për të fshirë `3`, i cili ka dy fëmijë, successor-i është minimumi i subtree djathtas: `4`. `4` zë vendin e `3`, hiqet nga pozita e vjetër dhe mban majtas `1`, djathtas subtree me root `6`.
+
+### Detyrë për ty
+
+Ndërto BST për `12,5,18,2,9,15,19,7,10`. Shkruaj tri traversals, gjej `floor(8)` dhe `ceiling(8)`, pastaj fshi `5` duke përdorur successor-in. Vizato tree para dhe pas fshirjes dhe kontrollo që inorder mbetet i sortuar.
+
 ## Gabimet tipike
 
 - Vendos key duke e krahasuar vetëm me prindin e fundit, jo nga root përgjatë rrugës.

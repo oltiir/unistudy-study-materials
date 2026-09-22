@@ -129,6 +129,47 @@ Shembull `(7 - ((4 * 3) + (5 * 4)))`:
 - `12+20=32`;
 - `7-32=-25`.
 
+## Shembuj të zgjidhur hap pas hapi
+
+### Postfix me një stack
+
+Vlerëso `8 3 + 2 * 6 -`. Kur haset operatori, nxirret së pari operandi i djathtë dhe pastaj i majti.
+
+| Tokeni | Veprimi | Stack pas veprimit |
+|---|---|---|
+| `8` | push 8 | `[8]` |
+| `3` | push 3 | `[8, 3]` |
+| `+` | `8 + 3 = 11` | `[11]` |
+| `2` | push 2 | `[11, 2]` |
+| `*` | `11 * 2 = 22` | `[22]` |
+| `6` | push 6 | `[22, 6]` |
+| `-` | `22 - 6 = 16` | `[16]` |
+
+Në fund duhet të mbetet saktësisht një vlerë, prandaj rezultati është `16`.
+
+#### Detyrë për ty
+
+Vlerëso `9 2 3 * + 4 /` duke shkruar stack-un pas çdo tokeni. Kontrolli final: rezultati është `3.75`.
+
+### Circular queue me kapacitet 3
+
+Nisim me `head = 0`, `tail = 0`, `size = 0`. `tail` tregon slotin ku do të futet elementi i ardhshëm.
+
+| Operacioni | Çfarë ndodh | `head` | `tail` | Queue logjike |
+|---|---|---:|---:|---|
+| `enq(A)` | A vendoset në indeksin 0 | 0 | 1 | `[A]` |
+| `enq(B)` | B vendoset në indeksin 1 | 0 | 2 | `[A, B]` |
+| `deq()` | del A; head lëviz | 1 | 2 | `[B]` |
+| `enq(C)` | C vendoset në indeksin 2 | 1 | 0 | `[B, C]` |
+| `enq(D)` | D vendoset në indeksin 0 | 1 | 1 | `[B, C, D]` |
+| `deq()` | del B; head lëviz | 2 | 1 | `[C, D]` |
+
+`tail` kalon nga 2 në 0 sepse `(2 + 1) % 3 = 0`. Elementet e dala janë `A`, pastaj `B`; queue finale është `[C, D]`.
+
+#### Detyrë për ty
+
+Për circular queue me kapacitet 4, nis me `head=tail=size=0` dhe ekzekuto: `enq(K), enq(O), enq(S), deq(), enq(O), enq(V), deq(), enq(A)`. Shkruaj pas çdo hapi array-in fizik, `head`, `tail`, `size` dhe queue-n logjike.
+
 ## Aplikime
 
 - call stack dhe rekursioni;

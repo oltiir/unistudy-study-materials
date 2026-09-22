@@ -47,6 +47,14 @@ for çdo karakter c:
 
 Për `COOL`: nis me C=67, pastaj `h=31h+79`, përsëri O=79, pastaj L=76. Pas kësaj apliko modulo `M` sipas detyrës.
 
+### Shembull Horner i zgjidhur
+
+Për `CAT` dhe `M=13`: `h=0`; pas `C`, `h=67`; pas `A`, `h=31*67+65=2142`; pas `T`, `h=31*2142+84=66486`. Indeksi është `66486 mod 13 = 4`.
+
+#### Detyrë për ty
+
+Llogarit me të njëjtën tabelë hash-in e `DOG` për `M=13`. Përdor kodet `D=68`, `O=79`, `G=71`. Kontrolli final i indeksit: `8`.
+
 ## Separate chaining
 
 Array me `M` buckets; çdo bucket është linked list.
@@ -95,6 +103,74 @@ Ka dy pozita të mundshme nga dy hash functions. Në insert, nëse pozita ësht�
 ## Rolling hash
 
 Përdoret për window të String-ut: nga hash i dritares aktuale hiq kontributin e karakterit që del, shumëzo me bazën dhe shto karakterin e ri. Është ide qendrore në Rabin-Karp; collision duhet verifikuar me krahasim real.
+
+## Shembuj të collision resolution
+
+### Separate chaining
+
+Me `M=5`, `f(x)=2x+5` dhe keys `14,10,7,2,5,6,9`, bucket-at janë respektivisht `3,0,4,4,0,2,3`. Pra zinxhirët logjikë janë:
+
+- bucket 0: `10,5`;
+- bucket 2: `6`;
+- bucket 3: `14,9`;
+- bucket 4: `7,2`.
+
+Rendi brenda zinxhirit varet nëse insertohet në fillim apo fund; anëtarësia nuk ndryshon.
+
+#### Detyrë për ty
+
+Me `M=5`, `f(x)=3x+1`, vendos keys `1,6,4,9,12` në buckets. Shkruaj load factor `N/M` dhe gjatësinë e çdo zinxhiri.
+
+### Linear probing
+
+Me `M=13`, `f(x)=2x+3` dhe keys `1,8,49,18,24,34,48,5`:
+
+| Key | `f(x) mod 13` | Tentimet | Pozita finale |
+|---:|---:|---|---:|
+| 1 | 5 | 5 | 5 |
+| 8 | 6 | 6 | 6 |
+| 49 | 10 | 10 | 10 |
+| 18 | 0 | 0 | 0 |
+| 24 | 12 | 12 | 12 |
+| 34 | 6 | 6 zënë, 7 | 7 |
+| 48 | 8 | 8 | 8 |
+| 5 | 0 | 0 zënë, 1 | 1 |
+
+Çdo key provohet me `i=0` së pari; vetëm collision e rrit `i`.
+
+#### Detyrë për ty
+
+Me `M=11`, `f(x)=3x-1`, inserto `4,15,7,18,29`. Shkruaj të gjitha tentimet, jo vetëm slotin final.
+
+### Quadratic probing
+
+Me `M=11`, `f(x)=3x-2` dhe keys `4,8,15`: `4` shkon në 10, `8` në 0, ndërsa `15` fillon në 10 (collision) dhe për `i=1` provon `(43+1+1²) mod 11 = 1`, ku vendoset.
+
+#### Detyrë për ty
+
+Me të njëjtin `M` dhe funksion, vazhdo duke insertuar `19` dhe `26`. Për çdo collision provo `i=1,2,...` në formulën e plotë.
+
+### Double hashing
+
+Me `M=13`, `f(x)=2x+1` dhe keys `3,9,16`:
+
+- `3`: `h1=7`, vendoset në 7;
+- `9`: `h1=6`, vendoset në 6;
+- `16`: `h1=7` është zënë, `h2=13-7=6`; për `i=1`, `(7+1*6) mod 13=0`, prandaj vendoset në 0.
+
+#### Detyrë për ty
+
+Me të njëjtin `M/f`, inserto `4,10,17`. Llogarit `h1`, `h2` vetëm një herë për key dhe shkruaj çdo tentim.
+
+### Cuckoo hashing dhe rolling hash
+
+Për cuckoo hashing me `M=7`, `h1(x)=x mod 7`, `h2(x)=(3x+1) mod 7`: key `8` vendoset në `h1=1`; key `15` kërkon po slotin 1, e dëbon 8; `8` kalon në alternativën `h2(8)=4`. Search për 8 kontrollon vetëm slotet 1 dhe 4.
+
+Për rolling hash me bazë 10, modul 101 dhe dritare me gjatësi 3: hash i `123` është `22`. Për të kaluar te `234`, hiq kontributin e `1` (`1*10²`), shumëzo pjesën e mbetur me 10 dhe shto 4; rezultati modulo 101 është `32`, njësoj si `234 mod 101`.
+
+#### Detyrë për ty
+
+Vazhdo rolling hash nga dritarja `234` te `345` dhe verifikoje me llogaritje direkte. Pastaj simulo cuckoo insertion për keys `2,9` me funksionet e mësipërme dhe shëno çdo dëbim.
 
 ## Deletion
 

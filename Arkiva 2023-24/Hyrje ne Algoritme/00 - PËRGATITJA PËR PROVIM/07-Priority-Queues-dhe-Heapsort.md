@@ -72,6 +72,38 @@ delMax:
 4. vendos slotin e vjetër `null`;
 5. kthe maksimumin.
 
+## Shembuj të zgjidhur hap pas hapi
+
+Array-t më poshtë janë max-heaps me indeksim nga 1.
+
+### Insert dhe swim
+
+Fillo me `[8,6,7,3,2,5]` dhe inserto `9`.
+
+1. Shto `9` në fund, në indeksin 7: `[8,6,7,3,2,5,9]`.
+2. Prindi është në `7/2=3`, me vlerë `7`. Meqë `9>7`, swap -> `[8,6,9,3,2,5,7]`.
+3. Tani `9` është në indeksin 3; prindi është indeksi 1 me vlerë `8`. Swap -> `[9,6,8,3,2,5,7]`.
+4. Elementi arriti root-in; heap-order është rikthyer.
+
+#### Detyrë për ty
+
+Inserto `10` në heap-in `[9,7,8,3,2,5,6]`. Shëno indeksin, prindin dhe array-in pas çdo swap-i.
+
+### delMax dhe sink
+
+Fillo me `[9,6,8,3,2,5,7]`.
+
+1. Ruaj maksimumin `9`; ndërro root me elementin e fundit dhe zvogëlo heap-in: `[7,6,8,3,2,5]`.
+2. Fëmijët e root-it janë `6` dhe `8`; zgjidhet më i madhi, `8`.
+3. `7<8`, prandaj swap -> `[8,6,7,3,2,5]`.
+4. `7` në indeksin 3 ka vetëm fëmijën `5` dhe nuk është më i vogël; sink ndalet.
+
+Rezultati i kthyer është `9`, ndërsa heap-i i mbetur është `[8,6,7,3,2,5]`.
+
+#### Detyrë për ty
+
+Ekzekuto `delMax` në `[15,11,13,7,9,4,8,2]`. Shëno cili fëmijë zgjidhet në çdo sink dhe pse. Pastaj verifiko që çdo prind në heap-in final është `>=` fëmijët.
+
 ## Heapsort
 
 ### Faza 1: heap construction
