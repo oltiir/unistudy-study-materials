@@ -99,6 +99,11 @@ const TOPICS = [
   }
 ];
 
+TOPICS.forEach(topic => {
+  const extra = window.EXTRA_CHALLENGES?.[topic.id] || [];
+  topic.challenges.push(...extra);
+});
+
 const TOTAL_TASKS = TOPICS.reduce((sum, topic) => sum + topic.challenges.length, 0);
 const STORAGE_KEY = "algoritmet-lab-progress-v1";
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -108,12 +113,13 @@ const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
 const state = {
   topicIndex: Math.max(0, TOPICS.findIndex(t => `#${t.id}` === location.hash)),
   solved: new Set(Array.isArray(saved.solved) ? saved.solved : []),
-  xp: Number(saved.xp) || 0
+  xp: Number(saved.xp) || 0,
+  bestScore: Number(saved.bestScore) || 0
 };
 if (state.topicIndex < 0) state.topicIndex = 0;
 
 function persist() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ solved: [...state.solved], xp: state.xp }));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ solved: [...state.solved], xp: state.xp, bestScore: state.bestScore }));
 }
 
 function normalize(value) {
@@ -174,6 +180,9 @@ function updateProgress() {
   $("#progress-fill").style.width = `${percent}%`;
   $("#progress-track").setAttribute("aria-valuenow", percent);
   $$(".topic-nav-button").forEach((button, index) => {
+    const topicSolved = TOPICS[index].challenges.filter(ch => state.solved.has(ch.id)).length;
+    const score = $(".nav-score", button);
+    if (score) score.textContent = `${topicSolved}/${TOPICS[index].challenges.length}`;
     const done = TOPICS[index].challenges.every(ch => state.solved.has(ch.id));
     button.classList.toggle("done", done);
   });
@@ -185,7 +194,7 @@ function renderNavigation() {
     <button class="topic-nav-button ${index === state.topicIndex ? "active" : ""}" type="button" data-topic-index="${index}">
       <span class="nav-number">${String(index + 1).padStart(2, "0")}</span>
       <span>${topic.title}</span>
-      <span class="nav-check" aria-label="Tema e përfunduar">✓</span>
+      <span class="nav-score" aria-label="Progresi i temës">0/${topic.challenges.length}</span>
     </button>`).join("");
   $$(".topic-nav-button", nav).forEach(button => button.addEventListener("click", () => goToTopic(Number(button.dataset.topicIndex))));
 }
@@ -241,7 +250,7 @@ function renderChallenges(topic) {
       <div class="challenge-top">
         <div class="challenge-number">${index + 1}</div>
         <div class="challenge-copy"><h3>${escapeHTML(ch.title)}</h3><p>${escapeHTML(ch.prompt)}</p></div>
-        <span class="mini-pill">${solved ? "✓ E zgjidhur" : "+10 XP"}</span>
+        <div class="challenge-badges"><span class="level-pill">${escapeHTML(ch.level || "Bazë")}</span><span class="mini-pill">${solved ? "✓ E zgjidhur" : "+10 XP"}</span></div>
       </div>
       <div class="challenge-body">
         <div class="challenge-input-row">
@@ -954,6 +963,88 @@ LABS.applications = root => {
   buildIndex(); dot(); setLabStatus("Dy aplikime live", true);
 };
 
+const examState = { questions: [], seconds: 75 * 60, timer: null, submitted: false };
+
+function shuffled(values) {
+  const copy = [...values];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function chooseExamQuestions() {
+  const picked = TOPICS.map(topic => ({ topic, challenge: shuffled(topic.challenges)[0] }));
+  const pickedIds = new Set(picked.map(item => item.challenge.id));
+  const remaining = shuffled(TOPICS.flatMap(topic => topic.challenges.filter(ch => !pickedIds.has(ch.id)).map(challenge => ({ topic, challenge }))));
+  return shuffled([...picked, ...remaining.slice(0, 8)]);
+}
+
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60); const rest = seconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(rest).padStart(2, "0")}`;
+}
+
+function stopExamTimer() {
+  clearInterval(examState.timer); examState.timer = null;
+}
+
+function startExamTimer() {
+  stopExamTimer();
+  $("#exam-timer").textContent = formatTime(examState.seconds);
+  examState.timer = setInterval(() => {
+    examState.seconds--;
+    $("#exam-timer").textContent = formatTime(Math.max(0, examState.seconds));
+    if (examState.seconds <= 0) { stopExamTimer(); submitExam(); }
+  }, 1000);
+}
+
+function newExam() {
+  examState.questions = chooseExamQuestions(); examState.seconds = 75 * 60; examState.submitted = false;
+  $("#exam-result").innerHTML = "";
+  $("#exam-best").textContent = `Rekordi: ${state.bestScore ? state.bestScore + "/100" : "—"}`;
+  $("#submit-exam").disabled = false;
+  $("#exam-form").innerHTML = examState.questions.map((item, index) => `
+    <div class="exam-question" data-exam-index="${index}">
+      <span class="question-meta">${escapeHTML(item.topic.title)} · ${escapeHTML(item.challenge.level || "Bazë")} · 5 pikë</span>
+      <label for="exam-answer-${index}">${index + 1}. ${escapeHTML(item.challenge.prompt)}</label>
+      <input id="exam-answer-${index}" autocomplete="off" placeholder="Përgjigjja...">
+      <div class="exam-solution" hidden></div>
+    </div>`).join("");
+  startExamTimer();
+  $("#exam-form").scrollTop = 0;
+}
+
+function submitExam() {
+  if (examState.submitted) return;
+  examState.submitted = true; stopExamTimer();
+  let correct = 0;
+  examState.questions.forEach((item, index) => {
+    const wrapper = $(`[data-exam-index="${index}"]`, $("#exam-form"));
+    const answer = $("input", wrapper).value;
+    const ok = isAnswerCorrect(item.challenge, answer);
+    if (ok) correct++;
+    wrapper.classList.add(ok ? "correct" : "wrong");
+    const solution = $(".exam-solution", wrapper);
+    solution.hidden = false;
+    solution.textContent = ok ? "✓ Saktë" : `✗ ${item.challenge.solution}`;
+    $("input", wrapper).disabled = true;
+  });
+  const score = correct * 5;
+  if (score > state.bestScore) { state.bestScore = score; persist(); }
+  const passed = score >= 80;
+  $("#exam-result").innerHTML = `<div class="exam-score ${passed ? "pass" : "fail"}">${score}/100 — ${correct}/20 të sakta. ${passed ? "E arrite standardin 80+!" : `Të duhen edhe ${16 - correct} përgjigje të sakta për 80.`}</div>`;
+  $("#exam-best").textContent = `Rekordi: ${state.bestScore}/100`;
+  $("#submit-exam").disabled = true;
+  if (passed) celebrate();
+  $("#exam-form").scrollTop = 0;
+}
+
+function closeExam() {
+  stopExamTimer(); $("#exam-dialog").close();
+}
+
 $("#previous-topic").addEventListener("click", () => goToTopic(state.topicIndex - 1));
 $("#next-topic").addEventListener("click", () => goToTopic(state.topicIndex + 1));
 $("#random-task").addEventListener("click", () => {
@@ -967,8 +1058,15 @@ $("#random-task").addEventListener("click", () => {
 });
 $("#reset-progress").addEventListener("click", () => {
   if (!confirm("A dëshiron ta fshish krejt progresin dhe XP?")) return;
-  state.solved.clear(); state.xp = 0; persist(); updateProgress(); renderChallenges(TOPICS[state.topicIndex]); toast("Progresi u rivendos.");
+  state.solved.clear(); state.xp = 0; state.bestScore = 0; persist(); updateProgress(); renderChallenges(TOPICS[state.topicIndex]); toast("Progresi u rivendos.");
 });
+
+$("#open-exam").addEventListener("click", () => { $("#exam-dialog").showModal(); newExam(); });
+$("#new-exam").addEventListener("click", newExam);
+$("#close-exam").addEventListener("click", closeExam);
+$("#cancel-exam").addEventListener("click", closeExam);
+$("#exam-form").addEventListener("submit", event => { event.preventDefault(); submitExam(); });
+$("#exam-dialog").addEventListener("cancel", event => { event.preventDefault(); closeExam(); });
 
 window.addEventListener("hashchange", () => {
   const index = TOPICS.findIndex(topic => `#${topic.id}` === location.hash);

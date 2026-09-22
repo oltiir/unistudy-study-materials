@@ -4,7 +4,9 @@ Ky material mbulon 12 temat dhe të 31 materialet e kursit Moodle `39168`. Ësht
 
 ## Versioni interaktiv
 
-Hape [Algoritmet Lab](interactive/index.html) për t'i mësuar të 12 temat me simulatorë, trace hap pas hapi, kontroll automatik të përgjigjeve, hints, zgjidhje dhe progres me XP. Aplikacioni punon pa internet: shkarko folderin `interactive` dhe hape `index.html` në browser.
+Hape [Algoritmet Lab](interactive/index.html) për t'i mësuar të 12 temat me simulatorë, mbi 100 detyra të kontrollueshme, trace hap pas hapi, hints, zgjidhje, provim simulues 100-pikësh dhe progres me XP. Aplikacioni punon pa internet: shkarko folderin `interactive` dhe hape `index.html` në browser.
+
+Për synimin 80+, ndiqe [Planin 80+ dhe hartën e plotë të detyrave](15-PLANI-80-PLUS.md).
 
 ## Si ta përdorësh
 

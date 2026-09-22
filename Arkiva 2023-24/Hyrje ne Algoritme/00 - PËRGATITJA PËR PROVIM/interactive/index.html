@@ -21,6 +21,7 @@
 
     <div class="top-actions">
       <button class="button ghost" id="random-task" type="button">🎲 Detyrë random</button>
+      <button class="button primary" id="open-exam" type="button">🧪 Provim 80+</button>
       <div class="xp" aria-label="Pikët e fituara"><span id="xp-value">0</span> XP</div>
     </div>
   </header>
@@ -84,6 +85,29 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
 
+  <dialog class="exam-dialog" id="exam-dialog" aria-labelledby="exam-title">
+    <div class="exam-header">
+      <div>
+        <span class="eyebrow">Simulim 100 pikë</span>
+        <h2 id="exam-title">Provimi 80+</h2>
+        <p>20 pyetje × 5 pikë. Synimi: së paku 16 të sakta.</p>
+      </div>
+      <button class="icon-button" id="close-exam" type="button" aria-label="Mbylle provimin">×</button>
+    </div>
+    <div class="exam-toolbar">
+      <span id="exam-timer">75:00</span>
+      <span id="exam-best">Rekordi: —</span>
+      <button class="button" id="new-exam" type="button">Gjenero provim të ri</button>
+    </div>
+    <div id="exam-result" aria-live="polite"></div>
+    <form id="exam-form"></form>
+    <div class="exam-actions">
+      <button class="button ghost" id="cancel-exam" type="button">Mbylle</button>
+      <button class="button primary" id="submit-exam" type="submit" form="exam-form">Dorëzo provimin</button>
+    </div>
+  </dialog>
+
+  <script src="question-bank.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

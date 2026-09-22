@@ -12,7 +12,7 @@ Nuk kërkon instalim, server, llogari ose internet.
 
 ## Çka përmban
 
-- 12 tema dhe 24 detyra me kontroll automatik;
+- 12 tema dhe 102 detyra me kontroll automatik;
 - hints dhe zgjidhje për çdo detyrë;
 - pseudokod checker për flowcharts;
 - analizë live të kompleksitetit;
@@ -22,6 +22,7 @@ Nuk kërkon instalim, server, llogari ose internet.
 - simulator për chaining/probing dhe kalkulator Horner;
 - FileIndex builder dhe sparse dot product;
 - detyrë random, XP dhe progres të ruajtur.
+- provim simulues me 20 pyetje, 100 pikë, timer 75 minuta dhe prag 80 pikë.
 
 ## Zhvillim lokal opsional
 

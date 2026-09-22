@@ -168,8 +168,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
   color: var(--text);
 }
 .nav-number { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
-.nav-check { color: var(--success); opacity: 0; }
-.topic-nav-button.done .nav-check { opacity: 1; }
+.nav-score { color: var(--muted); font-family: var(--mono); font-size: .68rem; text-align: right; }
+.topic-nav-button.done .nav-score { color: var(--success); }
 
 main { min-width: 0; }
 .topic-heading { padding: clamp(.5rem, 2vw, 1.5rem) 0 1.4rem; }
@@ -331,6 +331,8 @@ pre, .code-box {
 .challenge-number { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px; background: rgba(124,108,255,.13); color: #b9afff; font-family: var(--mono); font-weight: 800; }
 .challenge-copy h3 { margin-bottom: .25rem; font-size: 1rem; }
 .challenge-copy p { margin-bottom: 0; color: var(--muted); }
+.challenge-badges { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .35rem; }
+.level-pill { display: inline-flex; padding: .28rem .55rem; border-radius: 999px; background: rgba(124,108,255,.1); color: #b9afff; font-size: .75rem; }
 .challenge-body { margin-top: .85rem; padding-left: 3.15rem; }
 .challenge-input-row { display: flex; gap: .6rem; align-items: start; }
 .challenge-input-row input, .challenge-input-row textarea { flex: 1; }
@@ -365,6 +367,39 @@ pre, .code-box {
 .confetti { position: absolute; top: -20px; width: 9px; height: 15px; border-radius: 2px; animation: fall 1.4s ease-in forwards; }
 @keyframes fall { to { transform: translate3d(var(--drift), 105vh, 0) rotate(720deg); opacity: .2; } }
 
+.exam-dialog {
+  width: min(920px, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 30px 90px rgba(0,0,0,.65);
+}
+.exam-dialog::backdrop { background: rgba(4,6,10,.78); backdrop-filter: blur(5px); }
+.exam-header, .exam-toolbar, .exam-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.exam-header { padding: 1.2rem 1.3rem .85rem; border-bottom: 1px solid var(--border); }
+.exam-header h2 { margin-bottom: .25rem; }
+.exam-header p { margin-bottom: 0; color: var(--muted); }
+.exam-toolbar { padding: .75rem 1.3rem; background: var(--surface-2); }
+#exam-timer { color: var(--warning); font: 800 1.15rem var(--mono); }
+#exam-best { color: var(--muted); font-size: .85rem; }
+#exam-result { margin: 0 1.3rem; }
+#exam-form { max-height: calc(100vh - 270px); overflow-y: auto; padding: 1rem 1.3rem; }
+.exam-question { padding: .9rem 0; border-bottom: 1px solid var(--border); }
+.exam-question:last-child { border-bottom: 0; }
+.exam-question label { color: var(--text); font-size: .95rem; }
+.exam-question .question-meta { display: block; margin-bottom: .3rem; color: var(--primary-2); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+.exam-question.correct input { border-color: var(--success); }
+.exam-question.wrong input { border-color: var(--danger); }
+.exam-solution { margin-top: .45rem; color: var(--muted); font-size: .84rem; }
+.exam-actions { padding: .9rem 1.3rem; border-top: 1px solid var(--border); background: var(--surface-2); }
+.exam-score { margin-top: .8rem; padding: .8rem; border-radius: 12px; background: rgba(124,108,255,.1); font-weight: 800; }
+.exam-score.pass { background: rgba(74,210,149,.1); color: var(--success); }
+.exam-score.fail { background: rgba(255,111,145,.1); color: var(--danger); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
@@ -380,19 +415,22 @@ pre, .code-box {
 
 @media (max-width: 650px) {
   .topbar { align-items: flex-start; }
-  .brand span { display: none; }
+  .brand strong, .brand span { display: none; }
   .top-actions { gap: .4rem; }
-  #random-task { font-size: 0; width: 42px; padding: 0; }
-  #random-task::first-letter { font-size: 1rem; }
+  #random-task, #open-exam { font-size: 0; width: 42px; padding: 0; }
+  #random-task::first-letter, #open-exam::first-letter { font-size: 1rem; }
   .app-shell { padding-top: 1rem; }
   h1 { font-size: 2.2rem; }
   .section-heading, .panel-heading { align-items: flex-start; }
   .section-heading p { display: none; }
   .challenge-top { grid-template-columns: 36px 1fr; }
-  .challenge-top .mini-pill { grid-column: 2; width: fit-content; }
+  .challenge-badges { grid-column: 2; justify-content: flex-start; }
   .challenge-body { padding-left: 0; }
   .challenge-input-row { flex-direction: column; }
   .challenge-input-row .button { width: 100%; }
   .topic-footer { gap: .6rem; }
   .topic-footer .button { flex: 1; padding-inline: .5rem; }
+  .exam-header { align-items: flex-start; }
+  .exam-toolbar { flex-wrap: wrap; }
+  #exam-best { order: 3; width: 100%; }
 }
