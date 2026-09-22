@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laborator interaktiv për 12 temat e lëndës Hyrje në Algoritme.">
+  <title>Algoritmet Lab — Hyrje në Algoritme</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Kalo te përmbajtja</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <div>
+        <strong>Algoritmet Lab</strong>
+        <span>Hyrje në Algoritme</span>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="button ghost" id="random-task" type="button">🎲 Detyrë random</button>
+      <div class="xp" aria-label="Pikët e fituara"><span id="xp-value">0</span> XP</div>
+    </div>
+  </header>
+
+  <div class="progress-shell" aria-label="Progresi total">
+    <div class="progress-copy">
+      <span id="progress-label">0 nga 24 detyra</span>
+      <span id="progress-percent">0%</span>
+    </div>
+    <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Temat e kursit">
+      <div class="sidebar-heading">
+        <span>12 tema</span>
+        <button class="icon-button" id="reset-progress" type="button" aria-label="Fshije progresin" title="Fshije progresin">↺</button>
+      </div>
+      <nav id="topic-nav"></nav>
+    </aside>
+
+    <main id="main-content" tabindex="-1">
+      <section class="topic-heading" aria-labelledby="topic-title">
+        <div class="topic-kicker" id="topic-kicker">Tema 01</div>
+        <h1 id="topic-title">Flowcharts</h1>
+        <p id="topic-subtitle"></p>
+        <div class="concept-list" id="concept-list" aria-label="Konceptet kryesore"></div>
+      </section>
+
+      <section class="panel lab-panel" aria-labelledby="lab-title">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">Laboratori</span>
+            <h2 id="lab-title">Provoje vetë</h2>
+          </div>
+          <span class="status-pill" id="lab-status">Interaktiv</span>
+        </div>
+        <div id="lab-root" aria-live="polite"></div>
+      </section>
+
+      <section class="challenge-section" aria-labelledby="challenge-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Praktikë</span>
+            <h2 id="challenge-title">Detyrat për ty</h2>
+          </div>
+          <p>Shkruaje përgjigjen; kontrolli bëhet menjëherë.</p>
+        </div>
+        <div id="challenge-list"></div>
+      </section>
+
+      <div class="topic-footer">
+        <button class="button ghost" id="previous-topic" type="button">← Tema paraprake</button>
+        <button class="button primary" id="next-topic" type="button">Tema tjetër →</button>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

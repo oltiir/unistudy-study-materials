@@ -2,6 +2,10 @@
 
 Ky material mbulon 12 temat dhe të 31 materialet e kursit Moodle `39168`. Është shkruar për mësim aktiv: së pari kupto idenë, pastaj ndiq algoritmin me dorë, në fund zgjidh ushtrime pa e parë zgjidhjen.
 
+## Versioni interaktiv
+
+Hape [Algoritmet Lab](interactive/index.html) për t'i mësuar të 12 temat me simulatorë, trace hap pas hapi, kontroll automatik të përgjigjeve, hints, zgjidhje dhe progres me XP. Aplikacioni punon pa internet: shkarko folderin `interactive` dhe hape `index.html` në browser.
+
 ## Si ta përdorësh
 
 Për çdo temë:
