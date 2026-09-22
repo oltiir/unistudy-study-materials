@@ -1,5 +1,7 @@
 # Përgatitja për provim - Hyrje në Algoritme
 
+> **Nisja më e lehtë:** [Hape `00-FILLO-KETU.md`](00-FILLO-KETU.md) për krejt linkat dhe roadmap-in e thjeshtë.
+
 Ky material mbulon 12 temat dhe të 31 materialet e kursit Moodle `39168`. Është shkruar për mësim aktiv: së pari kupto idenë, pastaj ndiq algoritmin me dorë, në fund zgjidh ushtrime pa e parë zgjidhjen.
 
 ## Versioni interaktiv
