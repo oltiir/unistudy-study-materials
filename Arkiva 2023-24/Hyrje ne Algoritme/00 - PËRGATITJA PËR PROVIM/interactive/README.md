@@ -12,7 +12,7 @@ Nuk kërkon instalim, server, llogari ose internet.
 
 ## Çka përmban
 
-- 12 tema dhe 102 detyra me kontroll automatik;
+- 12 tema dhe 121 detyra me kontroll automatik, përfshirë 19 pyetje të modeluara nga testet reale;
 - hints dhe zgjidhje për çdo detyrë;
 - pseudokod checker për flowcharts;
 - analizë live të kompleksitetit;

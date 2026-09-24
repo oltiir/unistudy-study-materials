@@ -61,6 +61,14 @@ Në fund përdor [Cheat Sheet](13-Cheat-Sheet.md) dhe [Mini‑Provimin](14-Mini-
 - API-të dhe dallimet mes implementimeve.
 - Stabiliteti dhe `in-place` për algoritmet e sortimit.
 - `swim`, `sink`, insert/delMax në heap.
+
+## Testet reale dhe burimet shtesë
+
+- [Analiza e formatit real të provimit](16-TESTET-REALE-DHE-STRATEGJIA.md)
+- [Provim realist 100 pikë me zgjidhje](17-PROVIM-REALIST-NGA-TESTET.md)
+- [PDF-të dhe fotografitë e testeve](burime-shtese/README.md)
+
+Platforma interaktive përmban tani edhe pyetje me etiketën **Test real**, të modeluara nga materialet e mësipërme.
 - Symbol table ordered operations dhe aplikimet e tyre.
 
 ### Prioritet teorik

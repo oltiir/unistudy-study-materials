@@ -104,3 +104,53 @@ window.EXTRA_CHALLENGES = {
     { id:"a8", level:"Provimi", title:"Sparse matrix", prompt:"Si përfaqësohet sparse matrix sipas materialit?", answers:["array i sparse vectors","array me sparse vectors","rreshta sparse","array of sparse vectors"], hint:"Një sparse vector për çdo rresht.", solution:"Si array i sparse vectors, një për çdo rresht." }
   ]
 };
+
+// Pyetje shtesë të modeluara drejtpërdrejt nga testet reale të dërguara.
+// Prefiksi "real-" i dallon nga ushtrimet bazë dhe e ruan progresin stabil.
+const REAL_EXAM_CHALLENGES = {
+  flowcharts: [
+    { id:"real-f1", level:"Test real", title:"Funksion pjesë-pjesë", prompt:"Nëse y=2x për x<2, sa është y për x=1.8?", answers:["3.6","3,6"], hint:"1.8 është më e vogël se 2.", solution:"Përdoret dega y=2x: y=2·1.8=3.6." },
+    { id:"real-f2", level:"Test real", title:"Kufijtë e intervaleve", prompt:"Norma është 2% për 1000<=shuma<5000 dhe 4% për 5000<=shuma<=10000. Cila normë vlen për 5000?", answers:["4%","4","0.04"], hint:"Shiko cili interval e përfshin barazinë te 5000.", solution:"5000 hyn në intervalin e dytë, prandaj norma është 4%." }
+  ],
+  complexity: [
+    { id:"real-c1", level:"Test real", title:"Dy cikle n × n", prompt:"Sa herë ekzekutohet trupi i dy cikleve të futura, secili nga 0 deri n-1?", answers:["n^2","n*n","n2"], hint:"Për secilin nga n iterimet e jashtme ka n iterime të brendshme.", solution:"n·n=n² herë; kompleksiteti Θ(n²)." },
+    { id:"real-c2", level:"Test real", title:"Cikli trekëndor", prompt:"for(i=0;i<n;i++) for(j=i;j<n;j++) work(); ka cilin kompleksitet?", answers:["theta(n^2)","o(n^2)","n^2","n2"], hint:"Numri i punëve është n+(n-1)+...+1.", solution:"n(n+1)/2, pra Θ(n²)." }
+  ],
+  stacks: [
+    { id:"real-s1", level:"Test real", title:"Postfix i provimit", prompt:"Kthe (A-B)+C*(G+H)+D në postfix.", answers:["ab-cgh+*+d+","a b - c g h + * + d +"], hint:"Kthe veçmas (A-B) dhe (G+H), pastaj shumëzimin.", solution:"A B - C G H + * + D +." },
+    { id:"real-s2", level:"Test real", title:"Pohim për stack", prompt:"Saktë apo pasaktë: stack lejon qasje te elementi i parë i insertuar.", answers:["pasakte","pasaktë","jo"], hint:"Stack është LIFO.", solution:"Pasaktë; qasja është te elementi i fundit i futur." }
+  ],
+  "elementary-sorts": [
+    { id:"real-e1", level:"Test real", title:"Array pothuajse i sortuar", prompt:"Cili sortim preferohet zakonisht kur array është pothuajse i sortuar?", answers:["insertion","insertion sort"], hint:"Ky algoritëm ka best-case linear dhe pak zhvendosje kur inversionet janë të pakta.", solution:"Insertion sort." },
+    { id:"real-e2", level:"Test real", title:"Selection worst-case", prompt:"Saktë apo pasaktë: selection sort ka Θ(n²) krahasime edhe në worst-case.", answers:["sakte","saktë","po"], hint:"Numri i krahasimeve pothuajse nuk varet nga rendi i inputit.", solution:"Saktë: n(n-1)/2 krahasime." }
+  ],
+  mergesort: [
+    { id:"real-m1", level:"Test real", title:"Merge dhe in-place", prompt:"Saktë apo pasaktë: mergesort standard me auxiliary array është in-place.", answers:["pasakte","pasaktë","jo"], hint:"Aux ka madhësi proporcionale me inputin.", solution:"Pasaktë; kërkon Θ(n) hapësirë ndihmëse." }
+  ],
+  quicksort: [
+    { id:"real-q1", level:"Test real", title:"QuickSort me duplikate", prompt:"Sa keys të barabarta ka vargu F1,F6,F1,F6,F3,F5,F3,F5?", answers:["4 cifte","4 çifte","4"], hint:"Keys unikë janë F1,F3,F5,F6.", solution:"Ka katër vlera të ndryshme dhe secila paraqitet dy herë; 3-way quicksort i grupon mirë duplikatet." }
+  ],
+  heap: [
+    { id:"real-h1", level:"Test real", title:"Heap nga testi", prompt:"Bottom-up max-heap nga [15,27,24,9,8,72,49,82,19,6] ka cilin root?", answers:["82"], hint:"Root i max-heap është maksimumi.", solution:"Root është 82; një heap final valid nga bottom-up është [82,27,72,19,8,24,49,9,15,6]." },
+    { id:"real-h2", level:"Test real", title:"Pas delMax", prompt:"Nga heap [82,27,72,19,8,24,49,9,15,6], cili është root pas delMax dhe sink?", answers:["72"], hint:"Pas heqjes së 82, maksimumi i mbetur duhet të dalë në root.", solution:"Root bëhet 72; heap-i është [72,27,49,19,8,24,6,9,15]." }
+  ],
+  "symbol-tables": [
+    { id:"real-t1", level:"Test real", title:"API e Symbol Table", prompt:"Cilat janë tri key operations të Symbol Table? Shkruaji me presje.", answers:["put,get,delete","put get delete"], hint:"Fut/përditëso, kërko dhe fshi.", solution:"put, get, delete." },
+    { id:"real-t2", level:"Test real", title:"contains(key)", prompt:"Saktë apo pasaktë: contains(key) kontrollon ekzistencën e key në tabelë.", answers:["sakte","saktë","po"], hint:"Nuk po kërkon një value arbitrare.", solution:"Saktë." }
+  ],
+  bst: [
+    { id:"real-b1", level:"Test real", title:"Inorder nga testi", prompt:"BST nga 11,6,19,4,8,17,43,5,10,31,49: shkruaj inorder.", answers:["4,5,6,8,10,11,17,19,31,43,49","456810111719314349"], hint:"Inorder në BST është rend rritës.", solution:"4,5,6,8,10,11,17,19,31,43,49." },
+    { id:"real-b2", level:"Test real", title:"Successor për delete", prompt:"Në të njëjtën BST, me cilin key zëvendësohet 19 gjatë Hibbard delete?", answers:["31"], hint:"Minimumi i subtree djathtas të 19.", solution:"Me 31." }
+  ],
+  balanced: [
+    { id:"real-r1", level:"Test real", title:"Perfect balance", prompt:"Saktë apo pasaktë: në 2-3 tree të gjitha rrugët nga root te null link kanë gjatësi të njëjtë.", answers:["sakte","saktë","po"], hint:"Kjo është arsyeja pse quhet perfectly balanced.", solution:"Saktë." }
+  ],
+  hash: [
+    { id:"real-x1", level:"Test real", title:"Chaining nga testi", prompt:"Për h(x)=(2x+1) mod 5 dhe keys 3,5,7,10,11,12,2,13, cilat keys bien në bucket 0?", answers:["7,12,2","7122"], hint:"Llogarit hash-in për secilin key.", solution:"7, 12 dhe 2." },
+    { id:"real-x2", level:"Test real", title:"Primary clustering", prompt:"Cila metodë shkakton zakonisht primary clustering?", answers:["linear probing","linear","probing linear"], hint:"Kontrollon slotet një nga një.", solution:"Linear probing." }
+  ]
+};
+
+Object.entries(REAL_EXAM_CHALLENGES).forEach(([topic, challenges]) => {
+  window.EXTRA_CHALLENGES[topic].push(...challenges);
+});

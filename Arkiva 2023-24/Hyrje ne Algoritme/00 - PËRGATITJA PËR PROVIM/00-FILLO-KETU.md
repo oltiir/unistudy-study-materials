@@ -4,7 +4,7 @@ Ky është navigimi kryesor për krejt materialin. Mos u mundo me i hap skedarë
 
 ## Linkat kryesore
 
-1. [Algoritmet Lab — 102 detyra interaktive](interactive/index.html)
+1. [Algoritmet Lab — 121 detyra interaktive](interactive/index.html)
 2. [Plani 80+ dhe të gjitha llojet e detyrave](15-PLANI-80-PLUS.md)
 3. [Cheat Sheet — formulat dhe rregullat](13-Cheat-Sheet.md)
 4. [Mini‑Provimi](14-Mini-Provim.md)
@@ -28,6 +28,12 @@ Ky është navigimi kryesor për krejt materialin. Mos u mundo me i hap skedarë
 | 10 | 2-3 Trees dhe Red-Black BST | [Hape temën 10](10-Balanced-Search-Trees.md) |
 | 11 | Hash Tables | [Hape temën 11](11-Hash-Tables.md) |
 | 12 | Searching Applications | [Hape temën 12](12-Searching-Applications.md) |
+
+## Materialet e reja nga testet reale
+
+- [Analiza e testeve reale dhe strategjia](16-TESTET-REALE-DHE-STRATEGJIA.md) - çfarë përsëritet, korrigjimet e teorisë dhe shembuj të zgjidhur.
+- [Provim realist 100 pikë](17-PROVIM-REALIST-NGA-TESTET.md) - format S/P, alternativa dhe detyra të gjata me zgjidhje.
+- [PDF-të dhe fotografitë origjinale](burime-shtese/README.md) - të gjitha burimet e dërguara në një vend.
 
 ## Metoda më e thjeshtë për çdo temë
 
@@ -84,10 +90,10 @@ Nëse një përgjigje del gabim, mos e lexo vetëm zgjidhjen. Mbylle zgjidhjen d
 ## Rendi i prioritetit kur nuk ke kohë
 
 1. Analiza e algoritmeve.
-2. Selection, Insertion, Shell, Merge, Quick dhe Heap.
-3. Stacks/Queues dhe postfix.
-4. BST, Red-Black BST dhe 2-3 Trees.
-5. Hash Tables.
+2. BST dhe Max-Heap: traversals, delete, construction, `delMax`, insert.
+3. Hash Tables dhe postfix.
+4. Selection, Insertion, Shell, Merge dhe Quick.
+5. Stacks/Queues, Red-Black BST dhe 2-3 Trees.
 6. Flowcharts dhe Symbol Tables.
 7. Searching Applications dhe teoria plotësuese.
 
