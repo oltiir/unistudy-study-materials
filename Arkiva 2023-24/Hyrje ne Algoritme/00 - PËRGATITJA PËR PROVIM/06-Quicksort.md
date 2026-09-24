@@ -75,14 +75,17 @@ Përdoret kur ka shumë duplikate. Mban invariantin:
 - `a[gt+1..hi] > v`.
 
 ```java
-int lt=lo, i=lo+1, gt=hi;
+Comparable v = a[lo];
+int lt=lo, i=lo, gt=hi;
 while (i<=gt) {
     int cmp=a[i].compareTo(v);
-    if (cmp<0) swap(a, lt++, i++);
-    else if (cmp>0) swap(a, i, gt--);
+    if (cmp<0) exch(a, lt++, i++);
+    else if (cmp>0) exch(a, i, gt--);
     else i++;
 }
 ```
+
+Në `23Quicksort.pdf`, `i` nis në `lo`; krahasimi i parë `a[lo]` me vetveten jep barazi dhe vetëm `i++`. Shumë trace me dorë fillojnë pas këtij hapi trivial me `i=lo+1`; rezultatet janë të njëjta.
 
 Kur elementi është `> v`, mos e rrit `i`: elementi i ardhur nga `gt` ende nuk është kontrolluar.
 
@@ -91,6 +94,8 @@ Pas partition rekursioni bëhet vetëm në `[lo..lt-1]` dhe `[gt+1..hi]`; pjesa 
 ### Shembull 3-way i zgjidhur hap pas hapi
 
 Partition për `[3,5,2,3,4,3,2]`, me pivot `v=3`:
+
+Hapi fillestar sipas PDF-së është `lt=0,i=0,gt=6`: `a[0]=3=v`, prandaj `i` bëhet 1 pa ndryshuar vargun. Tabela fillon pas tij.
 
 | Hapi | `lt,i,gt` para hapit | Krahasimi | Veprimi | Array pas hapit |
 |---:|---|---|---|---|

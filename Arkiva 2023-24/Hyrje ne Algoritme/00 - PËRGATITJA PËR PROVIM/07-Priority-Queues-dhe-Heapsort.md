@@ -33,6 +33,8 @@ Max-PQ ruan elemente dhe gjithmonë largon maksimumin. API tipike: `insert`, `ma
 
 ## Complete binary tree
 
+**Teori e shkurtër nga `24PriorityQueues.pdf`:** një key **immutable** nuk e ndryshon gjendjen pas krijimit. Kjo ndihmon kur key përdoret në Priority Queue ose Symbol Table: nëse një fushë që përcakton rendin e key ndryshon pasi key është vendosur në heap, heap-order mund të prishet pa `swim/sink`. Shembull: `String` është immutable; një objekt me `priority` të ndryshueshme duhet të hiqet e të futet sërish ose të korrigjohet heap-i sipas implementimit. **Detyrë për ty:** a është e sigurt të ndryshosh `priority` nga 5 në 100 brenda objektit që gjendet në mes të max-heap-it, pa e rregulluar heap-in? <details><summary>Përgjigjja</summary>Jo. Objekti mund të jetë më i madh se prindi, ndërsa heap-order nuk është përditësuar. Duhet operacion i kontrolluar që e rregullon heap-in ose rifutja.</details>
+
 Të gjitha nivelet janë të plota përveç të fundit; niveli i fundit mbushet majtas-djathtas. Lartësia është `floor(log2 N)`.
 
 Në array me indeksim nga 1:

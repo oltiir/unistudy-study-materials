@@ -40,13 +40,18 @@ Për tipe të personalizuara, `compareTo` duhet të krijojë total order.
 Në iterimin `i`, gjen minimumin në `[i..N-1]` dhe e ndërron me `a[i]`.
 
 ```java
-for (int i=0; i<N; i++) {
-    int min=i;
-    for (int j=i+1; j<N; j++)
-        if (a[j] < a[min]) min=j;
-    swap(a, i, min);
+public static void sort(Comparable[] a) {
+    int N = a.length;
+    for (int i = 0; i < N; i++) {
+        int min = i;
+        for (int j = i+1; j < N; j++)
+            if (less(a[j], a[min])) min = j;
+        exch(a, i, min);
+    }
 }
 ```
+
+Kjo është rrjedha e kodit për `Comparable[]` në `21ElementarySorts.pdf`; `less(v,w)` do të thotë `v.compareTo(w)<0`, ndërsa `exch(a,i,j)` i ndërron dy elementet. Shprehja `a[j] < a[min]` punon për `int[]`, por **jo** për objekte `Comparable` në Java.
 
 Invariant: `[0..i-1]` është i sortuar dhe final; asnjë element në të djathtë nuk është më i vogël se ai prefix.
 
@@ -62,9 +67,13 @@ Avantazh: pak ndërrime, i dobishëm kur lëvizja e elementit kushton shumë.
 Prefix-i majtas mbahet i sortuar. Elementi aktual lëviz majtas derisa të arrijë vendin.
 
 ```java
-for (int i=1; i<N; i++)
-    for (int j=i; j>0 && a[j] < a[j-1]; j--)
-        swap(a, j, j-1);
+public static void sort(Comparable[] a) {
+    int N = a.length;
+    for (int i = 0; i < N; i++)
+        for (int j = i; j > 0; j--)
+            if (less(a[j], a[j-1])) exch(a, j, j-1);
+            else break;
+}
 ```
 
 Invariant: `[0..i]` është i sortuar pas iterimit `i`.
@@ -80,16 +89,19 @@ Shumë i mirë për array të vogla ose pothuajse të sortuara.
 
 Është insertion sort me hapa `h`. Fillimisht lëviz elementet larg, pastaj përfundon me `h=1`.
 
-Sekuenca 3x+1: `1, 4, 13, 40, ...`. Zgjidhet `h` më i madh nën `N/3`, pastaj `h /= 3`.
+Sekuenca 3x+1: `1, 4, 13, 40, ...`. Nise `h=1`; derisa `h < N/3`, përditësoje `h=3h+1`. Pastaj, pas çdo faze, përdor `h=h/3` deri te `h=1`. Për shembull, me `N=10` fazat janë `h=4` dhe `h=1`.
 
 ```java
-int h=1;
-while (h < N/3) h=3*h+1;
-while (h>=1) {
-    for (int i=h; i<N; i++)
-        for (int j=i; j>=h && a[j] < a[j-h]; j-=h)
-            swap(a,j,j-h);
-    h/=3;
+public static void sort(Comparable[] a) {
+    int N = a.length;
+    int h = 1;
+    while (h < N/3) h = 3*h + 1;
+    while (h >= 1) {
+        for (int i = h; i < N; i++)
+            for (int j = i; j >= h && less(a[j], a[j-h]); j -= h)
+                exch(a, j, j-h);
+        h = h/3;
+    }
 }
 ```
 

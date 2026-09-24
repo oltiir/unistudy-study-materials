@@ -2,6 +2,8 @@
 
 Ky është navigimi kryesor për krejt materialin. Mos u mundo me i hap skedarët pa rend: ndiqe roadmap-in më poshtë.
 
+**Ke vetëm 5 orë?** Hape [planin me kohëmatës 300 minuta dhe kontrollin e 12 PDF-ve të ligjëratave](21-KONTROLLI-I-12-LIGJERATAVE-DHE-PLANI-5-ORE.md). Ky është rendi kryesor për përgatitjen e shkurtër.
+
 ## Nis sonte: plani me më së shumti kthim për kohën
 
 Provimi është **të premten, 25 shtator 2026, në 13:00 (Kosovë)**. Je me një bazë, prandaj puno me laps dhe detyra, jo me lexim pasiv. Koha më poshtë është orientuese; shkurto blloqet nëse fillon vonë dhe ruaje gjumin.
@@ -26,6 +28,7 @@ Provimi është **të premten, 25 shtator 2026, në 13:00 (Kosovë)**. Je me nj�
 6. [Të 31 PDF/DOCX origjinale dhe demonstrimet](19-INDEKSI-I-PDF-VE-DHE-VIDEOVE.md)
 7. [Overview i krejt lëndës](README.md)
 8. [8 detyra me inputin origjinal të PDF/DOCX-ve, të shpjeguara prej zeros](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md)
+9. [12 ligjëratat e kontrolluara + plani fiks 5 orë](21-KONTROLLI-I-12-LIGJERATAVE-DHE-PLANI-5-ORE.md)
 
 > Për platformën interaktive: shkarko repository-n ose folderin `interactive`, pastaj hape `interactive/index.html` në browser. Nuk kërkon instalim ose internet.
 

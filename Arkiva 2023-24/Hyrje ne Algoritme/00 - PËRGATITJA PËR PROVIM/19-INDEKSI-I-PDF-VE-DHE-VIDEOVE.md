@@ -2,6 +2,8 @@
 
 Ky indeks i lidh **31 skedarët origjinalë të kursit** të ruajtur te repository. Për shpjegim të thjeshtë, hap temën, pastaj PDF/DOCX-in përkatës. Emrat dhe lidhjet më poshtë përputhen me skedarët realë në GitHub; videot/demonstrimet e Princeton-it janë te secila temë.
 
+Lexo [kontrollin e 12 PDF-ve të ligjëratave dhe planin e saktë për 5 orë](21-KONTROLLI-I-12-LIGJERATAVE-DHE-PLANI-5-ORE.md) nëse po mëson për provimin e nesërm.
+
 | Tema | Mësimi | Origjinalet për t'u hapur |
 |---|---|---|
 | 1. Flowcharts | [Lexo](./01-Flowcharts.md) | [00Intro.pdf](../00Intro.pdf)<br>[1. Flowcharts - Detyrat e shtëpisë.pdf](../1.%20Flowcharts%20-%20Detyrat%20e%20sht%C3%ABpis%C3%AB.pdf)<br>[Flowcharts - Detyra të zgjidhura detyra për ushtrime.pdf](../Flowcharts%20-%20Detyra%20t%C3%AB%20zgjidhura%20detyra%20p%C3%ABr%20ushtrime.pdf) |

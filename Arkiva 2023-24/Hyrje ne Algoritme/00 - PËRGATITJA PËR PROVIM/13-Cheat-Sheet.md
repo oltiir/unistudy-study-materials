@@ -1,5 +1,7 @@
 # Cheat Sheet - Hyrje në Algoritme
 
+Për 5 orët e mësimit ndiq [planin 300-minutësh](21-KONTROLLI-I-12-LIGJERATAVE-DHE-PLANI-5-ORE.md). Një key që përdoret në heap ose Symbol Table nuk duhet t'i ndërrojë fushat që përcaktojnë rendin/hash-in pasi është futur; ndryshe struktura mund të japë përgjigje të gabuara.
+
 ## Kompleksitetet
 
 `1 < log N < N < N log N < N² < N³ < 2^N`
