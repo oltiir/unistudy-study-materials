@@ -19,6 +19,8 @@ Ky indeks i lidh **31 skedarët origjinalë të kursit** të ruajtur te reposito
 
 ## Si t'i përdorësh sot
 
+Për një krahasim konkret të **zgjidhjeve në burimet origjinale** me hapat e shkruar për fillestarë, hap [8 detyrat e audituara](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md).
+
 1. Lexo [roadmap-in e sotëm](00-FILLO-KETU.md) dhe [ushtrimet e fundit](18-PRAKTIKA-PARA-PROVIMIT.md).
 2. Shkruaje detyrën me dorë para se ta hapësh zgjidhjen në skedarin me emrin “Detyra të zgjidhura”. Krahaso veçanërisht **rendin e hapave**, jo vetëm numrin final.
 3. Për kodin që kërkohet identik, kontrollo **slide-n/PDF-në origjinale**. Shembujt në MD përdorin edhe pseudokod të shkurtuar për të të ndihmuar të kuptosh veprimin.

@@ -18,6 +18,8 @@ Për këtë temë, [shih indeksin e ligjëratave të Princeton-it](https://algs4
 
 ## Ideja
 
+**Nga PDF-ja e detyrave të zgjidhura:** [produkt me `i` çift, vlerë numerike dhe flow hap pas hapi](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md#6-flowchart-me-produkt-detyra-2-e-pdf-së). Kur vizaton një cikël me kontroll në fund, verifiko edhe rastin kur intervali fillestar është bosh.
+
 Algoritmi është një varg hapash të fundëm dhe të qartë që transformon inputin në output. Flowchart-i e paraqet këtë rrjedhë grafikisht. Në provim vlerësohet logjika: inicializimi, kushti, përditësimi dhe dalja.
 
 ## Simbolet

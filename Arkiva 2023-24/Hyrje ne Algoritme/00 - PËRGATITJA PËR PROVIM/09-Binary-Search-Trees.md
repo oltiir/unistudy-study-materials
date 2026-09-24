@@ -22,6 +22,8 @@ Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan
 
 ## Rregulla e BST
 
+**Nga PDF-ja e zgjidhjeve:** [fshirja e 62 dhe `floor(68)` para/pas, me vizatimin përkatës](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md#4-bst-detyra-1-e-pdf-së-para-dhe-pas-fshirjes).
+
 Për çdo node me key `k`:
 
 - të gjithë keys në subtree majtas janë `< k`;
@@ -126,7 +128,7 @@ Për `24,22,94,19,62,39,88,32,40,41,27`:
 
 - 24 root; 22 majtas; 94 djathtas; 19 majtas të 22; 62 majtas të 94; etj.
 - Për të fshirë 62 me successor, përdor minimumin e subtree të tij djathtas (88 në strukturën e dhënë).
-- `floor(68)=62` para fshirjes; pas fshirjes struktura mund të japë predecessor-in tjetër sipas keys të mbetur. Gjithmonë llogarit mbi tree aktual, jo mbi shembullin e vjetër.
+- `floor(68)=62` **para** fshirjes së 62. Nëse zëvendëson 62 me predecessor-in 41, **pas** fshirjes `floor(68)=41`; pas futjes së 90 vlera mbetet 41. PDF-ja shënon 41 te pema e modifikuar. Gjithmonë shëno gjendjen kohore të pemës në zgjidhje.
 
 ## Shembull i zgjidhur hap pas hapi
 

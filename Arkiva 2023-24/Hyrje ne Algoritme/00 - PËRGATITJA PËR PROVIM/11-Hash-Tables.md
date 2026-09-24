@@ -26,6 +26,8 @@ Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan
 
 ## Plani bazë
 
+**Nga DOCX-i i zgjidhjeve:** [linear probing me inputin e tij të saktë dhe një collision të double hashing](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md#5-hash-tables-linear-probing-input-identik-me-docx-in). Dokumenti për separate chaining përdor një **rregull specifik për resize** dhe pas zvogëlimit të tabelës i rehash-on të gjitha keys: në detyrë ndiq rregullin e dhënë, mos e supozo nga një implementim tjetër.
+
 Hash function e kthen key në indeks `0..M-1`. Dy keys të ndryshme mund të japin të njëjtin indeks: **collision**. Hash table duhet të ketë:
 
 1. hash function të mirë;

@@ -22,6 +22,8 @@ Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan
 
 ## Pse analizohet algoritmi
 
+**Nga PDF-ja e ushtrimeve:** [dy lloje përgjigjesh për kodin me `n=4` të fiksuar](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md#7-kompleksiteti-kur-kodi-e-ka-n4-fiks): 20 iterime për atë ekzekutim, `Θ(n²)` vetëm kur `n` ndryshon si madhësi inputi. Shëno çfarë konsideron si `n` në provim.
+
 - Parashikim i performancës për input të madh.
 - Krahasim i algoritmeve pa u varur nga kompjuteri.
 - Zbulim i problemeve të kohës dhe memories.

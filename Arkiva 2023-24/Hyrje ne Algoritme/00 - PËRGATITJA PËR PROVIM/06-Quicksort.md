@@ -24,6 +24,8 @@ Shënim: menuja e slide-ve përmend edhe selection/system sorts, por në PDF-në
 
 ## Plani bazë
 
+**Nga DOCX-i i detyrave të zgjidhura:** [2-way me pivot 6](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md#2-quicksort-2-way-detyra-2-e-docx-it) dhe [3-way me shumë 3-sha](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md#3-quicksort-3-way-detyra-3-e-docx-it). Në dokument inputi për trace është vargu **pas shuffle**, jo renditja para shuffle.
+
 1. Shuffle array për të shmangur inpute të këqija sistematike.
 2. Partition rreth pivotit.
 3. Sorto rekursivisht pjesët majtas dhe djathtas.

@@ -1,6 +1,6 @@
 # Praktika e fundit: prej zeros deri te detyrat e provimit
 
-Ky është një set **ushtrimesh të ndërtuara për praktikë sipas llojeve të detyrave në materialet e kursit dhe testet e mëparshme**. Për detyrat origjinale hap [indeksin e 31 burimeve](19-INDEKSI-I-PDF-VE-DHE-VIDEOVE.md). Mos e merr një rezultat të shembullit si “zgjidhje të një PDF-je” nëse inputi nuk është identik: metodat dhe inputet mund të ndryshojnë.
+Ky është një set **ushtrimesh të ndërtuara për praktikë sipas llojeve të detyrave në materialet e kursit dhe testet e mëparshme**. Për detyrat origjinale hap [indeksin e 31 burimeve](19-INDEKSI-I-PDF-VE-DHE-VIDEOVE.md) dhe [zgjidhjet e krahasuara me PDF/DOCX](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md). Mos e merr një rezultat të shembullit si “zgjidhje të një PDF-je” nëse inputi nuk është identik: metodat dhe inputet mund të ndryshojnë.
 
 **Rutina për çdo detyrë:** lexo shembullin, mbyll zgjidhjen, provo detyrën tënde me laps, pastaj hap kontrollin. Shëno edhe *pse* bëhet çdo swap, krahasim ose degë.
 
@@ -35,7 +35,7 @@ Për `i=0` ka `n` punë, për `i=1` ka `n-1`, deri te `i=n-1` ka 1. Pra saktësi
 
 `8 3 + 2 * 6 -`: push 8 → [8]; push 3 → [8,3]; `+` → [11]; push 2 → [11,2]; `*` → [22]; push 6 → [22,6]; `-` → [16]. Te `-`, pop i parë është ana e djathtë 6; pop i dytë është ana e majtë 22.
 
-**Ti:** `9 2 3 * + 4 /`. Shëno stack-un pas secilit token; krahaso rezultatin. <details><summary>Kontrollo</summary>`[9]→[9,2]→[9,2,3]→[9,6]→[15]→[15,4]→[3.75]`. Nëse kërkohet pjesëtim i plotë në kod, përcakto tipin e operandëve sipas detyrës.</details>
+**Ti:** `9 2 3 * + 4 /`. Shëno stack-un pas secilit token; krahaso rezultatin. <details><summary>Kontrollo</summary>`[9]→[9,2]→[9,2,3]→[9,6]→[15]→[15,4]→[3.75]` për numra realë, ose `[3]` në fund për pjesëtim `int` në Java. Përcakto tipin e operandëve sipas detyrës.</details>
 
 ## 4. Sortimet: shkruaj çdo hap, jo vetëm vargun final
 

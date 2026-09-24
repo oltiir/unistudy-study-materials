@@ -25,6 +25,7 @@ Provimi është **të premten, 25 shtator 2026, në 13:00 (Kosovë)**. Je me nj�
 5. [Praktika e fundit: shembuj të zgjidhur dhe detyra](18-PRAKTIKA-PARA-PROVIMIT.md)
 6. [Të 31 PDF/DOCX origjinale dhe demonstrimet](19-INDEKSI-I-PDF-VE-DHE-VIDEOVE.md)
 7. [Overview i krejt lëndës](README.md)
+8. [8 detyra me inputin origjinal të PDF/DOCX-ve, të shpjeguara prej zeros](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md)
 
 > Për platformën interaktive: shkarko repository-n ose folderin `interactive`, pastaj hape `interactive/index.html` në browser. Nuk kërkon instalim ose internet.
 
@@ -50,6 +51,7 @@ Provimi është **të premten, 25 shtator 2026, në 13:00 (Kosovë)**. Je me nj�
 - [Analiza e testeve reale dhe strategjia](16-TESTET-REALE-DHE-STRATEGJIA.md) - çfarë përsëritet, korrigjimet e teorisë dhe shembuj të zgjidhur.
 - [Provim realist 100 pikë](17-PROVIM-REALIST-NGA-TESTET.md) - format S/P, alternativa dhe detyra të gjata me zgjidhje.
 - [PDF-të dhe fotografitë origjinale](burime-shtese/README.md) - të gjitha burimet e dërguara në një vend.
+- [Detyrat origjinale të zgjidhura me hapa](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md) - krahaso hapat me PDF/DOCX dhe provo detyrën për ty para kontrollit.
 
 ## Metoda më e thjeshtë për çdo temë
 

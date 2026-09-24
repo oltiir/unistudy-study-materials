@@ -24,6 +24,8 @@ Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan
 
 ## Comparable dhe operacionet ndihmëse
 
+**Nga PDF-ja e zgjidhjeve:** [Selection me inputin `[14,32,2,59,15,35,29,98]`, çdo minimum dhe ndërrim](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md#1-selection-sort-detyra-1-e-pdf-së). Për Insertion dhe Shell përdor figurat dhe inputet e [të njëjtit PDF](../Elementary%20Sorts%20-%20Detyra%20t%C3%AB%20zgjidhura%20detyra%20p%C3%ABr%20ushtrime.pdf); kontrollo vargun pas çdo `i` dhe pas çdo `h`.
+
 `v.compareTo(w)` kthen negativ, zero ose pozitiv. Algoritmet përdorin:
 
 ```java

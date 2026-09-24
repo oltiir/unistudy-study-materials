@@ -22,6 +22,8 @@ Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan
 
 ## Konceptet bazë
 
+**Nga PDF-ja e zgjidhjeve:** [konvertimi One-Stack i një shprehjeje reale, me të gjitha vlerat ndërmjetëse](20-DETYRA-ORIGJINALE-TE-ZGJIDHURA.md#8-one-stack-ruaj-kllapat-në-postfix).
+
 - **Stack**: LIFO - elementi i fundit i futur del i pari. Operacionet `push`, `pop`, `isEmpty`, `size`.
 - **Queue**: FIFO - elementi më i vjetër del i pari. Operacionet `enqueue`, `dequeue`, `isEmpty`, `size`.
 - Nuk kanë qasje arbitrare si array; klienti përdor vetëm API-në.
@@ -163,7 +165,7 @@ Në fund duhet të mbetet saktësisht një vlerë, prandaj rezultati është `16
 
 #### Detyrë për ty
 
-Vlerëso `9 2 3 * + 4 /` duke shkruar stack-un pas çdo tokeni. Kontrolli final: rezultati është `3.75`.
+Vlerëso `9 2 3 * + 4 /` duke shkruar stack-un pas çdo tokeni. Kontrolli final me pjesëtim **real** është `3.75`; në Java me të gjitha vlerat `int`, `15/4` jep `3`. Specifiko llojin e numrave sipas kërkesës së detyrës.
 
 ### Circular queue me kapacitet 3
 
