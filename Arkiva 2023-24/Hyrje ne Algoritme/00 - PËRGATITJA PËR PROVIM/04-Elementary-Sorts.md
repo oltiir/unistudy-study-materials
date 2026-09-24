@@ -141,6 +141,52 @@ Pas çdo iterimi shkruaj prefix-in e sortuar. Elementi mund të bëjë disa swap
 2. Për çdo `i`, krahaso vetëm me `i-h`, `i-2h`, ...
 3. Shkruaj array pas çdo ndryshimi.
 
+## Flow vizual i algoritmeve
+
+Këto flow-e tregojnë **çka ndodh me array-n**, ndërsa kodi më sipër mbetet implementimi që duhet mësuar nga PDF-ja.
+
+### Flow i Selection Sort
+
+```mermaid
+flowchart TD
+    A["Fillo me i = 0"] --> B["Gjej minimumin në suffix i..N-1"]
+    B --> C["Ndërro minimumin me a[i]"]
+    C --> D["Rrite i"]
+    D --> E{"i < N-1?"}
+    E -- Po --> B
+    E -- Jo --> F["Array i sortuar"]
+```
+
+Në letër: për çdo rresht shkruaj `i`, suffix-in, minimumin dhe array-n pas swap-it.
+
+### Flow i Insertion Sort
+
+```mermaid
+flowchart TD
+    A["Merr elementin a[i]"] --> B{"Është më i vogël se elementi majtas?"}
+    B -- Po --> C["Bëj swap majtas dhe zvogëlo j"]
+    C --> B
+    B -- Jo --> D["Prefix-i 0..i është i sortuar"]
+    D --> E{"Ka element tjetër?"}
+    E -- Po --> A
+    E -- Jo --> F["Array i sortuar"]
+```
+
+Në letër: rretho prefix-in e sortuar pas çdo `i` dhe shkruaj çdo lëvizje majtas.
+
+### Flow i Shellsort
+
+```mermaid
+flowchart TD
+    A["Zgjidh gap-in më të madh h"] --> B["Bëj h-insertion sort"]
+    B --> C["Zvogëlo gap-in"]
+    C --> D{"h >= 1?"}
+    D -- Po --> B
+    D -- Jo --> E["Array i sortuar"]
+```
+
+Në letër: ndaje punën në faza `h=...`; brenda fazës krahaso vetëm pozitat që janë `h` larg.
+
 ## Stable dhe in-place
 
 - Stable: elementet me çelës të njëjtë ruajnë rendin relativ.

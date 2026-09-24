@@ -141,6 +141,44 @@ Maksimumi kalon në fund dhe përjashtohet nga heap-i aktiv. Prefix-i mbetet hea
 3. Gjatë sortdown shëno kufirin `N`; pjesa djathtas është final.
 4. Për insert/delMax vizato tree dhe array paralelisht.
 
+## Flow vizual i heap-it
+
+### Insert dhe swim
+
+```mermaid
+flowchart TD
+    A["Shto key në fund"] --> B{"Key > prindi?"}
+    B -- Po --> C["Swap me prindin"]
+    C --> B
+    B -- Jo --> D["Heap-order u rikthye"]
+```
+
+### delMax dhe sink
+
+```mermaid
+flowchart TD
+    A["Ruaj root-in maksimal"] --> B["Swap root me elementin e fundit"]
+    B --> C["Zvogëlo madhësinë e heap-it"]
+    C --> D{"Root më i vogël se fëmija më i madh?"}
+    D -- Po --> E["Swap me fëmijën më të madh"]
+    E --> D
+    D -- Jo --> F["Heap-order u rikthye"]
+```
+
+### Heapsort i plotë
+
+```mermaid
+flowchart TD
+    A["Ndërto max-heap me sink nga N/2 te 1"] --> B["Swap root me fundin aktiv"]
+    B --> C["Zvogëlo kufirin N"]
+    C --> D["Sink root-in e ri"]
+    D --> E{"N > 1?"}
+    E -- Po --> B
+    E -- Jo --> F["Array i sortuar"]
+```
+
+Në çdo rresht të zgjidhjes shkruaj array-n, indeksin aktiv, prindin/fëmijët dhe arsyen e swap-it. Kështu merren pikë edhe nëse gabon një llogaritje më vonë.
+
 ## Shembull conceptual
 
 Për `A={13,2,27,68,45,72,81,99}`:

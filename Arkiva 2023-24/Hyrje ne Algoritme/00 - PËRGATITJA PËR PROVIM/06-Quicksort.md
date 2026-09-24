@@ -115,6 +115,46 @@ Për 2-way shkruaj në çdo rresht: vargun, pivotin, `i`, `j`, kushtin dhe swap-
 
 Për 3-way shkruaj `lt`, `i`, `gt` dhe katër zonat e invariantit. Ky format të mbron nga gabimi `i++` pas swap me `gt`.
 
+## Flow vizual i Quicksort 2-way
+
+```mermaid
+flowchart TD
+    A["Zgjidh pivotin a[lo]"] --> B["Lëviz i nga majtas dhe j nga djathtas"]
+    B --> C{"A janë kryqëzuar i dhe j?"}
+    C -- Jo --> D["Ndërro a[i] me a[j]"]
+    D --> B
+    C -- Po --> E["Ndërro pivotin me a[j]"]
+    E --> F["Pivoti është final; sorto dy anët"]
+```
+
+Flow i partition-it të shembullit:
+
+```mermaid
+flowchart TD
+    A["[5,3,1,7,4,2,6]"] --> B["Pivot = 5; i ndalet te 7, j te 2"]
+    B --> C["Swap 7 me 2: [5,3,1,2,4,7,6]"]
+    C --> D["Pointerët kryqëzohen"]
+    D --> E["Swap 5 me 4: [4,3,1,2,5,7,6]"]
+    E --> F["Zona <5 | pivot 5 | zona >5"]
+```
+
+Në provim bëj një tabelë me kolonat: `array`, `pivot`, `i`, `j`, `arsyeja e ndaljes`, `swap`. Vetëm rezultati final nuk e tregon procesin.
+
+## Flow vizual i Quicksort 3-way
+
+```mermaid
+flowchart TD
+    A["Krahaso a[i] me pivotin"] --> B{"a[i] <, = apo > pivot?"}
+    B -- "<" --> C["Swap lt,i; rrit lt dhe i"]
+    B -- "=" --> D["Rrit vetëm i"]
+    B -- ">" --> E["Swap i,gt; zvogëlo gt"]
+    C --> A
+    D --> A
+    E --> A
+```
+
+Kujdes: pas degës `>`, `i` nuk rritet, sepse elementi i ardhur nga `gt` ende nuk është kontrolluar.
+
 ## Gabimet tipike
 
 - Harron shuffle dhe deklaron worst-case `N log N`.

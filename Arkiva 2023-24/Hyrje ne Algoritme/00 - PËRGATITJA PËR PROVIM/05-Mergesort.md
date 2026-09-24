@@ -98,6 +98,38 @@ Bashko `L=[1,6,7,12]` dhe `R=[2,3,9,10]`. Shkruaj një rresht për çdo krahasim
 
 Bëj ndarjet dhe merge-t për `[8,3,7,4,9,2]`. Në çdo merge shëno dy pjesët që janë tashmë të sortuara; nëse ndonjëra nuk është e sortuar, ke bërë merge para kohe.
 
+## Flow vizual i Mergesort
+
+```mermaid
+flowchart TD
+    A["Segmenti a[lo..hi]"] --> B{"Ka vetëm 0 ose 1 element?"}
+    B -- Po --> C["Kthehu: segmenti është i sortuar"]
+    B -- Jo --> D["Ndaje në mes"]
+    D --> E["Sorto rekursivisht majtas dhe djathtas"]
+    E --> F["Merge dy gjysmat e sortuara"]
+```
+
+Flow i të dhënave për `[8,3,7,4]`:
+
+```mermaid
+flowchart TD
+    A["[8,3,7,4]"] --> B["[8,3]"]
+    A --> C["[7,4]"]
+    B --> D["[3,8]"]
+    C --> E["[4,7]"]
+    D --> F["[3,4,7,8]"]
+    E --> F
+```
+
+Hapat që duhet t'i shkruash në provim:
+
+1. Ndarja: `[8,3,7,4] -> [8,3] | [7,4]`.
+2. Ndarja deri në elemente të vetme: `[8]|[3]` dhe `[7]|[4]`.
+3. Merge lokal: `[8]+[3] -> [3,8]`; `[7]+[4] -> [4,7]`.
+4. Merge final: `[3,8]+[4,7] -> [3,4,7,8]`.
+
+Mos e shkruaj vetëm rezultatin final; tregoji ndarjet dhe çdo merge.
+
 ## Stabiliteti
 
 Mergesort është stable nëse, kur çelësat janë të barabartë, merret elementi nga gjysma e majtë. Kjo është arsyeja e degës finale `else a[k]=aux[i++]`.
