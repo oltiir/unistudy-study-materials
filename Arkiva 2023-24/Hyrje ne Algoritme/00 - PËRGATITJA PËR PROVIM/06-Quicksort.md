@@ -1,10 +1,24 @@
 # 06 - Quicksort
 
+## Hape burimin dhe shiko demonstrimin
+
+- [23Quicksort.pdf](../23Quicksort.pdf)
+- [Quicksort - Detyrat e shtëpisë.docx](../Quicksort%20-%20Detyrat%20e%20sht%C3%ABpis%C3%AB.docx)
+- [Quick Sort - Detyra të zgjidhura detyra për ushtrime.docx](../Quick%20Sort%20-%20Detyra%20t%C3%AB%20zgjidhura%20detyra%20p%C3%ABr%20ushtrime.docx)
+
+**Demonstrimet falas të Princeton-it** (ndali te çdo hap, kopjo gjendjen në letër dhe krahasoje me trace-in e kësaj teme):
+
+- [Partitioning 2-way dhe 3-way (PDF)](https://algs4.cs.princeton.edu/lectures/demo/23DemoPartitioning.pdf)
+
+Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan, hapini me një video player. Demonstrimi `PDF` hapet si dokument, nuk është video.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimet e mbuluara
 
 - `23Quicksort.pdf`
 - `Quicksort - Detyrat e shtëpisë.docx`
-- `Quick Sort - Detyra të zgjidhura & detyra për ushtrime.docx`
+- `Quick Sort - Detyra të zgjidhura detyra për ushtrime.docx`
 
 Shënim: menuja e slide-ve përmend edhe selection/system sorts, por në PDF-në e kursit nuk ka seksion të zhvilluar për to; përmbajtja reale është 2-way quicksort, 3-way quicksort, duplikatet dhe analiza.
 

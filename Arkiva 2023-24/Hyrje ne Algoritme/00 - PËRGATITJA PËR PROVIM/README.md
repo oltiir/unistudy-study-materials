@@ -4,6 +4,8 @@
 
 Ky material mbulon 12 temat dhe të 31 materialet e kursit Moodle `39168`. Është shkruar për mësim aktiv: së pari kupto idenë, pastaj ndiq algoritmin me dorë, në fund zgjidh ushtrime pa e parë zgjidhjen.
 
+**Nis sot:** [roadmap-i deri nesër në 13:00](00-FILLO-KETU.md), [detyra me zgjidhje hap pas hapi](18-PRAKTIKA-PARA-PROVIMIT.md) dhe [të 31 skedarët origjinalë të kursit](19-INDEKSI-I-PDF-VE-DHE-VIDEOVE.md). Shembujt e praktikës janë ndërtuar për mësim; kur kërkohet kodi identik, hape origjinalin.
+
 ## Versioni interaktiv
 
 Hape [Algoritmet Lab](interactive/index.html) për t'i mësuar të 12 temat me simulatorë, mbi 100 detyra të kontrollueshme, trace hap pas hapi, hints, zgjidhje, provim simulues 100-pikësh dhe progres me XP. Aplikacioni punon pa internet: shkarko folderin `interactive` dhe hape `index.html` në browser.
@@ -68,7 +70,8 @@ Në fund përdor [Cheat Sheet](13-Cheat-Sheet.md) dhe [Mini‑Provimin](14-Mini-
 - [Provim realist 100 pikë me zgjidhje](17-PROVIM-REALIST-NGA-TESTET.md)
 - [PDF-të dhe fotografitë e testeve](burime-shtese/README.md)
 
-Platforma interaktive përmban tani edhe pyetje me etiketën **Test real**, të modeluara nga materialet e mësipërme.
+Platforma interaktive përmban edhe pyetje me etiketën **Test real**, të modeluara nga materialet e mësipërme. Përputh inputin dhe variantin e algoritmit me detyrën origjinale para se të marrësh zgjidhjen si përgjigje zyrtare.
+
 - Symbol table ordered operations dhe aplikimet e tyre.
 
 ### Prioritet teorik

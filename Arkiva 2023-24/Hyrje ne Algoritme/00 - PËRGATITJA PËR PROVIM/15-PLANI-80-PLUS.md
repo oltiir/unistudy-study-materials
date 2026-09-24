@@ -190,6 +190,8 @@ Përdor këtë rend; mos e ndërro:
 
 **Gate:** zgjidh key/value/strukturën për tri skenarë dhe llogarit një sparse dot product.
 
+**Për sonte, 24 shtator:** datat 22–23 më poshtë kanë kaluar. Përdor [planin e shkurtër të mbrëmjes](00-FILLO-KETU.md#nis-sonte-plani-me-më-së-shumti-kthim-për-kohën) dhe [praktikën e fundit](18-PRAKTIKA-PARA-PROVIMIT.md). Mos e planifiko 80+ si rezultat të sigurt; bëj një simulim dhe përmirëso gabimet.
+
 ## Plani intensiv deri më 25 shtator
 
 Ky plan supozon punën 09:00–17:00 dhe provimin më 25 shtator në 13:00.

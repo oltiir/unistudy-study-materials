@@ -1,12 +1,28 @@
 # 11 - Hash Tables
 
+## Hape burimin dhe shiko demonstrimin
+
+- [34HashTables.pdf](../34HashTables.pdf)
+- [Hash Tables - Detyra të zgjidhura.docx](../Hash%20Tables%20-%20Detyra%20t%C3%AB%20zgjidhura.docx)
+- [Hash Tables - Detyra të zgjidhura me Stringje.docx](../Hash%20Tables%20-%20Detyra%20t%C3%AB%20zgjidhura%20me%20Stringje.docx)
+- [Hash Tables - Detyrat e shtëpisë.docx](../Hash%20Tables%20-%20Detyrat%20e%20sht%C3%ABpis%C3%AB.docx)
+- [Double Hashing with Strings Cuckoo Hashing.docx](../Double%20Hashing%20with%20Strings%20Cuckoo%20Hashing.docx)
+
+**Demonstrimet falas të Princeton-it** (ndali te çdo hap, kopjo gjendjen në letër dhe krahasoje me trace-in e kësaj teme):
+
+- [Linear probing (.mov)](https://algs4.cs.princeton.edu/lectures/demo/34DemoLinearProbingHashTable.mov)
+
+Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan, hapini me një video player. Demonstrimi `PDF` hapet si dokument, nuk është video.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimet e mbuluara
 
 - `34HashTables.pdf`
 - `Hash Tables - Detyra të zgjidhura.docx`
 - `Hash Tables - Detyra të zgjidhura me Stringje.docx`
 - `Hash Tables - Detyrat e shtëpisë.docx`
-- `Double Hashing with Strings & Cuckoo Hashing.docx`
+- `Double Hashing with Strings Cuckoo Hashing.docx`
 
 ## Plani bazë
 

@@ -2,13 +2,29 @@
 
 Ky është navigimi kryesor për krejt materialin. Mos u mundo me i hap skedarët pa rend: ndiqe roadmap-in më poshtë.
 
+## Nis sonte: plani me më së shumti kthim për kohën
+
+Provimi është **të premten, 25 shtator 2026, në 13:00 (Kosovë)**. Je me një bazë, prandaj puno me laps dhe detyra, jo me lexim pasiv. Koha më poshtë është orientuese; shkurto blloqet nëse fillon vonë dhe ruaje gjumin.
+
+| Blloku | Kohë orientuese | Çka bën |
+|---|---:|---|
+| 1 | 50 min | [Kompleksitet](02-Analiza-e-Algoritmeve.md) + [flowcharts](01-Flowcharts.md): 2 detyra me formulë dhe kusht |
+| 2 | 60 min | [BST](09-Binary-Search-Trees.md) dhe [heap](07-Priority-Queues-dhe-Heapsort.md): ndërto, traversals/delete, sink/swim |
+| 3 | 50 min | [Hashing](11-Hash-Tables.md) dhe [postfix](03-Stacks-dhe-Queues.md): 2 trace, kontrollo formulën e hash-it |
+| 4 | 60 min | [Sortimet](04-Elementary-Sorts.md), [merge](05-Mergesort.md), [quick](06-Quicksort.md): 1 trace për secilin lloj |
+| 5 | 60–90 min | [Provim i bazuar në formatin e testeve](17-PROVIM-REALIST-NGA-TESTET.md); korrigjo vetëm gabimet |
+
+**Nesër para 13:00:** bëj [ushtrimet e punuara dhe detyrat për ty](18-PRAKTIKA-PARA-PROVIMIT.md) ku gabove; përsërit [cheat sheet](13-Cheat-Sheet.md) dhe ndalo mësimin intensiv së paku një orë para provimit. Nëse koha nuk mjafton, bëj blloqet 1–3 dhe provimin. Kjo rrit mbulimin e formateve kryesore, por askush nuk mund të garantojë 80 pikë.
+
 ## Linkat kryesore
 
 1. [Algoritmet Lab — 121 detyra interaktive](interactive/index.html)
 2. [Plani 80+ dhe të gjitha llojet e detyrave](15-PLANI-80-PLUS.md)
 3. [Cheat Sheet — formulat dhe rregullat](13-Cheat-Sheet.md)
 4. [Mini‑Provimi](14-Mini-Provim.md)
-5. [Overview i krejt lëndës](README.md)
+5. [Praktika e fundit: shembuj të zgjidhur dhe detyra](18-PRAKTIKA-PARA-PROVIMIT.md)
+6. [Të 31 PDF/DOCX origjinale dhe demonstrimet](19-INDEKSI-I-PDF-VE-DHE-VIDEOVE.md)
+7. [Overview i krejt lëndës](README.md)
 
 > Për platformën interaktive: shkarko repository-n ose folderin `interactive`, pastaj hape `interactive/index.html` në browser. Nuk kërkon instalim ose internet.
 
@@ -45,6 +61,10 @@ Përsëriti vetëm këta katër hapa:
 4. **Kalo tutje vetëm kur:** i zgjidh së paku 80% pa hint.
 
 Nëse një përgjigje del gabim, mos e lexo vetëm zgjidhjen. Mbylle zgjidhjen dhe bëje detyrën përsëri nga fillimi.
+
+## Rruga e plotë nëse ke tri ditë (arkiv)
+
+Për provimin nesër ndiq planin **Nis sonte** në krye të këtij skedari; kjo rrugë vlen kur ke tri ditë të plota.
 
 ## Roadmap-i më i thjeshtë për 80+
 

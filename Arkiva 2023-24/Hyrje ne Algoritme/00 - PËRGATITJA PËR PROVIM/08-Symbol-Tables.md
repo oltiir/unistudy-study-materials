@@ -1,5 +1,13 @@
 # 08 - Symbol Tables
 
+## Hape burimin dhe shiko demonstrimin
+
+- [31ElementarySymbolTables.pdf](../31ElementarySymbolTables.pdf)
+
+Për këtë temë, [shih indeksin e ligjëratave të Princeton-it](https://algs4.cs.princeton.edu/lectures/) krahas PDF-së së kursit.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimi i mbuluar
 
 - `31ElementarySymbolTables.pdf`

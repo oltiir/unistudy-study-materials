@@ -1,10 +1,20 @@
 # 01 - Flowcharts
 
+## Hape burimin dhe shiko demonstrimin
+
+- [00Intro.pdf](../00Intro.pdf)
+- [1. Flowcharts - Detyrat e shtëpisë.pdf](../1.%20Flowcharts%20-%20Detyrat%20e%20sht%C3%ABpis%C3%AB.pdf)
+- [Flowcharts - Detyra të zgjidhura detyra për ushtrime.pdf](../Flowcharts%20-%20Detyra%20t%C3%AB%20zgjidhura%20detyra%20p%C3%ABr%20ushtrime.pdf)
+
+Për këtë temë, [shih indeksin e ligjëratave të Princeton-it](https://algs4.cs.princeton.edu/lectures/) krahas PDF-së së kursit.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimet e mbuluara
 
 - `00Intro.pdf`
 - `1. Flowcharts - Detyrat e shtëpisë.pdf`
-- `Flowcharts - Detyra të zgjidhura & detyra për ushtrime.pdf`
+- `Flowcharts - Detyra të zgjidhura detyra për ushtrime.pdf`
 
 ## Ideja
 
@@ -84,7 +94,7 @@ Për një funksion me tri raste:
 Lexo x
 nëse x < a:
     y = formula1
-përndryshe nëse x <= b:
+përndryshe nëse x < b:
     y = formula2
 përndryshe:
     y = formula3

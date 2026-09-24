@@ -1,10 +1,24 @@
 # 09 - Binary Search Trees (BST)
 
+## Hape burimin dhe shiko demonstrimin
+
+- [32BinarySearchTrees.pdf](../32BinarySearchTrees.pdf)
+- [BST - Detyrat e shtëpisë .pdf](../BST%20-%20Detyrat%20e%20sht%C3%ABpis%C3%AB%20.pdf)
+- [BST - Detyra të zgjidhura.pdf](../BST%20-%20Detyra%20t%C3%AB%20zgjidhura.pdf)
+
+**Demonstrimet falas të Princeton-it** (ndali te çdo hap, kopjo gjendjen në letër dhe krahasoje me trace-in e kësaj teme):
+
+- [Ndërtimi i BST (.mov)](https://algs4.cs.princeton.edu/lectures/demo/32DemoBinarySearchTree.mov)
+
+Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan, hapini me një video player. Demonstrimi `PDF` hapet si dokument, nuk është video.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimet e mbuluara
 
 - `32BinarySearchTrees.pdf`
+- `BST - Detyrat e shtëpisë .pdf`
 - `BST - Detyra të zgjidhura.pdf`
-- `BST - Detyrat e shtëpisë.pdf`
 
 ## Rregulla e BST
 

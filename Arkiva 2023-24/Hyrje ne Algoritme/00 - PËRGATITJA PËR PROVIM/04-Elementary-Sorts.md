@@ -1,10 +1,26 @@
 # 04 - Elementary Sorts
 
+## Hape burimin dhe shiko demonstrimin
+
+- [21ElementarySorts.pdf](../21ElementarySorts.pdf)
+- [Elementary Sorts - Detyrat e shtepise.pdf](../Elementary%20Sorts%20-%20Detyrat%20e%20shtepise.pdf)
+- [Elementary Sorts - Detyra të zgjidhura detyra për ushtrime.pdf](../Elementary%20Sorts%20-%20Detyra%20t%C3%AB%20zgjidhura%20detyra%20p%C3%ABr%20ushtrime.pdf)
+
+**Demonstrimet falas të Princeton-it** (ndali te çdo hap, kopjo gjendjen në letër dhe krahasoje me trace-in e kësaj teme):
+
+- [Selection Sort (.mov)](https://algs4.cs.princeton.edu/lectures/demo/21DemoSelectionSort.mov)
+- [Insertion Sort (.mov)](https://algs4.cs.princeton.edu/lectures/demo/21DemoInsertionSort.mov)
+- [Shellsort: h-sorting (.mov)](https://algs4.cs.princeton.edu/lectures/demo/21DemoShellSort.mov)
+
+Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan, hapini me një video player. Demonstrimi `PDF` hapet si dokument, nuk është video.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimet e mbuluara
 
 - `21ElementarySorts.pdf`
 - `Elementary Sorts - Detyrat e shtepise.pdf`
-- `Elementary Sorts - Detyra të zgjidhura & detyra për ushtrime.pdf`
+- `Elementary Sorts - Detyra të zgjidhura detyra për ushtrime.pdf`
 
 ## Comparable dhe operacionet ndihmëse
 
@@ -117,7 +133,7 @@ Apliko insertion sort në shkronjat `A L G O`. Shkruaj array-in pas çdo swap-i 
 Sorto `[8, 5, 3, 7, 6, 2]` me gap-et `h=4`, pastaj `h=1`.
 
 - Me `h=4`, krahasohen indekset `(0,4)` dhe `(1,5)`: `6 < 8` jep `[6,5,3,7,8,2]`; `2 < 5` jep `[6,2,3,7,8,5]`.
-- Me `h=1`, bëhet insertion sort mbi array-in tashmë pjesërisht të rregulluar: `[2,6,3,7,8,5]` -> `[2,3,6,7,8,5]` -> `[2,3,5,6,7,8]`.
+- Me `h=1`, vazhdohet insertion sort. Shkruaj çdo **swap**: `[6,2,3,7,8,5]` -> `[2,6,3,7,8,5]` -> `[2,3,6,7,8,5]` -> `[2,3,6,7,5,8]` -> `[2,3,6,5,7,8]` -> `[2,3,5,6,7,8]`. Në `i=3` dhe `i=4` nuk ka swap; në `i=5` elementi `5` lëviz tri herë majtas.
 
 Rezultati final është `[2, 3, 5, 6, 7, 8]`. Te `h=4` nuk krahasohen fqinjët, por elementet katër pozita larg.
 
@@ -143,7 +159,7 @@ Pas çdo iterimi shkruaj prefix-in e sortuar. Elementi mund të bëjë disa swap
 
 ## Flow vizual i algoritmeve
 
-Këto flow-e tregojnë **çka ndodh me array-n**, ndërsa kodi më sipër mbetet implementimi që duhet mësuar nga PDF-ja.
+Këto flow-e tregojnë **çka ndodh me array-n**. Blloqet e kodit më sipër janë versione të shkurtra për ta kuptuar rrjedhën; kur kërkohet sintaksa ose kodi identik, hap PDF-në origjinale të kursit më poshtë.
 
 ### Flow i Selection Sort
 
@@ -196,7 +212,7 @@ Selection mund të lëvizë një element të barabartë përtej tjetrit; Shell b
 
 ## Gabimet tipike
 
-- Selection bën swap gjatë kërkimit të minimumit, jo pas përfundimit.
+- Gabim: bën swap sa herë gjen një minimum më të vogël gjatë skanimit. Në Selection gjen indeksin e minimumit dhe bën vetëm një swap **pas** skanimit të gjithë suffix-it.
 - Insertion krahasohet me `a[i]` origjinal pa përcjellë lëvizjen e `j`.
 - Shellsort harron gap-in `1`.
 - Shkruan se selection ka best `O(N)` vetëm pse array është e sortuar; ai prapë skanon gjithçka.

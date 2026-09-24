@@ -1,5 +1,17 @@
 # 05 - Mergesort
 
+## Hape burimin dhe shiko demonstrimin
+
+- [22Mergesort.pdf](../22Mergesort.pdf)
+
+**Demonstrimet falas të Princeton-it** (ndali te çdo hap, kopjo gjendjen në letër dhe krahasoje me trace-in e kësaj teme):
+
+- [Merge i dy gjysmave (.mov)](https://algs4.cs.princeton.edu/lectures/demo/22DemoMerge.mov)
+
+Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan, hapini me një video player. Demonstrimi `PDF` hapet si dokument, nuk është video.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimi i mbuluar
 
 - `22Mergesort.pdf`

@@ -1,10 +1,24 @@
 # 02 - Analiza e algoritmeve
 
+## Hape burimin dhe shiko demonstrimin
+
+- [14AnalysisOfAlgorithms.pdf](../14AnalysisOfAlgorithms.pdf)
+- [2. Kompleksiteti kohor - Detyrat e shtëpise.pdf](../2.%20Kompleksiteti%20kohor%20-%20Detyrat%20e%20sht%C3%ABpise.pdf)
+- [Analiza e algoritmeve - Detyra të zgjidhura detyra për ushtrime.pdf](../Analiza%20e%20algoritmeve%20-%20Detyra%20t%C3%AB%20zgjidhura%20detyra%20p%C3%ABr%20ushtrime.pdf)
+
+**Demonstrimet falas të Princeton-it** (ndali te çdo hap, kopjo gjendjen në letër dhe krahasoje me trace-in e kësaj teme):
+
+- [Binary search (PDF)](https://algs4.cs.princeton.edu/lectures/demo/14DemoBinarySearch.pdf)
+
+Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan, hapini me një video player. Demonstrimi `PDF` hapet si dokument, nuk është video.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimet e mbuluara
 
 - `14AnalysisOfAlgorithms.pdf`
 - `2. Kompleksiteti kohor - Detyrat e shtëpise.pdf`
-- `Analiza e algoritmeve - Detyra të zgjidhura & detyra për ushtrime.pdf`
+- `Analiza e algoritmeve - Detyra të zgjidhura detyra për ushtrime.pdf`
 
 ## Pse analizohet algoritmi
 

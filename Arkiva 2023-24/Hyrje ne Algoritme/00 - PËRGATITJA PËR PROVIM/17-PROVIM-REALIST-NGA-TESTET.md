@@ -205,6 +205,8 @@ Hash table:
 | 3 | bosh |
 | 4 | `10 -> 15` |
 
+Rreshtat tregojnë **rendin e hyrjes**. Nëse `put()` fut çdo nyjë në krye të listës, shkruaji zinxhirët nga koka në këtë rend: `0: 11 -> 6`, `1: 2 -> 12`, `2: 13 -> 8`, `4: 15 -> 10`. Indekset e bucket-ave nuk ndryshojnë.
+
 </details>
 
 ## Vlerësimi

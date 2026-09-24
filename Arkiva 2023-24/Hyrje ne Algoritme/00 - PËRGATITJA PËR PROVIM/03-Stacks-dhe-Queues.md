@@ -1,10 +1,24 @@
 # 03 - Stacks dhe Queues
 
+## Hape burimin dhe shiko demonstrimin
+
+- [13StacksAndQueues.pdf](../13StacksAndQueues.pdf)
+- [3. Stacks Queues - Detyrat e shtëpisë.pdf](../3.%20Stacks%20Queues%20-%20Detyrat%20e%20sht%C3%ABpis%C3%AB.pdf)
+- [Stacks and Queues - Detyra të zgjidhura detyra për ushtrime.pdf](../Stacks%20and%20Queues%20-%20Detyra%20t%C3%AB%20zgjidhura%20detyra%20p%C3%ABr%20ushtrime.pdf)
+
+**Demonstrimet falas të Princeton-it** (ndali te çdo hap, kopjo gjendjen në letër dhe krahasoje me trace-in e kësaj teme):
+
+- [Dijkstra two-stack (demonstrim .mov)](https://algs4.cs.princeton.edu/lectures/demo/13DemoDijkstraTwoStack.mov)
+
+Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan, hapini me një video player. Demonstrimi `PDF` hapet si dokument, nuk është video.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimet e mbuluara
 
 - `13StacksAndQueues.pdf`
-- `3. Stacks & Queues - Detyrat e shtëpisë.pdf`
-- `Stacks and Queues - Detyra të zgjidhura & detyra për ushtrime.pdf`
+- `3. Stacks Queues - Detyrat e shtëpisë.pdf`
+- `Stacks and Queues - Detyra të zgjidhura detyra për ushtrime.pdf`
 
 ## Konceptet bazë
 

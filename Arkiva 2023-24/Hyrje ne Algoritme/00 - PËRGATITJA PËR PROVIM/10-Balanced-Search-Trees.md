@@ -1,9 +1,23 @@
 # 10 - 2-3 Trees dhe Red-Black BST
 
+## Hape burimin dhe shiko demonstrimin
+
+- [33BalancedSearchTrees.pdf](../33BalancedSearchTrees.pdf)
+- [Red-black BST 2-3 Tree - Detyra të zgjidhura.docx](../Red-black%20BST%202-3%20Tree%20-%20Detyra%20t%C3%AB%20zgjidhura.docx)
+
+**Demonstrimet falas të Princeton-it** (ndali te çdo hap, kopjo gjendjen në letër dhe krahasoje me trace-in e kësaj teme):
+
+- [2-3 tree (.mov)](https://algs4.cs.princeton.edu/lectures/demo/33Demo23Tree.mov)
+- [Red-black BST (.mov)](https://algs4.cs.princeton.edu/lectures/demo/33DemoRedBlackBST.mov)
+
+Skedarët `.mov` janë video të shkurtra demonstrimi; nëse browseri nuk i luan, hapini me një video player. Demonstrimi `PDF` hapet si dokument, nuk është video.
+
+**Si të punosh:** provo vetë detyrën e punuar para se ta lexosh përgjigjen; bëj pastaj detyrën «për ty» dhe kontrollo [ushtrimet e plota me zgjidhje](18-PRAKTIKA-PARA-PROVIMIT.md).
+
 ## Burimet e mbuluara
 
 - `33BalancedSearchTrees.pdf`
-- `Red-black BST & 2-3 Tree - Detyra të zgjidhura.docx`
+- `Red-black BST 2-3 Tree - Detyra të zgjidhura.docx`
 
 Shënim për mbulimin: faqja hyrëse e ligjëratës e përmend edhe B-tree, por skedari i kursit nuk përmban seksion të zhvilluar për B-tree. Materiali real i kësaj teme është 2-3 tree dhe left-leaning red-black BST.
 
