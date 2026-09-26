@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratori i Databazave — UBT</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#192c3d;background:#f3f7f9}
+*{box-sizing:border-box}body{margin:0}header{background:#102c42;color:white;padding:28px max(20px,calc((100% - 1080px)/2))}header h1{margin:0 0 8px;font-size:clamp(1.6rem,4vw,2.4rem)}header p{margin:0;color:#d1e9f2}main{max-width:1080px;margin:auto;padding:20px}nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+button,select{font:inherit}button{border:0;border-radius:9px;background:#087f72;color:white;padding:10px 14px;cursor:pointer}button:hover{background:#06695f}button.secondary{background:#e3edf0;color:#163b4c}button.secondary:hover{background:#cbdde3}button.active{background:#f2a833;color:#122839}button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #f2a833;outline-offset:2px}
+section{display:none}section.active{display:block}.panel{background:white;border:1px solid #d8e4ea;border-radius:14px;padding:20px;margin:0 0 18px;box-shadow:0 3px 10px #142b4210}.panel h2{margin:0 0 10px}.muted{color:#547083}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.row label{font-weight:600}select{border:1px solid #a9bfca;background:#fff;border-radius:8px;padding:8px}table{border-collapse:collapse;width:100%;margin:10px 0 16px}th,td{border:1px solid #cfdee3;padding:8px;text-align:left}th{background:#eaf2f5}.scroll{overflow-x:auto}pre{overflow:auto;background:#102c42;color:#e6f9fd;padding:16px;border-radius:10px;line-height:1.55}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}.badge{display:inline-block;border-radius:40px;padding:4px 10px;background:#d8efe8;color:#075f55;font-weight:bold}.notice{border-left:4px solid #f2a833;padding:8px 12px;background:#fff7e7}.choice{display:block;width:100%;text-align:left;margin:8px 0;background:#e3edf0;color:#163b4c}.choice.correct{background:#d7efdf;color:#11502a}.choice.wrong{background:#f9dddd;color:#702424}.task textarea{width:100%;min-height:128px;border:1px solid #a9bfca;border-radius:8px;padding:10px;font:14px/1.5 ui-monospace,monospace;resize:vertical}.task details{padding:10px;background:#f2f7f9;border-radius:8px;margin:10px 0}.task details pre{margin-bottom:0}.progress{height:10px;background:#e1eaed;border-radius:20px;overflow:hidden}.progress span{display:block;background:#087f72;height:100%;transition:width .2s}.foot{font-size:.9rem;color:#526c79}.nowrap{white-space:nowrap}@media(max-width:640px){main{padding:12px}.panel{padding:14px}th,td{padding:6px;font-size:.85rem}}
+</style>
+</head>
+<body>
+<header><h1>Laboratori i Databazave</h1><p>Vizualizo JOIN dhe GROUP BY, provo pyetje, shkruaj SQL. Punon edhe pa internet.</p></header>
+<main>
+<nav aria-label="Pjesët e laboratorit">
+ <button data-tab="join" class="active">1 · JOIN vizual</button>
+ <button data-tab="group" class="secondary">2 · GROUP BY</button>
+ <button data-tab="quiz" class="secondary">3 · Quiz</button>
+ <button data-tab="tasks" class="secondary">4 · Shkruaj SQL</button>
+</nav>
+<section id="join" class="active">
+ <div class="panel"><h2>Dy tabela: përputhja sipas FK</h2><p>Te Spitali ka edhe një spital pa pacient. Ndërro INNER/LEFT dhe shiko si ndryshon rezultati.</p>
+ <div class="grid">
+  <div class="scroll"><strong>Spitali (majtas)</strong><table><thead><tr><th>Id (PK)</th><th>Emri</th></tr></thead><tbody id="leftData"></tbody></table></div>
+  <div class="scroll"><strong>Pacienti (djathtas)</strong><table><thead><tr><th>Id (PK)</th><th>Emri</th><th>Spitali (FK)</th></tr></thead><tbody id="rightData"></tbody></table></div>
+ </div>
+ <div class="row"><label for="joinType">JOIN</label><select id="joinType"><option>INNER JOIN</option><option>LEFT JOIN</option><option>CROSS JOIN</option></select>
+ <label for="filterType">Filtri</label><select id="filterType"><option value="none">asnjë</option><option value="without">pa pacientë</option><option value="ferizajWhere">WHERE p.Emri = 'Drita'</option><option value="ferizajOn">ON ... AND p.Emri = 'Drita'</option></select></div>
+ <p class="notice" id="joinExpl"></p><pre id="joinSql"></pre>
+ <div class="scroll"><strong>Rezultati: <span id="joinCount"></span> rreshta</strong><table><thead><tr><th>Spitali.Id</th><th>Spitali.Emri</th><th>Pacienti.Id</th><th>Pacienti.Emri</th></tr></thead><tbody id="joined"></tbody></table></div>
+ </div>
+</section>
+<section id="group">
+ <div class="panel"><h2>Numëro pacientët sipas spitalit</h2><p>Te LEFT JOIN spitali bosh prodhon një rresht ku p.Id është NULL. Ndërro funksionin dhe shiko gabimin klasik.</p>
+ <div class="row"><label for="countType">Funksioni</label><select id="countType"><option value="id">COUNT(p.Id)</option><option value="star">COUNT(*)</option></select>
+ <label for="havingType">HAVING</label><select id="havingType"><option value="all">pa filtër</option><option value="zero">= 0</option><option value="lt2">&lt; 2</option><option value="ge2">&gt;= 2</option></select></div>
+ <p class="notice" id="groupExpl"></p><pre id="groupSql"></pre><div class="scroll"><table><thead><tr><th>Spitali</th><th>Numri</th><th>Rreshtat para grupimit</th></tr></thead><tbody id="grouped"></tbody></table></div>
+ </div>
+</section>
+<section id="quiz">
+ <div class="panel"><h2>Parashiko përpara se ta shohësh SQL</h2><p id="quizProgress"></p><div class="progress"><span id="bar"></span></div>
+ <h3 id="question"></h3><div id="choices"></div><p id="feedback" aria-live="polite"></p><button id="nextQuestion" hidden>Pyetja tjetër</button></div>
+</section>
+<section id="tasks">
+ <div class="panel"><h2>Shkruaje vetë, pastaj krahaso</h2><p>Shkruaj query në fushë para se të hapësh “Ide” dhe “Zgjidhja”. Fusha nuk e ekzekuton SQL: këtu e ushtron shkrimin; për ekzekutim përdor SQL Server dhe dataset-in origjinal të kursit. Teksti ruhet lokalisht në këtë shfletues.</p>
+ <div id="taskList"></div></div>
+</section>
+<p class="foot">Të dhënat në vizualizues janë të vogla dhe didaktike; emrat e kolonave janë si në ushtrimin 9. Lexo <a href="00-FILLO-KETU.md">udhërrëfyesin</a> dhe <a href="07-Ushtrime-dhe-zgjidhje.md">provën 100 pikë</a>.</p>
+</main>
+<script>
+'use strict';
+const hospitals=[{Id:1,Emri:'QKUK'},{Id:2,Emri:'Ferizaj'},{Id:3,Emri:'Pejë'},{Id:4,Emri:'Gjilan'}];
+const patients=[{Id:'P1',Emri:'Arta',Spitali:1},{Id:'P2',Emri:'Besnik',Spitali:1},{Id:'P3',Emri:'Drita',Spitali:2},{Id:'P4',Emri:'Enis',Spitali:3}];
+const $=id=>document.getElementById(id);
+const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('section').forEach(s=>s.classList.toggle('active',s.id===b.dataset.tab));
+ document.querySelectorAll('[data-tab]').forEach(x=>{x.className=x===b?'active':'secondary';});
+}));
+$('leftData').innerHTML=hospitals.map(s=>'<tr><td>'+s.Id+'</td><td>'+s.Emri+'</td></tr>').join('');
+$('rightData').innerHTML=patients.map(p=>'<tr><td>'+p.Id+'</td><td>'+p.Emri+'</td><td>'+p.Spitali+'</td></tr>').join('');
+function renderJoin(){
+ const type=$('joinType').value,filter=$('filterType').value;
+ if(type==='CROSS JOIN'&&filter==='ferizajOn'){$('filterType').value='none';return renderJoin()}
+ let rows=[];
+ for(const s of hospitals){
+  let matches=patients.filter(p=>type==='CROSS JOIN'||p.Spitali===s.Id);
+  if(filter==='ferizajOn')matches=matches.filter(p=>p.Emri==='Drita');
+  if(matches.length)for(const p of matches)rows.push({s,p});
+  else if(type==='LEFT JOIN')rows.push({s,p:null});
+ }
+ if(filter==='without')rows=rows.filter(r=>r.p===null);
+ if(filter==='ferizajWhere')rows=rows.filter(r=>r.p?.Emri==='Drita');
+ let join=type==='CROSS JOIN'?'CROSS JOIN Pacienti p':type+' Pacienti p ON p.Spitali = s.Id'+(filter==='ferizajOn'?" AND p.Emri = 'Drita'":'');
+ let where=filter==='without'?'\nWHERE p.Id IS NULL':filter==='ferizajWhere'?"\nWHERE p.Emri = 'Drita'":'';
+ $('joinSql').textContent='SELECT s.Id, s.Emri, p.Id, p.Emri\nFROM Spitali s\n'+join+where+';';
+ $('joinCount').textContent=rows.length;
+ $('joined').innerHTML=rows.map(r=>'<tr><td>'+r.s.Id+'</td><td>'+escapeHtml(r.s.Emri)+'</td><td>'+(r.p?.Id||'<em>NULL</em>')+'</td><td>'+(r.p?escapeHtml(r.p.Emri):'<em>NULL</em>')+'</td></tr>').join('')||'<tr><td colspan="4">Asnjë rresht</td></tr>';
+ let message=type==='CROSS JOIN'?'CROSS JOIN kombinon çdo spital me çdo pacient: 4 × 4 = 16 rreshta.':'ON krahasohet sipas FK p.Spitali = s.Id. ';
+ message+=type==='LEFT JOIN'?'LEFT ruan edhe Gjilanin (pa pacient) me NULL në anën e pacientit.':'INNER ruan vetëm rreshtat me përputhje. ';
+ if(filter==='without')message+='WHERE p.Id IS NULL mban vetëm spitalet pa pacientë. Me INNER rezultati është bosh.';
+ if(filter==='ferizajWhere')message+='WHERE mbi p.Emri heq rreshtat NULL pas JOIN, edhe te LEFT.';
+ if(filter==='ferizajOn')message+='Kushti për Dritën te ON ruan spitalet bosh kur zgjedh LEFT.';
+ $('joinExpl').textContent=message;
+}
+$('joinType').addEventListener('change',renderJoin);$('filterType').addEventListener('change',renderJoin);renderJoin();
+function renderGroup(){
+ const star=$('countType').value==='star',filter=$('havingType').value;
+ let rows=hospitals.map(s=>{let ps=patients.filter(p=>p.Spitali===s.Id);return {s,n:ps.length+(star&&ps.length===0?1:0),parts:ps.length?ps.map(p=>p.Id).join(', '):'një rresht me p.Id = NULL'}});
+ rows=rows.filter(r=>filter==='all'||(filter==='zero'&&r.n===0)||(filter==='lt2'&&r.n<2)||(filter==='ge2'&&r.n>=2));
+ let having={all:'',zero:'\nHAVING COUNT('+ (star?'*':'p.Id') +') = 0',lt2:'\nHAVING COUNT('+(star?'*':'p.Id')+') < 2',ge2:'\nHAVING COUNT('+(star?'*':'p.Id')+') >= 2'}[filter];
+ $('groupSql').textContent='SELECT s.Emri, COUNT('+(star?'*':'p.Id')+') AS Nr\nFROM Spitali s LEFT JOIN Pacienti p\n  ON p.Spitali = s.Id\nGROUP BY s.Id, s.Emri'+having+';';
+ $('grouped').innerHTML=rows.map(r=>'<tr><td>'+escapeHtml(r.s.Emri)+'</td><td>'+r.n+'</td><td>'+escapeHtml(r.parts)+'</td></tr>').join('')||'<tr><td colspan="3">Asnjë grup</td></tr>';
+ $('groupExpl').textContent=star?'COUNT(*) numëron rreshtin e krijuar nga LEFT JOIN edhe për Gjilanin pa pacientë: del 1.':'COUNT(p.Id) injoron NULL: për Gjilanin del 0. HAVING filtrohet pas grupimit.';
+}
+$('countType').addEventListener('change',renderGroup);$('havingType').addEventListener('change',renderGroup);renderGroup();
+const questions=[
+ {q:'Një spital nuk ka asnjë pacient. Sa jep COUNT(*) në LEFT JOIN për atë spital?',a:['0','1','NULL'],right:1,why:'LEFT JOIN krijon një rresht me kolona të pacientit NULL. COUNT(*) numëron rreshtin.'},
+ {q:'Cila pjesë filtron grupet me saktësisht 2 doktorë?',a:['WHERE COUNT(*) = 2','HAVING COUNT(d.Id) = 2','ORDER BY COUNT(*) = 2'],right:1,why:'WHERE vepron para grupimit; HAVING pas GROUP BY.'},
+ {q:'Lidhja Student–Lëndë është M:N. Çfarë duhet?',a:['FK vetëm te Studenti','Tabelë lidhëse me dy FK','Dy kolona Lenda1 dhe Lenda2'],right:1,why:'Regjistrimi(StudentId, LendaId) ruan çiftet e lidhjes.'},
+ {q:'Çfarë bën WHERE p.Id IS NULL pas Spitali LEFT JOIN Pacienti?',a:['Pacientët me Id NULL','Spitalet pa pacientë','Të gjithë spitalet'],right:1,why:'Rreshtat pa ndeshje djathtas kanë p.Id NULL.'},
+ {q:'PK (PorosiaId, ProduktId); ProduktId → ProduktEmri. Cili rregull shkelet?',a:['1NF','2NF','PK duhet të jetë NULL'],right:1,why:'Emri i produktit varet nga vetëm një pjesë e çelësit të përbërë.'},
+ {q:'SELECT Paga * 1.10 AS PagaRe ... çfarë bën?',a:['E rrit pagën në tabelë','Shfaq rezultat të llogaritur','Fshin pagën'],right:1,why:'Vetëm UPDATE ... SET e ndryshon vlerën në tabelë.'},
+ {q:'Në një nënpyetje që kthen shumë ID, çfarë përdor zakonisht?',a:['= (SELECT ...)','IN (SELECT ...)','> (SELECT ...)'],right:1,why:'IN krahason me listën e ID-ve; = kërkon rezultat me një vlerë.'},
+ {q:'Çfarë vlere ka 4 CROSS JOIN 6?',a:['10 rreshta','24 rreshta','2 rreshta'],right:1,why:'Produkti kartezian formon çdo çift: 4 × 6.'},
+ {q:'Çfarë testi përdor për NULL?',a:['= NULL','IS NULL','LIKE NULL'],right:1,why:'NULL trajtohet me IS NULL/IS NOT NULL.'},
+ {q:'A mund të jetë specializimi njëkohësisht overlapping dhe total?',a:['Po','Jo','Vetëm në SQL Server'],right:0,why:'Overlapping pyet nëse mund të jetë në shumë nëntipe; total nëse duhet të jetë së paku në një.'}
+];
+let qi=0,score=0,answered=false;
+try{const saved=JSON.parse(localStorage.getItem('db_lab_quiz')||'null');if(saved&&saved.qi>=0&&saved.qi<=questions.length){qi=saved.qi;score=saved.score||0;}}catch{}
+function renderQuiz(){
+ if(qi>=questions.length){$('question').textContent='Mbarove! '+score+'/'+questions.length+' saktë.';$('choices').innerHTML='';$('feedback').textContent='Përsëriti konceptet që gabove dhe provo sërish.';$('nextQuestion').hidden=false;$('nextQuestion').textContent='Rifillo quiz-in';$('quizProgress').textContent='Të gjitha pyetjet';$('bar').style.width='100%';return;}
+ answered=false;$('question').textContent=questions[qi].q;$('quizProgress').textContent='Pyetja '+(qi+1)+' / '+questions.length+' · '+score+' saktë';$('bar').style.width=(100*qi/questions.length)+'%';
+ $('choices').innerHTML='';questions[qi].a.forEach((a,i)=>{let b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+i)+'. '+a;b.addEventListener('click',()=>answer(i));$('choices').appendChild(b)});
+ $('feedback').textContent='';$('nextQuestion').hidden=true;$('nextQuestion').textContent='Pyetja tjetër';
+}
+function answer(i){if(answered)return;answered=true;let q=questions[qi];if(i===q.right)score++;$('choices').querySelectorAll('button').forEach((b,j)=>{b.classList.add(j===q.right?'correct':j===i?'wrong':'');b.disabled=true});$('feedback').textContent=(i===q.right?'Saktë. ':'Jo. ')+q.why;$('nextQuestion').hidden=false}
+$('nextQuestion').addEventListener('click',()=>{if(qi>=questions.length){qi=0;score=0}else qi++;try{localStorage.setItem('db_lab_quiz',JSON.stringify({qi,score}))}catch{}renderQuiz()});renderQuiz();
+const tasks=[
+ ['Spitalet pa pacientë','Ruaj Spitali në anën e majtë; kontrollo PK e pacientit që mungon.',"SELECT s.Id, s.Emri\nFROM Spitali s LEFT JOIN Pacienti p ON p.Spitali = s.Id\nWHERE p.Id IS NULL;"],
+ ['Numri i pacientëve për secilin spital, përfshirë zero','LEFT JOIN dhe COUNT(p.Id), jo COUNT(*).',"SELECT s.Id, s.Emri, COUNT(p.Id) AS Nr\nFROM Spitali s LEFT JOIN Pacienti p ON p.Spitali = s.Id\nGROUP BY s.Id, s.Emri;"],
+ ['Spitalet me saktësisht dy doktorë','INNER JOIN, GROUP BY, HAVING.',"SELECT s.Id, s.Emri\nFROM Spitali s JOIN Doktori d ON d.Spitali = s.Id\nGROUP BY s.Id, s.Emri\nHAVING COUNT(d.Id) = 2;"],
+ ['Doktorët me pagë mbi mesataren e doktorëve','Nënpyetja AVG kthen një numër.',"SELECT d.Id, d.Emri, d.PagaMujore\nFROM Doktori d\nWHERE d.PagaMujore > (SELECT AVG(PagaMujore) FROM Doktori);"],
+ ['Doktorët pa diagnozë','LEFT JOIN me Diagnoza_Doktori, pastaj IS NULL.',"SELECT d.Id, d.Emri\nFROM Doktori d LEFT JOIN Diagnoza_Doktori dd ON dd.Doktori_id = d.Id\nWHERE dd.Doktori_id IS NULL;"],
+ ['Spitalet me më pak se 2 pacientë, përfshi zero','LEFT + GROUP + HAVING, jo WHERE COUNT.',"SELECT s.Id, s.Emri, COUNT(p.Id) AS Nr\nFROM Spitali s LEFT JOIN Pacienti p ON p.Spitali = s.Id\nGROUP BY s.Id, s.Emri\nHAVING COUNT(p.Id) < 2;"]
+];
+tasks.forEach((t,i)=>{let div=document.createElement('article');div.className='task panel';let title=document.createElement('h3');title.textContent=(i+1)+'. '+t[0];let ta=document.createElement('textarea');ta.setAttribute('aria-label','SQL për '+t[0]);ta.placeholder='Shkruaj këtu query-n tënd...';try{ta.value=localStorage.getItem('db_lab_task_'+i)||''}catch{}ta.addEventListener('input',()=>{try{localStorage.setItem('db_lab_task_'+i,ta.value)}catch{}});let hint=document.createElement('details');let hs=document.createElement('summary');hs.textContent='Ide';let hp=document.createElement('p');hp.textContent=t[1];hint.append(hs,hp);let sol=document.createElement('details');let ss=document.createElement('summary');ss.textContent='Zgjidhja';let code=document.createElement('pre');code.textContent=t[2];sol.append(ss,code);div.append(title,ta,hint,sol);$('taskList').appendChild(div)});
+</script>
+</body>
+</html>
