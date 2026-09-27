@@ -19,8 +19,7 @@ Për provimin e së hënës, 28 shtator 2026. Materiali bazohet në [syllabus](.
 
 ## Prioritet sipas kohës
 
-- **Sonte (e shtunë):** 01, 02 dhe 03; bëji ERD dhe 4 queries bazë. Rreth 90–120 minuta, pastaj pusho.
-- **Të dielën:** 04 dhe 05 në pjesën e parë; 06 dhe 07 në pjesën e dytë. Përsërit gabimet në laborator. Mos e përdor gjithë ditën për lexim pasiv.
+- **Të dielën:** Nise me 01 dhe 02 (ERD → tabela); kalo te 04 dhe 05 (JOIN, grupim, subqueries). Për 03 provo ushtrimet direkt, sepse SELECT bazë e ke ushtruar në SQL Island. Mbylle me 06 dhe pyetjet e provës 07. Shkruaji zgjidhjet para se t'i hapësh.
 - **Të hënën para provimit:** [08 — fleta e shpejtë](08-Fleta-e-shpejte.md) dhe 3 ushtrime pa zgjidhje. Kujtohu që provimi është në 13:00; sipas planit tënd duhet të largohesh nga puna rreth 12:10.
 
 Nëse ke vetëm 3 orë: 40 min ER→tabela, 70 min SELECT/JOIN/GROUP/HAVING, 45 min subquery/normalizim, 25 min provë gabimesh. Nëse e njeh ndonjë temë, kalo direkt te ushtrimet.
@@ -39,4 +38,3 @@ Hap PDF-të dhe SQL-të origjinale për detyra të tjera: [indeksi i plotë i ku
 ## Qëllimet e provës së fundit
 
 Pa shënime duhet të dish: (1) ta modelosh një skenar me entitete, PK, FK dhe kardinalitet; (2) ta kthesh në tabela dhe CREATE TABLE; (3) ta dallosh INNER/LEFT JOIN dhe WHERE/HAVING; (4) të shkruash SELECT me JOIN + GROUP BY + subquery; (5) të zbërthesh 1NF/2NF; (6) të shpjegosh WITH/VIEW/procedure. Nëse njëra dështon, kthehu te kapitulli dhe provo detyrën tjetër, jo të njëjtën zgjidhje përmendësh.
-

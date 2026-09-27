@@ -115,7 +115,7 @@ function renderQuiz(){
  $('choices').innerHTML='';questions[qi].a.forEach((a,i)=>{let b=document.createElement('button');b.className='choice';b.textContent=String.fromCharCode(65+i)+'. '+a;b.addEventListener('click',()=>answer(i));$('choices').appendChild(b)});
  $('feedback').textContent='';$('nextQuestion').hidden=true;$('nextQuestion').textContent='Pyetja tjetër';
 }
-function answer(i){if(answered)return;answered=true;let q=questions[qi];if(i===q.right)score++;$('choices').querySelectorAll('button').forEach((b,j)=>{b.classList.add(j===q.right?'correct':j===i?'wrong':'');b.disabled=true});$('feedback').textContent=(i===q.right?'Saktë. ':'Jo. ')+q.why;$('nextQuestion').hidden=false}
+function answer(i){if(answered)return;answered=true;let q=questions[qi];if(i===q.right)score++;$('choices').querySelectorAll('button').forEach((b,j)=>{if(j===q.right)b.classList.add('correct');else if(j===i)b.classList.add('wrong');b.disabled=true});$('feedback').textContent=(i===q.right?'Saktë. ':'Jo. ')+q.why;$('nextQuestion').hidden=false}
 $('nextQuestion').addEventListener('click',()=>{if(qi>=questions.length){qi=0;score=0}else qi++;try{localStorage.setItem('db_lab_quiz',JSON.stringify({qi,score}))}catch{}renderQuiz()});renderQuiz();
 const tasks=[
  ['Spitalet pa pacientë','Ruaj Spitali në anën e majtë; kontrollo PK e pacientit që mungon.',"SELECT s.Id, s.Emri\nFROM Spitali s LEFT JOIN Pacienti p ON p.Spitali = s.Id\nWHERE p.Id IS NULL;"],

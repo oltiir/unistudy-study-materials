@@ -50,7 +50,7 @@ VALUES (13, 'Spitali i Ri', 'Prishtine');
 
 UPDATE Doktori
 SET PagaMujore = PagaMujore * 1.10
-WHERE SpitaliId = 13;
+WHERE Spitali = 13;
 
 DELETE FROM Spitali
 WHERE Id = 13;
@@ -104,11 +104,10 @@ Ideja është “ose të dy ndryshimet, ose asnjëri”. Praktikisht duhet të k
 
 ```sql
 SELECT TOP (5) * FROM Doktori ORDER BY PagaMujore DESC, Id ASC;
-SELECT * FROM Pacienti WHERE DoktoriId IS NULL AND Emri LIKE 'A%';
-SELECT PagaMujore * 1.10 AS PagaRe FROM Doktori WHERE SpitaliId = 2;
-UPDATE Doktori SET PagaMujore = PagaMujore * 1.10 WHERE SpitaliId = 2;
+SELECT * FROM Pacienti WHERE Doktori IS NULL AND Emri LIKE 'A%';
+SELECT PagaMujore * 1.10 AS PagaRe FROM Doktori WHERE Spitali = 2;
+UPDATE Doktori SET PagaMujore = PagaMujore * 1.10 WHERE Spitali = 2;
 ```
 
-Në dataset-in origjinal të ushtrimit 9 kolona e FK quhet `Spitali` dhe `Doktori`; `SpitaliId`/`DoktoriId` përdoren në skemën didaktike të kësaj pakete. Përshtati emrat sipas tabelës që po ekzekuton.
+Në dataset-in origjinal të ushtrimit 9 kolonat FK quhen `Spitali` dhe `Doktori`; shembulli i ndërtimit të tabelave te kapitulli 02 përdor emrin më shpjegues `SpitaliId`. Shembujt e këtij kapitulli përdorin emrat e dataset-it origjinal.
 </details>
-

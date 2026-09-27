@@ -1,6 +1,6 @@
 # 07 — Detyra gjatë mësimit dhe provë 100 pikë
 
-**Mos i hap zgjidhjet pa bërë përpjekje në letër/SSMS.** Skema e detyrave 1–14 është ajo e [ushtrimit real 9](../11%20-%20Ligjërata%209/Ushtrime%209%20-%20Zgjidhja/toBeExecutedByStudents-G3b-Zgjidhja.sql): `Spitali(Id,Emri,Vendi)`, `Doktori(Id,Emri,Mbiemri,Kualifikimi,Spitali,PagaMujore)`, `Pacienti(Id,Emri,Mbiemri,Datelindja,Vendbanimi,Doktori,Spitali)`, `Diagnoza(Diagnoza_ID,Pershkrimi,Semundja)`, `Diagnoza_Doktori(Diagnoza_id,Doktori_id)`, `Diagnoza_Pacienti(Diagnoza_id,Pacienti_Id)`. SQL i dataset-it origjinal ka INSERT, kështu që mund t'i provosh në SSMS. **Mos e ekzekuto UPDATE/DELETE në dataset pa kopje.**
+**Mos i hap zgjidhjet pa bërë përpjekje në letër/SSMS.** Skema e detyrave 1–16 është ajo e [ushtrimit real 9](../11%20-%20Ligjërata%209/Ushtrime%209%20-%20Zgjidhja/toBeExecutedByStudents-G3b-Zgjidhja.sql): `Spitali(Id,Emri,Vendi)`, `Doktori(Id,Emri,Mbiemri,Kualifikimi,Spitali,PagaMujore)`, `Pacienti(Id,Emri,Mbiemri,Datelindja,Vendbanimi,Doktori,Spitali)`, `Diagnoza(Diagnoza_ID,Pershkrimi,Semundja)`, `Diagnoza_Doktori(Diagnoza_id,Doktori_id)`, `Diagnoza_Pacienti(Diagnoza_id,Pacienti_Id)`. SQL i dataset-it origjinal ka INSERT, kështu që mund t'i provosh në SSMS. **Mos e ekzekuto UPDATE/DELETE në dataset pa kopje.**
 
 ## Niveli 1 — sa lexon, aq provon
 
